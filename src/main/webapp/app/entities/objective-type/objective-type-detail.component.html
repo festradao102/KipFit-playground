@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="objectiveType">
+            <h2><span jhiTranslate="kipfitApp.objectiveType.detail.title">Objective Type</span> {{ objectiveType.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kipfitApp.objectiveType.objectiveName">Objective Name</span></dt>
+                <dd>
+                    <span>{{ objectiveType.objectiveName }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.objectiveType.description">Description</span></dt>
+                <dd>
+                    <span>{{ objectiveType.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.objectiveType.plan">Plan</span></dt>
+                <dd>
+                    <div *ngIf="objectiveType.plan">
+                        <a [routerLink]="['/plan', objectiveType.plan?.id, 'view']">{{ objectiveType.plan?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/objective-type', objectiveType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

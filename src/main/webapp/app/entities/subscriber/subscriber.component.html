@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kipfitApp.subscriber.home.title">Subscribers</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-subscriber" [routerLink]="['/subscriber/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="kipfitApp.subscriber.home.createLabel">
+            Create a new Subscriber
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="subscribers?.length === 0">
+        <span jhiTranslate="kipfitApp.subscriber.home.notFound">No subscribers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="subscribers && subscribers.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.subscriber.initialDate">Initial Date</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.subscriber.medicalConditions">Medical Conditions</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.subscriber.paymentFreq">Payment Freq</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.subscriber.subscriptionPayment">Subscription Payment</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.subscriber.guidedTraining">Guided Training</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let subscriber of subscribers ;trackBy: trackId">
+                    <td><a [routerLink]="['/subscriber', subscriber.id, 'view']">{{ subscriber.id }}</a></td>
+                    <td>{{ subscriber.initialDate | date:'medium' }}</td>
+                    <td>{{ subscriber.medicalConditions }}</td>
+                    <td>{{ subscriber.paymentFreq }}</td>
+                    <td>
+                        <div *ngIf="subscriber.subscriptionPayment">
+                            <a [routerLink]="['/subscription-payment', subscriber.subscriptionPayment?.id, 'view']" >{{ subscriber.subscriptionPayment?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <span *ngFor="let guidedTraining of subscriber.guidedTrainings; let last = last">
+                            <a class="form-control-static" [routerLink]="['/guided-training', guidedTraining?.id, 'view']">{{ guidedTraining.id }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/subscriber', subscriber.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/subscriber', subscriber.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(subscriber)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

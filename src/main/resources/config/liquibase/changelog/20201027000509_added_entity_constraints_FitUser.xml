@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity FitUser.
+    -->
+    <changeSet id="20201027000509-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="fit_user"
+                                 constraintName="fk_fit_user_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="subscriber_id"
+                                 baseTableName="fit_user"
+                                 constraintName="fk_fit_user_subscriber_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subscriber"/>
+
+        <addForeignKeyConstraint baseColumnNames="fit_user_id"
+                                 baseTableName="fit_user_schedule"
+                                 constraintName="fk_fit_user_schedule_fit_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fit_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="schedule_id"
+                                 baseTableName="fit_user_schedule"
+                                 constraintName="fk_fit_user_schedule_schedule_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="schedule"/>
+        
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="fit_user"
+                                 constraintName="fk_fit_user_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="role"/>
+
+    </changeSet>
+</databaseChangeLog>

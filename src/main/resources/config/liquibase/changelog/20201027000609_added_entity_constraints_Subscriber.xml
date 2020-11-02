@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Subscriber.
+    -->
+    <changeSet id="20201027000609-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="subscription_payment_id"
+                                 baseTableName="subscriber"
+                                 constraintName="fk_subscriber_subscription_payment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subscription_payment"/>
+
+        <addForeignKeyConstraint baseColumnNames="subscriber_id"
+                                 baseTableName="subscriber_guided_training"
+                                 constraintName="fk_subscriber_guided_training_subscriber_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subscriber"/>
+
+        <addForeignKeyConstraint baseColumnNames="guided_training_id"
+                                 baseTableName="subscriber_guided_training"
+                                 constraintName="fk_subscriber_guided_training_guided_training_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="guided_training"/>
+        
+    </changeSet>
+</databaseChangeLog>

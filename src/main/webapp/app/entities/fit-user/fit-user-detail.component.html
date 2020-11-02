@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fitUser">
+            <h2><span jhiTranslate="kipfitApp.fitUser.detail.title">Fit User</span> {{ fitUser.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kipfitApp.fitUser.legalId">Legal Id</span></dt>
+                <dd>
+                    <span>{{ fitUser.legalId }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.fitUser.bday">Bday</span></dt>
+                <dd>
+                    <span>{{ fitUser.bday }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.fitUser.phone">Phone</span></dt>
+                <dd>
+                    <span>{{ fitUser.phone }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.fitUser.emergencyPhone">Emergency Phone</span></dt>
+                <dd>
+                    <span>{{ fitUser.emergencyPhone }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.fitUser.user">User</span></dt>
+                <dd>
+                    {{ fitUser.user?.id }}
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.fitUser.subscriber">Subscriber</span></dt>
+                <dd>
+                    <div *ngIf="fitUser.subscriber">
+                        <a [routerLink]="['/subscriber', fitUser.subscriber?.id, 'view']">{{ fitUser.subscriber?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.fitUser.schedule">Schedule</span></dt>
+                <dd>
+                    <span *ngFor="let schedule of fitUser.schedules; let last = last">
+                        <a [routerLink]="['/schedule', schedule?.id, 'view']">{{ schedule.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.fitUser.role">Role</span></dt>
+                <dd>
+                    <div *ngIf="fitUser.role">
+                        <a [routerLink]="['/role', fitUser.role?.id, 'view']">{{ fitUser.role?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fit-user', fitUser.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

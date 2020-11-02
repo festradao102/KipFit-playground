@@ -1,0 +1,157 @@
+entity FitUser {
+    legalId String
+    bday Instant
+    phone String
+    emergencyPhone String
+}
+
+
+entity Subscriber {
+    initialDate Instant
+    medicalConditions String
+    paymentFreq String
+}
+
+entity Role {
+    roleId Integer
+    roleName String
+}
+
+entity Measurement {
+    measurementId Integer
+    metabolicage Integer
+    bmr Integer
+    boneMass Integer
+    height Integer
+    weight Integer
+    fatPercentage Integer
+    neck Integer
+    rightArm Integer
+    leftArm Integer
+    wrist Integer
+    core Integer
+    hip Integer
+    thorax Integer
+    rightThigh Integer
+    leftThigh Integer
+    rightCalve Integer
+    leftCalve Integer
+    dateCreated Instant
+}
+
+
+entity GuidedTraining {
+	name String
+	trainerName String
+	capacity Integer
+	date Instant
+	activeState Boolean
+}
+
+entity Schedule {
+	weekDay String
+	startHour Instant
+	endHour Instant
+}
+
+entity Plan {
+	objective String
+	dateCreated Instant
+	creatorName String
+	active Boolean
+}
+
+entity ObjectiveType {
+	objectiveName String
+	description String
+}
+
+entity Routine {
+	type Integer
+	name String
+	freq String
+}
+
+entity ExercisesSet {
+	type Integer
+	restTime Integer
+}
+
+entity ExercisesSetType {
+	typeName ExercisesSetTypeName
+}
+
+enum ExercisesSetTypeName {
+	SINSERIE,
+	BISERIE,
+	TRISERIE,
+	SUPERSERIE
+}
+
+entity Exercise {
+	name String
+	position String
+	instructions String
+	videoPath String
+}
+
+entity ExerciseType {
+	typeName ExercisesSetTypeName
+}
+
+enum ExercisesSetTypeName {
+	SUPERIOR,
+	INFERIOR,
+	NUCLEO,
+	CARDIOVASCULAR
+}
+entity SubscriptionPayment {
+	amount Integer
+}
+
+entity SystemParameter {
+	gymName String
+	logoPath String
+}
+
+relationship OneToMany {
+	Subscriber to Measurement
+	Subscriber to Plan
+	Plan to Routine
+
+	Plan to ObjectiveType
+	Routine to ExercisesSet
+
+	ExercisesSet to ExercisesSetType
+	Exercise to ExerciseType
+
+	Role to FitUser
+}
+
+relationship OneToOne {
+	FitUser to User
+	FitUser to Subscriber
+	Subscriber to SubscriptionPayment
+}
+
+relationship ManyToMany {
+	Subscriber to GuidedTraining
+
+	GuidedTraining to Schedule
+	FitUser to Schedule
+
+	ExercisesSet to Exercise
+}
+
+application {
+  config {
+    baseName kipfit
+    packageName com.techgroup.kipfit
+    applicationType monolith
+  	languages [en]
+  	databaseType sql
+  	devDatabaseType h2Disk
+  	prodDatabaseType mysql
+  }
+  entities *
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="now" value="now()" dbms="mysql, mariadb"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql, mariadb"/>
+    <property name="clobType" value="clob" dbms="h2"/>
+    <property name="clobType" value="clob" dbms="mysql, oracle, mssql, mariadb, postgresql"/>
+    <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027000509_added_entity_FitUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027000609_added_entity_Subscriber.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027000709_added_entity_Role.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027000809_added_entity_Measurement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027000909_added_entity_GuidedTraining.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001009_added_entity_Schedule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001109_added_entity_Plan.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001209_added_entity_ObjectiveType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001309_added_entity_Routine.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001409_added_entity_ExercisesSet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001509_added_entity_ExercisesSetType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001609_added_entity_Exercise.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001709_added_entity_ExerciseType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001809_added_entity_SubscriptionPayment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001909_added_entity_SystemParameter.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20201027000509_added_entity_constraints_FitUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027000609_added_entity_constraints_Subscriber.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027000809_added_entity_constraints_Measurement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027000909_added_entity_constraints_GuidedTraining.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001109_added_entity_constraints_Plan.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001209_added_entity_constraints_ObjectiveType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001309_added_entity_constraints_Routine.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001409_added_entity_constraints_ExercisesSet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001509_added_entity_constraints_ExercisesSetType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201027001709_added_entity_constraints_ExerciseType.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>

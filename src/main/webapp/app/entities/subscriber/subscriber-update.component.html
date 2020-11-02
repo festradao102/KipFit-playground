@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-subscriber-heading" jhiTranslate="kipfitApp.subscriber.home.createOrEditLabel">Create or edit a Subscriber</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.subscriber.initialDate" for="field_initialDate">Initial Date</label>
+                    <div class="d-flex">
+                        <input id="field_initialDate" type="datetime-local" class="form-control" name="initialDate" formControlName="initialDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.subscriber.medicalConditions" for="field_medicalConditions">Medical Conditions</label>
+                    <input type="text" class="form-control" name="medicalConditions" id="field_medicalConditions"
+                           formControlName="medicalConditions"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.subscriber.paymentFreq" for="field_paymentFreq">Payment Freq</label>
+                    <input type="text" class="form-control" name="paymentFreq" id="field_paymentFreq"
+                           formControlName="paymentFreq"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.subscriber.subscriptionPayment" for="field_subscriptionPayment">Subscription Payment</label>
+                    <select class="form-control" id="field_subscriptionPayment" name="subscriptionPayment" formControlName="subscriptionPayment">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="subscriptionPaymentOption.id === editForm.get('subscriptionPayment')!.value?.id ? editForm.get('subscriptionPayment')!.value : subscriptionPaymentOption" *ngFor="let subscriptionPaymentOption of subscriptionpayments; trackBy: trackById">{{ subscriptionPaymentOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="kipfitApp.subscriber.guidedTraining" for="field_guidedTrainings">Guided Training</label>
+                    <select class="form-control" id="field_guidedTrainings" multiple name="guidedTrainings" formControlName="guidedTrainings">
+                        <option [ngValue]="getSelected(editForm.get('guidedTrainings')!.value, guidedTrainingOption)" *ngFor="let guidedTrainingOption of guidedtrainings; trackBy: trackById">{{ guidedTrainingOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
