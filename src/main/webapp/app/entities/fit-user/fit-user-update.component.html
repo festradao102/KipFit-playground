@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-fit-user-heading" jhiTranslate="kipfitApp.fitUser.home.createOrEditLabel">Create or edit a Fit User</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.fitUser.legalId" for="field_legalId">Legal Id</label>
+                    <input type="text" class="form-control" name="legalId" id="field_legalId"
+                           formControlName="legalId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.fitUser.bday" for="field_bday">Bday</label>
+                    <div class="d-flex">
+                        <input id="field_bday" type="datetime-local" class="form-control" name="bday" formControlName="bday" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.fitUser.phone" for="field_phone">Phone</label>
+                    <input type="text" class="form-control" name="phone" id="field_phone"
+                           formControlName="phone"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.fitUser.emergencyPhone" for="field_emergencyPhone">Emergency Phone</label>
+                    <input type="text" class="form-control" name="emergencyPhone" id="field_emergencyPhone"
+                           formControlName="emergencyPhone"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.fitUser.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.fitUser.subscriber" for="field_subscriber">Subscriber</label>
+                    <select class="form-control" id="field_subscriber" name="subscriber" formControlName="subscriber">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="subscriberOption.id === editForm.get('subscriber')!.value?.id ? editForm.get('subscriber')!.value : subscriberOption" *ngFor="let subscriberOption of subscribers; trackBy: trackById">{{ subscriberOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="kipfitApp.fitUser.schedule" for="field_schedules">Schedule</label>
+                    <select class="form-control" id="field_schedules" multiple name="schedules" formControlName="schedules">
+                        <option [ngValue]="getSelected(editForm.get('schedules')!.value, scheduleOption)" *ngFor="let scheduleOption of schedules; trackBy: trackById">{{ scheduleOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.fitUser.role" for="field_role">Role</label>
+                    <select class="form-control" id="field_role" name="role" formControlName="role">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="roleOption.id === editForm.get('role')!.value?.id ? editForm.get('role')!.value : roleOption" *ngFor="let roleOption of roles; trackBy: trackById">{{ roleOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

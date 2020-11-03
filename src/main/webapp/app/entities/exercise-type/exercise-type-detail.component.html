@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="exerciseType">
+            <h2><span jhiTranslate="kipfitApp.exerciseType.detail.title">Exercise Type</span> {{ exerciseType.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kipfitApp.exerciseType.typeName">Type Name</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'kipfitApp.ExercisesSetTypeName.' + exerciseType.typeName }}">{{ exerciseType.typeName }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.exerciseType.exercise">Exercise</span></dt>
+                <dd>
+                    <div *ngIf="exerciseType.exercise">
+                        <a [routerLink]="['/exercise', exerciseType.exercise?.id, 'view']">{{ exerciseType.exercise?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/exercise-type', exerciseType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

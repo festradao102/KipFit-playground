@@ -1,0 +1,107 @@
+package com.techgroup.kipfit.config;
+
+import java.time.Duration;
+
+import org.ehcache.config.builders.*;
+import org.ehcache.jsr107.Eh107Configuration;
+
+import org.hibernate.cache.jcache.ConfigSettings;
+import io.github.jhipster.config.JHipsterProperties;
+
+import org.springframework.boot.autoconfigure.cache.JCacheManagerCustomizer;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer;
+import org.springframework.boot.info.BuildProperties;
+import org.springframework.boot.info.GitProperties;
+import org.springframework.cache.interceptor.KeyGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
+import io.github.jhipster.config.cache.PrefixedKeyGenerator;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.*;
+
+@Configuration
+@EnableCaching
+public class CacheConfiguration {
+    private GitProperties gitProperties;
+    private BuildProperties buildProperties;
+    private final javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration;
+
+    public CacheConfiguration(JHipsterProperties jHipsterProperties) {
+        JHipsterProperties.Cache.Ehcache ehcache = jHipsterProperties.getCache().getEhcache();
+
+        jcacheConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(
+            CacheConfigurationBuilder.newCacheConfigurationBuilder(Object.class, Object.class,
+                ResourcePoolsBuilder.heap(ehcache.getMaxEntries()))
+                .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(ehcache.getTimeToLiveSeconds())))
+                .build());
+    }
+
+    @Bean
+    public HibernatePropertiesCustomizer hibernatePropertiesCustomizer(javax.cache.CacheManager cacheManager) {
+        return hibernateProperties -> hibernateProperties.put(ConfigSettings.CACHE_MANAGER, cacheManager);
+    }
+
+    @Bean
+    public JCacheManagerCustomizer cacheManagerCustomizer() {
+        return cm -> {
+            createCache(cm, com.techgroup.kipfit.repository.UserRepository.USERS_BY_LOGIN_CACHE);
+            createCache(cm, com.techgroup.kipfit.repository.UserRepository.USERS_BY_EMAIL_CACHE);
+            createCache(cm, com.techgroup.kipfit.domain.User.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.Authority.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.techgroup.kipfit.domain.FitUser.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.FitUser.class.getName() + ".schedules");
+            createCache(cm, com.techgroup.kipfit.domain.Subscriber.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.Subscriber.class.getName() + ".measurements");
+            createCache(cm, com.techgroup.kipfit.domain.Subscriber.class.getName() + ".plans");
+            createCache(cm, com.techgroup.kipfit.domain.Subscriber.class.getName() + ".guidedTrainings");
+            createCache(cm, com.techgroup.kipfit.domain.Role.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.Role.class.getName() + ".fitUsers");
+            createCache(cm, com.techgroup.kipfit.domain.Measurement.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.GuidedTraining.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.GuidedTraining.class.getName() + ".schedules");
+            createCache(cm, com.techgroup.kipfit.domain.GuidedTraining.class.getName() + ".subscribers");
+            createCache(cm, com.techgroup.kipfit.domain.Schedule.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.Schedule.class.getName() + ".guidedTrainings");
+            createCache(cm, com.techgroup.kipfit.domain.Schedule.class.getName() + ".fitUsers");
+            createCache(cm, com.techgroup.kipfit.domain.Plan.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.Plan.class.getName() + ".routines");
+            createCache(cm, com.techgroup.kipfit.domain.Plan.class.getName() + ".objectiveTypes");
+            createCache(cm, com.techgroup.kipfit.domain.ObjectiveType.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.Routine.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.Routine.class.getName() + ".exercisesSets");
+            createCache(cm, com.techgroup.kipfit.domain.ExercisesSet.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.ExercisesSet.class.getName() + ".exercisesSetTypes");
+            createCache(cm, com.techgroup.kipfit.domain.ExercisesSet.class.getName() + ".exercises");
+            createCache(cm, com.techgroup.kipfit.domain.ExercisesSetType.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.Exercise.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.Exercise.class.getName() + ".exerciseTypes");
+            createCache(cm, com.techgroup.kipfit.domain.Exercise.class.getName() + ".exercisesSets");
+            createCache(cm, com.techgroup.kipfit.domain.ExerciseType.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.SubscriptionPayment.class.getName());
+            createCache(cm, com.techgroup.kipfit.domain.SystemParameter.class.getName());
+            // jhipster-needle-ehcache-add-entry
+        };
+    }
+
+    private void createCache(javax.cache.CacheManager cm, String cacheName) {
+        javax.cache.Cache<Object, Object> cache = cm.getCache(cacheName);
+        if (cache == null) {
+            cm.createCache(cacheName, jcacheConfiguration);
+        }
+    }
+
+    @Autowired(required = false)
+    public void setGitProperties(GitProperties gitProperties) {
+        this.gitProperties = gitProperties;
+    }
+
+    @Autowired(required = false)
+    public void setBuildProperties(BuildProperties buildProperties) {
+        this.buildProperties = buildProperties;
+    }
+
+    @Bean
+    public KeyGenerator keyGenerator() {
+        return new PrefixedKeyGenerator(this.gitProperties, this.buildProperties);
+    }
+}

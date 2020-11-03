@@ -1,0 +1,28 @@
+{
+  "kipfitApp": {
+    "guidedTraining": {
+      "home": {
+        "title": "Guided Trainings",
+        "createLabel": "Create a new Guided Training",
+        "createOrEditLabel": "Create or edit a Guided Training",
+        "notFound": "No Guided Trainings found"
+      },
+      "created": "A new Guided Training is created with identifier {{ param }}",
+      "updated": "A Guided Training is updated with identifier {{ param }}",
+      "deleted": "A Guided Training is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Guided Training {{ id }}?"
+      },
+      "detail": {
+        "title": "Guided Training"
+      },
+      "name": "Name",
+      "trainerName": "Trainer Name",
+      "capacity": "Capacity",
+      "date": "Date",
+      "activeState": "Active State",
+      "schedule": "Schedule",
+      "subscriber": "Subscriber"
+    }
+  }
+}

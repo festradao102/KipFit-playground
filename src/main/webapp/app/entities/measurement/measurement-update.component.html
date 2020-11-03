@@ -1,0 +1,149 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-measurement-heading" jhiTranslate="kipfitApp.measurement.home.createOrEditLabel">Create or edit a Measurement</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.measurementId" for="field_measurementId">Measurement Id</label>
+                    <input type="number" class="form-control" name="measurementId" id="field_measurementId"
+                           formControlName="measurementId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.metabolicage" for="field_metabolicage">Metabolicage</label>
+                    <input type="number" class="form-control" name="metabolicage" id="field_metabolicage"
+                           formControlName="metabolicage"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.bmr" for="field_bmr">Bmr</label>
+                    <input type="number" class="form-control" name="bmr" id="field_bmr"
+                           formControlName="bmr"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.boneMass" for="field_boneMass">Bone Mass</label>
+                    <input type="number" class="form-control" name="boneMass" id="field_boneMass"
+                           formControlName="boneMass"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.height" for="field_height">Height</label>
+                    <input type="number" class="form-control" name="height" id="field_height"
+                           formControlName="height"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.weight" for="field_weight">Weight</label>
+                    <input type="number" class="form-control" name="weight" id="field_weight"
+                           formControlName="weight"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.fatPercentage" for="field_fatPercentage">Fat Percentage</label>
+                    <input type="number" class="form-control" name="fatPercentage" id="field_fatPercentage"
+                           formControlName="fatPercentage"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.neck" for="field_neck">Neck</label>
+                    <input type="number" class="form-control" name="neck" id="field_neck"
+                           formControlName="neck"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.rightArm" for="field_rightArm">Right Arm</label>
+                    <input type="number" class="form-control" name="rightArm" id="field_rightArm"
+                           formControlName="rightArm"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.leftArm" for="field_leftArm">Left Arm</label>
+                    <input type="number" class="form-control" name="leftArm" id="field_leftArm"
+                           formControlName="leftArm"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.wrist" for="field_wrist">Wrist</label>
+                    <input type="number" class="form-control" name="wrist" id="field_wrist"
+                           formControlName="wrist"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.core" for="field_core">Core</label>
+                    <input type="number" class="form-control" name="core" id="field_core"
+                           formControlName="core"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.hip" for="field_hip">Hip</label>
+                    <input type="number" class="form-control" name="hip" id="field_hip"
+                           formControlName="hip"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.thorax" for="field_thorax">Thorax</label>
+                    <input type="number" class="form-control" name="thorax" id="field_thorax"
+                           formControlName="thorax"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.rightThigh" for="field_rightThigh">Right Thigh</label>
+                    <input type="number" class="form-control" name="rightThigh" id="field_rightThigh"
+                           formControlName="rightThigh"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.leftThigh" for="field_leftThigh">Left Thigh</label>
+                    <input type="number" class="form-control" name="leftThigh" id="field_leftThigh"
+                           formControlName="leftThigh"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.rightCalve" for="field_rightCalve">Right Calve</label>
+                    <input type="number" class="form-control" name="rightCalve" id="field_rightCalve"
+                           formControlName="rightCalve"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.leftCalve" for="field_leftCalve">Left Calve</label>
+                    <input type="number" class="form-control" name="leftCalve" id="field_leftCalve"
+                           formControlName="leftCalve"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.dateCreated" for="field_dateCreated">Date Created</label>
+                    <div class="d-flex">
+                        <input id="field_dateCreated" type="datetime-local" class="form-control" name="dateCreated" formControlName="dateCreated" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.measurement.subscriber" for="field_subscriber">Subscriber</label>
+                    <select class="form-control" id="field_subscriber" name="subscriber" formControlName="subscriber">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="subscriberOption.id === editForm.get('subscriber')!.value?.id ? editForm.get('subscriber')!.value : subscriberOption" *ngFor="let subscriberOption of subscribers; trackBy: trackById">{{ subscriberOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+  "kipfitApp": {
+    "subscriptionPayment": {
+      "home": {
+        "title": "Subscription Payments",
+        "createLabel": "Create a new Subscription Payment",
+        "createOrEditLabel": "Create or edit a Subscription Payment",
+        "notFound": "No Subscription Payments found"
+      },
+      "created": "A new Subscription Payment is created with identifier {{ param }}",
+      "updated": "A Subscription Payment is updated with identifier {{ param }}",
+      "deleted": "A Subscription Payment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Subscription Payment {{ id }}?"
+      },
+      "detail": {
+        "title": "Subscription Payment"
+      },
+      "amount": "Amount",
+      "subscriber": "Subscriber"
+    }
+  }
+}

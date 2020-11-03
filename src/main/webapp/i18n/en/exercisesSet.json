@@ -1,0 +1,26 @@
+{
+  "kipfitApp": {
+    "exercisesSet": {
+      "home": {
+        "title": "Exercises Sets",
+        "createLabel": "Create a new Exercises Set",
+        "createOrEditLabel": "Create or edit a Exercises Set",
+        "notFound": "No Exercises Sets found"
+      },
+      "created": "A new Exercises Set is created with identifier {{ param }}",
+      "updated": "A Exercises Set is updated with identifier {{ param }}",
+      "deleted": "A Exercises Set is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Exercises Set {{ id }}?"
+      },
+      "detail": {
+        "title": "Exercises Set"
+      },
+      "type": "Type",
+      "restTime": "Rest Time",
+      "exercisesSetType": "Exercises Set Type",
+      "exercise": "Exercise",
+      "routine": "Routine"
+    }
+  }
+}

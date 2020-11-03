@@ -1,0 +1,29 @@
+{
+  "kipfitApp": {
+    "fitUser": {
+      "home": {
+        "title": "Fit Users",
+        "createLabel": "Create a new Fit User",
+        "createOrEditLabel": "Create or edit a Fit User",
+        "notFound": "No Fit Users found"
+      },
+      "created": "A new Fit User is created with identifier {{ param }}",
+      "updated": "A Fit User is updated with identifier {{ param }}",
+      "deleted": "A Fit User is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Fit User {{ id }}?"
+      },
+      "detail": {
+        "title": "Fit User"
+      },
+      "legalId": "Legal Id",
+      "bday": "Bday",
+      "phone": "Phone",
+      "emergencyPhone": "Emergency Phone",
+      "user": "User",
+      "subscriber": "Subscriber",
+      "schedule": "Schedule",
+      "role": "Role"
+    }
+  }
+}

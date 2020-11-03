@@ -1,0 +1,108 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="measurement">
+            <h2><span jhiTranslate="kipfitApp.measurement.detail.title">Measurement</span> {{ measurement.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kipfitApp.measurement.measurementId">Measurement Id</span></dt>
+                <dd>
+                    <span>{{ measurement.measurementId }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.metabolicage">Metabolicage</span></dt>
+                <dd>
+                    <span>{{ measurement.metabolicage }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.bmr">Bmr</span></dt>
+                <dd>
+                    <span>{{ measurement.bmr }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.boneMass">Bone Mass</span></dt>
+                <dd>
+                    <span>{{ measurement.boneMass }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.height">Height</span></dt>
+                <dd>
+                    <span>{{ measurement.height }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.weight">Weight</span></dt>
+                <dd>
+                    <span>{{ measurement.weight }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.fatPercentage">Fat Percentage</span></dt>
+                <dd>
+                    <span>{{ measurement.fatPercentage }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.neck">Neck</span></dt>
+                <dd>
+                    <span>{{ measurement.neck }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.rightArm">Right Arm</span></dt>
+                <dd>
+                    <span>{{ measurement.rightArm }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.leftArm">Left Arm</span></dt>
+                <dd>
+                    <span>{{ measurement.leftArm }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.wrist">Wrist</span></dt>
+                <dd>
+                    <span>{{ measurement.wrist }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.core">Core</span></dt>
+                <dd>
+                    <span>{{ measurement.core }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.hip">Hip</span></dt>
+                <dd>
+                    <span>{{ measurement.hip }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.thorax">Thorax</span></dt>
+                <dd>
+                    <span>{{ measurement.thorax }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.rightThigh">Right Thigh</span></dt>
+                <dd>
+                    <span>{{ measurement.rightThigh }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.leftThigh">Left Thigh</span></dt>
+                <dd>
+                    <span>{{ measurement.leftThigh }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.rightCalve">Right Calve</span></dt>
+                <dd>
+                    <span>{{ measurement.rightCalve }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.leftCalve">Left Calve</span></dt>
+                <dd>
+                    <span>{{ measurement.leftCalve }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.dateCreated">Date Created</span></dt>
+                <dd>
+                    <span>{{ measurement.dateCreated }}</span>
+                </dd>
+                <dt><span jhiTranslate="kipfitApp.measurement.subscriber">Subscriber</span></dt>
+                <dd>
+                    <div *ngIf="measurement.subscriber">
+                        <a [routerLink]="['/subscriber', measurement.subscriber?.id, 'view']">{{ measurement.subscriber?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/measurement', measurement.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

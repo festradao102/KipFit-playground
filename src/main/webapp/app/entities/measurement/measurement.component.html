@@ -1,0 +1,103 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kipfitApp.measurement.home.title">Measurements</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-measurement" [routerLink]="['/measurement/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="kipfitApp.measurement.home.createLabel">
+            Create a new Measurement
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="measurements?.length === 0">
+        <span jhiTranslate="kipfitApp.measurement.home.notFound">No measurements found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="measurements && measurements.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.measurementId">Measurement Id</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.metabolicage">Metabolicage</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.bmr">Bmr</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.boneMass">Bone Mass</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.height">Height</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.weight">Weight</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.fatPercentage">Fat Percentage</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.neck">Neck</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.rightArm">Right Arm</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.leftArm">Left Arm</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.wrist">Wrist</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.core">Core</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.hip">Hip</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.thorax">Thorax</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.rightThigh">Right Thigh</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.leftThigh">Left Thigh</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.rightCalve">Right Calve</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.leftCalve">Left Calve</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.dateCreated">Date Created</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.measurement.subscriber">Subscriber</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let measurement of measurements ;trackBy: trackId">
+                    <td><a [routerLink]="['/measurement', measurement.id, 'view']">{{ measurement.id }}</a></td>
+                    <td>{{ measurement.measurementId }}</td>
+                    <td>{{ measurement.metabolicage }}</td>
+                    <td>{{ measurement.bmr }}</td>
+                    <td>{{ measurement.boneMass }}</td>
+                    <td>{{ measurement.height }}</td>
+                    <td>{{ measurement.weight }}</td>
+                    <td>{{ measurement.fatPercentage }}</td>
+                    <td>{{ measurement.neck }}</td>
+                    <td>{{ measurement.rightArm }}</td>
+                    <td>{{ measurement.leftArm }}</td>
+                    <td>{{ measurement.wrist }}</td>
+                    <td>{{ measurement.core }}</td>
+                    <td>{{ measurement.hip }}</td>
+                    <td>{{ measurement.thorax }}</td>
+                    <td>{{ measurement.rightThigh }}</td>
+                    <td>{{ measurement.leftThigh }}</td>
+                    <td>{{ measurement.rightCalve }}</td>
+                    <td>{{ measurement.leftCalve }}</td>
+                    <td>{{ measurement.dateCreated | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="measurement.subscriber">
+                            <a [routerLink]="['/subscriber', measurement.subscriber?.id, 'view']" >{{ measurement.subscriber?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/measurement', measurement.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/measurement', measurement.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(measurement)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

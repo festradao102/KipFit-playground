@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-schedule-heading" jhiTranslate="kipfitApp.schedule.home.createOrEditLabel">Create or edit a Schedule</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.schedule.weekDay" for="field_weekDay">Week Day</label>
+                    <input type="text" class="form-control" name="weekDay" id="field_weekDay"
+                           formControlName="weekDay"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.schedule.startHour" for="field_startHour">Start Hour</label>
+                    <div class="d-flex">
+                        <input id="field_startHour" type="datetime-local" class="form-control" name="startHour" formControlName="startHour" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kipfitApp.schedule.endHour" for="field_endHour">End Hour</label>
+                    <div class="d-flex">
+                        <input id="field_endHour" type="datetime-local" class="form-control" name="endHour" formControlName="endHour" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

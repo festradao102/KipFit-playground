@@ -1,0 +1,11 @@
+{
+  "kipfitApp": {
+    "ExercisesSetTypeName": {
+      "null": "",
+      "SUPERIOR": "SUPERIOR",
+      "INFERIOR": "INFERIOR",
+      "NUCLEO": "NUCLEO",
+      "CARDIOVASCULAR": "CARDIOVASCULAR"
+    }
+  }
+}

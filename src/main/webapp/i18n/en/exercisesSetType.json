@@ -1,0 +1,23 @@
+{
+  "kipfitApp": {
+    "exercisesSetType": {
+      "home": {
+        "title": "Exercises Set Types",
+        "createLabel": "Create a new Exercises Set Type",
+        "createOrEditLabel": "Create or edit a Exercises Set Type",
+        "notFound": "No Exercises Set Types found"
+      },
+      "created": "A new Exercises Set Type is created with identifier {{ param }}",
+      "updated": "A Exercises Set Type is updated with identifier {{ param }}",
+      "deleted": "A Exercises Set Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Exercises Set Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Exercises Set Type"
+      },
+      "typeName": "Type Name",
+      "exercisesSet": "Exercises Set"
+    }
+  }
+}

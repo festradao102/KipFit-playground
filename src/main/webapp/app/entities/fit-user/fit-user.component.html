@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kipfitApp.fitUser.home.title">Fit Users</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-fit-user" [routerLink]="['/fit-user/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="kipfitApp.fitUser.home.createLabel">
+            Create a new Fit User
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="fitUsers?.length === 0">
+        <span jhiTranslate="kipfitApp.fitUser.home.notFound">No fitUsers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="fitUsers && fitUsers.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.fitUser.legalId">Legal Id</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.fitUser.bday">Bday</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.fitUser.phone">Phone</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.fitUser.emergencyPhone">Emergency Phone</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.fitUser.user">User</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.fitUser.subscriber">Subscriber</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.fitUser.schedule">Schedule</span></th>
+                    <th scope="col" ><span jhiTranslate="kipfitApp.fitUser.role">Role</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fitUser of fitUsers ;trackBy: trackId">
+                    <td><a [routerLink]="['/fit-user', fitUser.id, 'view']">{{ fitUser.id }}</a></td>
+                    <td>{{ fitUser.legalId }}</td>
+                    <td>{{ fitUser.bday | date:'medium' }}</td>
+                    <td>{{ fitUser.phone }}</td>
+                    <td>{{ fitUser.emergencyPhone }}</td>
+                    <td>
+                        {{ fitUser.user?.id }}
+                    </td>
+                    <td>
+                        <div *ngIf="fitUser.subscriber">
+                            <a [routerLink]="['/subscriber', fitUser.subscriber?.id, 'view']" >{{ fitUser.subscriber?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <span *ngFor="let schedule of fitUser.schedules; let last = last">
+                            <a class="form-control-static" [routerLink]="['/schedule', schedule?.id, 'view']">{{ schedule.id }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td>
+                        <div *ngIf="fitUser.role">
+                            <a [routerLink]="['/role', fitUser.role?.id, 'view']" >{{ fitUser.role?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/fit-user', fitUser.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/fit-user', fitUser.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(fitUser)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
