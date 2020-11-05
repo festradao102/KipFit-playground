@@ -25,7 +25,7 @@
     .sidebar-open & {
       border-bottom: 1px solid $border-color;;
     }
-  
+
     .sidebar-brand {
       opacity: 1;
       visibility: visible;
@@ -34,9 +34,9 @@
       font-weight: 900;
       font-size: 25px;
       letter-spacing: -1px;
-      color: #031a61;
+      color: $white;
       span {
-        color: theme-color(primary);
+        color: #212121;
         font-weight: 300;
       }
       img {
@@ -56,41 +56,41 @@
         transition: all .3s;
         position: relative;
       }
-      
+
       span + span {
         margin-top: 4px;
       }
-      
+
       &.active span:nth-child(1) {
         -webkit-animation: ease .6s top forwards;
                 animation: ease .6s top forwards;
       }
-      
+
       &.not-active span:nth-child(1) {
         -webkit-animation: ease .6s top-2 forwards;
                 animation: ease .6s top-2 forwards;
       }
-      
+
       &.active span:nth-child(2) {
         -webkit-animation: ease .6s scaled forwards;
                 animation: ease .6s scaled forwards;
       }
-      
+
       &.not-active span:nth-child(2) {
         -webkit-animation: ease .6s scaled-2 forwards;
                 animation: ease .6s scaled-2 forwards;
       }
-      
+
       &.active span:nth-child(3) {
         -webkit-animation: ease .6s bottom forwards;
                 animation: ease .6s bottom forwards;
       }
-      
+
       &.not-active span:nth-child(3) {
         -webkit-animation: ease .6s bottom-2 forwards;
                 animation: ease .6s bottom-2 forwards;
       }
-      
+
       @-webkit-keyframes top {
         0% {
           top: 0;
@@ -108,7 +108,7 @@
                   transform: rotate(45deg);
         }
       }
-      
+
       @keyframes top {
         0% {
           top: 0;
@@ -126,7 +126,7 @@
                   transform: rotate(45deg);
         }
       }
-      
+
       @-webkit-keyframes top-2 {
         0% {
           top: 6px;
@@ -144,7 +144,7 @@
                   transform: rotate(0deg);
         }
       }
-      
+
       @keyframes top-2 {
         0% {
           top: 6px;
@@ -162,7 +162,7 @@
                   transform: rotate(0deg);
         }
       }
-      
+
       @-webkit-keyframes bottom {
         0% {
           bottom: 0;
@@ -180,7 +180,7 @@
                   transform: rotate(135deg);
         }
       }
-      
+
       @keyframes bottom {
         0% {
           bottom: 0;
@@ -198,7 +198,7 @@
                   transform: rotate(135deg);
         }
       }
-      
+
       @-webkit-keyframes bottom-2 {
         0% {
           bottom: 6px;
@@ -216,7 +216,7 @@
                   transform: rotate(0);
         }
       }
-      
+
       @keyframes bottom-2 {
         0% {
           bottom: 6px;
@@ -234,7 +234,7 @@
                   transform: rotate(0);
         }
       }
-      
+
       @-webkit-keyframes scaled {
         50% {
           -webkit-transform: scale(0);
@@ -245,7 +245,7 @@
                   transform: scale(0);
         }
       }
-      
+
       @keyframes scaled {
         50% {
           -webkit-transform: scale(0);
@@ -256,7 +256,7 @@
                   transform: scale(0);
         }
       }
-      
+
       @-webkit-keyframes scaled-2 {
         0% {
           -webkit-transform: scale(0);
@@ -271,7 +271,7 @@
                   transform: scale(1);
         }
       }
-      
+
       @keyframes scaled-2 {
         0% {
           -webkit-transform: scale(0);
@@ -294,8 +294,8 @@
     border-right: 1px solid $sidebar-light-border-color;
     height: 100%;
     -webkit-box-shadow: 0 8px 10px 0 rgba(183,192,206,.2);
-            box-shadow: 0 8px 10px 0 rgba(183,192,206,.2); 
-    background: $sidebar-light-bg;     
+            box-shadow: 0 8px 10px 0 rgba(183,192,206,.2);
+    background: $sidebar-light-bg;
     .sidebar-nav {
       list-style: none;
       padding: 25px 25px 50px 25px;
@@ -354,19 +354,19 @@
         }
         &:hover {
           .nav-link {
-            color: theme-color(primary);
+            color: $white;
             .link-title {
               margin-left: 31px;
             }
             .link-icon {
-              color: theme-color(primary);
+              color: $white;
               fill: rgba(239, 243, 255, .5);
             }
           }
         }
         &.mm-active {
           > .nav-link {
-            color: theme-color(primary);
+            color: $white;
             .link-arrow {
               -webkit-transform: rotate(90deg);
               transform: rotate(180deg);
@@ -393,7 +393,7 @@
           position: relative;
           .nav-link {
             height: 25px;
-            color: $body-color;
+            color: $white;
             font-size: 13px;
             -webkit-transition: all .3s ease-in-out;
             transition: all .3s ease-in-out;
@@ -412,21 +412,21 @@
               transition: all .4s ease-in-out;
             }
             &.mm-active {
-              color: theme-color(primary);
+              color: $white;
               &::before {
               border: 1px solid theme-color(primary);
-              background: theme-color(primary);       
+              background: theme-color(primary);
               }
             }
             .link-title {
               margin-left: 0;
             }
             &:hover {
-              color: theme-color(primary);
+              color: $black;
               margin-left: 3px;
               &::before {
                 border: 1px solid theme-color(primary);
-                background: theme-color(primary);       
+                background: theme-color(primary);
               }
             }
           }
