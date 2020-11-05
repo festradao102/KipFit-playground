@@ -107,7 +107,6 @@ public class MeasurementResourceIT {
      */
     public static Measurement createEntity(EntityManager em) {
         Measurement measurement = new Measurement()
-            .measurementId(DEFAULT_MEASUREMENT_ID)
             .metabolicage(DEFAULT_METABOLICAGE)
             .bmr(DEFAULT_BMR)
             .boneMass(DEFAULT_BONE_MASS)
@@ -136,7 +135,6 @@ public class MeasurementResourceIT {
      */
     public static Measurement createUpdatedEntity(EntityManager em) {
         Measurement measurement = new Measurement()
-            .measurementId(UPDATED_MEASUREMENT_ID)
             .metabolicage(UPDATED_METABOLICAGE)
             .bmr(UPDATED_BMR)
             .boneMass(UPDATED_BONE_MASS)
@@ -177,7 +175,6 @@ public class MeasurementResourceIT {
         List<Measurement> measurementList = measurementRepository.findAll();
         assertThat(measurementList).hasSize(databaseSizeBeforeCreate + 1);
         Measurement testMeasurement = measurementList.get(measurementList.size() - 1);
-        assertThat(testMeasurement.getMeasurementId()).isEqualTo(DEFAULT_MEASUREMENT_ID);
         assertThat(testMeasurement.getMetabolicage()).isEqualTo(DEFAULT_METABOLICAGE);
         assertThat(testMeasurement.getBmr()).isEqualTo(DEFAULT_BMR);
         assertThat(testMeasurement.getBoneMass()).isEqualTo(DEFAULT_BONE_MASS);
@@ -249,7 +246,7 @@ public class MeasurementResourceIT {
             .andExpect(jsonPath("$.[*].leftCalve").value(hasItem(DEFAULT_LEFT_CALVE)))
             .andExpect(jsonPath("$.[*].dateCreated").value(hasItem(DEFAULT_DATE_CREATED.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getMeasurement() throws Exception {
@@ -302,7 +299,6 @@ public class MeasurementResourceIT {
         // Disconnect from session so that the updates on updatedMeasurement are not directly saved in db
         em.detach(updatedMeasurement);
         updatedMeasurement
-            .measurementId(UPDATED_MEASUREMENT_ID)
             .metabolicage(UPDATED_METABOLICAGE)
             .bmr(UPDATED_BMR)
             .boneMass(UPDATED_BONE_MASS)
@@ -331,7 +327,6 @@ public class MeasurementResourceIT {
         List<Measurement> measurementList = measurementRepository.findAll();
         assertThat(measurementList).hasSize(databaseSizeBeforeUpdate);
         Measurement testMeasurement = measurementList.get(measurementList.size() - 1);
-        assertThat(testMeasurement.getMeasurementId()).isEqualTo(UPDATED_MEASUREMENT_ID);
         assertThat(testMeasurement.getMetabolicage()).isEqualTo(UPDATED_METABOLICAGE);
         assertThat(testMeasurement.getBmr()).isEqualTo(UPDATED_BMR);
         assertThat(testMeasurement.getBoneMass()).isEqualTo(UPDATED_BONE_MASS);

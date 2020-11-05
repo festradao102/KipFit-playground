@@ -76,12 +76,8 @@ export const MENU: MenuItem[] = [
     icon: 'activity',
     subItems: [
       {
-        label: 'Ver medidas',
-        link: '/icons/feather-icons',
-      },
-      {
         label: 'Registrar medidas',
-        link: '/icons/flag-icons',
+        link: '/add-measurement',
       }
     ]
   },

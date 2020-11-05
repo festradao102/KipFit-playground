@@ -3,12 +3,15 @@ package com.techgroup.kipfit.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -38,9 +41,10 @@ public class Subscriber implements Serializable {
     @JoinColumn(unique = true)
     private SubscriptionPayment subscriptionPayment;
 
-    @OneToMany(mappedBy = "subscriber")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Measurement> measurements = new HashSet<>();
+    @OneToMany(mappedBy = "subscriber", fetch = FetchType.EAGER)
+    @NotFound(action = NotFoundAction.IGNORE)
+    // @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private List<Measurement> measurements;
 
     @OneToMany(mappedBy = "subscriber")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -118,11 +122,11 @@ public class Subscriber implements Serializable {
         this.subscriptionPayment = subscriptionPayment;
     }
 
-    public Set<Measurement> getMeasurements() {
+    public List<Measurement> getMeasurements() {
         return measurements;
     }
 
-    public Subscriber measurements(Set<Measurement> measurements) {
+    public Subscriber measurements(List<Measurement> measurements) {
         this.measurements = measurements;
         return this;
     }
@@ -139,7 +143,7 @@ public class Subscriber implements Serializable {
         return this;
     }
 
-    public void setMeasurements(Set<Measurement> measurements) {
+    public void setMeasurements(List<Measurement> measurements) {
         this.measurements = measurements;
     }
 

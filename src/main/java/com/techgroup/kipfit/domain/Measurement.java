@@ -3,6 +3,8 @@ package com.techgroup.kipfit.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 
@@ -22,9 +24,6 @@ public class Measurement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "measurement_id")
-    private Integer measurementId;
 
     @Column(name = "metabolicage")
     private Integer metabolicage;
@@ -82,6 +81,7 @@ public class Measurement implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "measurements", allowSetters = true)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Subscriber subscriber;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -91,19 +91,6 @@ public class Measurement implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getMeasurementId() {
-        return measurementId;
-    }
-
-    public Measurement measurementId(Integer measurementId) {
-        this.measurementId = measurementId;
-        return this;
-    }
-
-    public void setMeasurementId(Integer measurementId) {
-        this.measurementId = measurementId;
     }
 
     public Integer getMetabolicage() {
@@ -375,7 +362,6 @@ public class Measurement implements Serializable {
     public String toString() {
         return "Measurement{" +
             "id=" + getId() +
-            ", measurementId=" + getMeasurementId() +
             ", metabolicage=" + getMetabolicage() +
             ", bmr=" + getBmr() +
             ", boneMass=" + getBoneMass() +
