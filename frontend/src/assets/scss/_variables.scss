@@ -40,21 +40,21 @@ $colors: (
 
 
 $theme-colors: (
-  primary:         #727cf5,
+  primary:         #D32F2F,
   secondary:       #7987a1,
   success:         #10b759,
   info:            #66d1d1,
   warning:         #fbbc06,
   danger:          #ff3366,
   light:           #ececec,
-  dark:            #282f3a,
+  dark:            #D32F2F,
   primary-muted:   #b1cfec,
   info-muted:      #7ee5e5,
   danger-muted:    #f77eb9,
 );
 
 $theme-gradient-colors: (
-  primary:         linear-gradient(230deg, #759bff, #843cf6),
+  primary:         linear-gradient(230deg, #F44336, #D32F2F),
   secondary:       linear-gradient(to right, #e7ebf0, #868e96),
   success:         linear-gradient(45deg, #7bffce, #30c93e),
   info:            linear-gradient(to bottom, #0e4cfd, #6a8eff),
@@ -66,8 +66,8 @@ $theme-gradient-colors: (
 // Color system
 
 // Color variables
-$content-bg: #f9fafb;
-$border-color: #e8ebf1;
+$content-bg: #f5f5f5;
+$border-color: #9E9E9E;
 // Color variables
 
 // Social colors
@@ -265,7 +265,7 @@ $modal-inner-padding:               0.937rem;
 $modal-dialog-margin:               10px;
 $modal-dialog-margin-y-sm-up:       30px;
 $modal-title-line-height:           $line-height-base;
-$modal-content-bg:                  $white;
+$modal-content-bg:                  #fafafa;
 $modal-content-box-shadow-xs:       0 3px 9px rgba($black,.5);
 $modal-content-box-shadow-sm-up:    0 5px 15px rgba($black,.5);
 
@@ -310,6 +310,17 @@ $nav-pills-custom-bg:               #fcfcfd;
 
 // Content-nav
 $content-nav-width: 220px;
+
+// Sidebar
+$sidebar-light-bg: #D32F2F;
+$sidebar-light-border-color: #F44336;
+
+$sidebar-dark-bg: #D32F2F;
+$sidebar-dark-border-color: #344258;
+
+$sidebar-width-lg: 240px;
+$sidebar-folded-width: 70px;
+// Sidebar
 
 // Navbar
 $navbar-height: 60px;
