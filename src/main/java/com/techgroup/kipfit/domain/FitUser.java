@@ -37,7 +37,7 @@ public class FitUser implements Serializable {
     @Column(name = "emergency_phone")
     private String emergencyPhone;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(unique = true)
     private User user;
 

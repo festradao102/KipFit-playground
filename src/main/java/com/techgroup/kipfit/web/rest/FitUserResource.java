@@ -1,9 +1,16 @@
 package com.techgroup.kipfit.web.rest;
 
+import com.techgroup.kipfit.domain.Authority;
 import com.techgroup.kipfit.domain.FitUser;
+import com.techgroup.kipfit.domain.User;
 import com.techgroup.kipfit.repository.FitUserRepository;
+import com.techgroup.kipfit.repository.UserRepository;
+import com.techgroup.kipfit.service.UserService;
+import com.techgroup.kipfit.service.dto.UserDTO;
 import com.techgroup.kipfit.web.rest.errors.BadRequestAlertException;
 
+import com.techgroup.kipfit.web.rest.errors.EmailAlreadyUsedException;
+import com.techgroup.kipfit.web.rest.errors.LoginAlreadyUsedException;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -15,8 +22,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing {@link com.techgroup.kipfit.domain.FitUser}.
@@ -34,9 +43,13 @@ public class FitUserResource {
     private String applicationName;
 
     private final FitUserRepository fitUserRepository;
+    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public FitUserResource(FitUserRepository fitUserRepository) {
+    public FitUserResource(FitUserRepository fitUserRepository, UserRepository userRepository, UserService userService) {
         this.fitUserRepository = fitUserRepository;
+        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     /**
@@ -73,7 +86,41 @@ public class FitUserResource {
         if (fitUser.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        FitUser result = fitUserRepository.save(fitUser);
+
+        if(fitUser.getUser() != null && fitUser.getUser().getId() != null){
+            UserDTO updatedUser = new UserDTO();
+            Optional<User> existingUser = userRepository.findOneByEmailIgnoreCase(fitUser.getUser().getEmail());
+
+            if (existingUser.isPresent() && (!existingUser.get().getId().equals(fitUser.getUser().getId()))) {
+                throw new EmailAlreadyUsedException();
+            }
+
+            existingUser = userRepository.findOneByLogin(fitUser.getUser().getLogin().toLowerCase());
+            if (existingUser.isPresent() && (!existingUser.get().getId().equals(fitUser.getUser().getId()))) {
+                throw new LoginAlreadyUsedException();
+            }
+
+            updatedUser.setId(existingUser.get().getId());
+            updatedUser.setLogin(existingUser.get().getLogin());
+            updatedUser.setEmail(existingUser.get().getEmail());
+            updatedUser.setFirstName(fitUser.getUser().getFirstName().equals("") ? existingUser.get().getFirstName() : fitUser.getUser().getFirstName());
+            updatedUser.setLastName(fitUser.getUser().getLastName().equals("") ? existingUser.get().getLastName() : fitUser.getUser().getLastName());
+            updatedUser.setImageUrl(fitUser.getUser().getImageUrl().equals("") ? existingUser.get().getImageUrl() : fitUser.getUser().getImageUrl());
+            updatedUser.setActivated(fitUser.getUser().getActivated() != existingUser.get().getActivated() ? fitUser.getUser().getActivated() : existingUser.get().getActivated());
+            updatedUser.setLangKey(fitUser.getUser().getLangKey() == "" ? existingUser.get().getLangKey() : fitUser.getUser().getLangKey());
+            updatedUser.setCreatedBy(fitUser.getUser().getCreatedBy() == "" ? existingUser.get().getCreatedBy() : fitUser.getUser().getCreatedBy());
+            updatedUser.setCreatedDate(fitUser.getUser().getCreatedDate() == null ? existingUser.get().getCreatedDate() : fitUser.getUser().getCreatedDate());
+            updatedUser.setLastModifiedDate(Instant.now());
+            updatedUser.setAuthorities(existingUser.get().getAuthorities().stream()
+                    .map(Authority::getName)
+                    .collect(Collectors.toSet()));
+
+            userService.updateUser(updatedUser);
+
+            fitUser.setUser(null);
+        }
+
+        FitUser result = fitUserRepository.saveAndFlush(fitUser);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, fitUser.getId().toString()))
             .body(result);
