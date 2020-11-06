@@ -25,7 +25,7 @@ export const MENU: MenuItem[] = [
       },
       {
         label: 'Crear un suscriptor',
-        link: '/advanced-ui/owl-carousel',
+        link: '/add-subscriber',
       }
     ]
   },
