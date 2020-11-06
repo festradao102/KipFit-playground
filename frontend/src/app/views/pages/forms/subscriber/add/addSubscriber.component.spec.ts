@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddSubscriberComponent } from './add-subscriber.component';
+import { AddSubscriberComponent } from './addSubscriber.component';
 
 describe('AddSubscriberComponent', () => {
   let component: AddSubscriberComponent;

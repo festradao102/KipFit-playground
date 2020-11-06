@@ -9,63 +9,63 @@
                     <div class="form-group row">
                         <label for="legalId" class="col-sm-3 col-form-label">Cedula:</label>
                         <div class="col-sm-9">
-                            <input type="text" [(ngModel)]="fitUser.legalId" class="form-control" name="legalId" id="legalId" autocomplete="off" placeholder="cedula">
+                            <input type="text" [(ngModel)]="fitUser.legalId" class="form-control" name="legalId" id="legalId" autocomplete="off" placeholder="Cedula">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="firstName" class="col-sm-3 col-form-label">Nombre:</label>
                         <div class="col-sm-9">
-                            <input type="text" [(ngModel)]="user.firstName" class="form-control" name="firstName" id="firstName" autocomplete="off" placeholder="cedula">
+                            <input type="text" [(ngModel)]="user.firstName" class="form-control" name="firstName" id="firstName" autocomplete="off" placeholder="Nombre">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="lastName" class="col-sm-3 col-form-label">Apellidos:</label>
+                        <label for="lastName" class="col-sm-3 col-form-label">Apellido:</label>
                         <div class="col-sm-9">
-                            <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName" id="lastName" autocomplete="off" placeholder="lastName">
+                            <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName" id="lastName" autocomplete="off" placeholder="Apellido">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-sm-3 col-form-label">Email:</label>
                         <div class="col-sm-9">
-                            <input type="email" [(ngModel)]="user.email" class="form-control" name="email" id="email" placeholder="Correo">
+                            <input type="email" [(ngModel)]="user.email" class="form-control" name="email" id="email" placeholder="Email@correo.com">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="bday" class="col-sm-3 col-form-label">Fecha Nacimiento:</label>
                         <div class="col-sm-9">
-                            <input type="date" [(ngModel)]="fitUser.bday" class="form-control" name="bday" id="bday" placeholder="">
+                            <input type="date" [(ngModel)]="fitUser.bday" class="form-control" name="bday" id="bday" placeholder="05/02/02">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="phone" class="col-sm-3 col-form-label">Telefono:</label>
+                        <label for="phone" class="col-sm-3 col-form-label">Teléfono:</label>
                         <div class="col-sm-9">
-                            <input type="text" [(ngModel)]="fitUser.phone" class="form-control" name="phone" id="phone" autocomplete="off" placeholder="">
+                            <input type="text" [(ngModel)]="fitUser.phone" class="form-control" name="phone" id="phone" autocomplete="off" placeholder="Teléfono">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="emergencyPhone" class="col-sm-3 col-form-label">Telefono de Emergencia:</label>
+                        <label for="emergencyPhone" class="col-sm-3 col-form-label">Teléfono de Emergencia:</label>
                         <div class="col-sm-9">
-                            <input type="text" [(ngModel)]="fitUser.emergencyPhone" class="form-control" name="emergencyPhone" id="emergencyPhone" autocomplete="off" placeholder="">
+                            <input type="text" [(ngModel)]="fitUser.emergencyPhone" class="form-control" name="emergencyPhone" id="emergencyPhone" autocomplete="off" placeholder="Teléfono Emergencia">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="medicalConditions" class="col-sm-3 col-form-label">Condiciones Medicas:</label>
+                        <label for="medicalConditions" class="col-sm-3 col-form-label">Condiciones Médicas:</label>
                         <div class="col-sm-9">
-                            <textarea type="text" [(ngModel)]="subscriber.medicalConditions" class="form-control" name="medicalConditions" id="medicalConditions" autocomplete="off" placeholder=""></textarea>
+                            <textarea type="text" [(ngModel)]="subscriber.medicalConditions" class="form-control" name="medicalConditions" id="medicalConditions" autocomplete="off" placeholder="Condiciones Médicas"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="paymentFreq" class="col-sm-3 col-form-label">Frecuencia de Pago:</label>
                         <div class="col-sm-9">
-                            <select type="text" [(ngModel)]="subscriber.paymentFreq" class="form-control" id="paymentFreq" name="paymentFreq" autocomplete="off" placeholder="">
+                            <select type="text" [(ngModel)]="subscriber.paymentFreq" class="form-control" id="paymentFreq" name="paymentFreq" autocomplete="off" >
                                 <option  *ngFor="let tiempos of tiemposDePago" [ngValue]="tiempos.valueOf()">{{ tiempos.valueOf() }}</option>
                             </select>
                         </div>
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                    <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                    <a routerLink="/dashboard" class="btn btn-light">Cancelar</a>
 
 
                 </div>

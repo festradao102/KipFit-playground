@@ -3,16 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import {any} from "codelyzer/util/function";
 
 import {formatDate} from "@angular/common";
-import {SubscriberService} from "../../../../../services/subscriber/subscriber.service";
+import {SubscriberService} from "../../../../../services/subscriber.service";
+
+
 
 @Component({
-  selector: 'app-add-subscriber',
-  templateUrl: './add-subscriber.component.html',
-  styleUrls: ['./add-subscriber.component.scss']
+  selector: 'app-addSubscriber',
+  templateUrl: './addSubscriber.component.html',
+  styleUrls: ['./addSubscriber.component.scss']
 })
 export class AddSubscriberComponent implements OnInit {
   subscriber = {
-    initialDate: '',
+    initialDate: Date,
     medicalConditions: '',
     paymentFreq: '',
     subscriptionPayment: any,
@@ -49,8 +51,8 @@ export class AddSubscriberComponent implements OnInit {
   tiemposDePago = [
       "Mensual", "Semanal","Quincenal"
   ];
-  constructor() { }
-  // constructor(private subscriberService: SubscriberService) { }
+  // constructor() { }
+  constructor(private subscriberService: SubscriberService) { }
 
   ngOnInit(): void {
 
@@ -59,9 +61,9 @@ export class AddSubscriberComponent implements OnInit {
   saveSubscriber(): void {
 
     const dataSuscriber = {
-      initialDate: this.subscriber.initialDate,
       medicalConditions: this.subscriber.medicalConditions,
       paymentFreq: this.subscriber.paymentFreq,
+      initialDate: new Date(),
       subscriptionPayment: any,
       measurements: any,
       plans: any,
@@ -91,26 +93,18 @@ export class AddSubscriberComponent implements OnInit {
       schedules: any,
       role: any
     };
-    console.log(dataFitUser);
-    console.log(dataUser);
-    console.log(dataSuscriber);
-    // this.SubscriberService.get(this.idTipoActivo).subscribe(
-    //     tipoActivoResponse => {
-    //       console.log(tipoActivoResponse);
-   //      data.tipoActivo = tipoActivoResponse;
-   //        this.subscriberService.create(data)
-   //            .subscribe(
-   //                response => {
-   //                  console.log(response);
-   //
-   //                },
-   //                error => {
-   //                  console.log(error);
-   //                });
-        // },
-        // error => {
-        //   console.log(error);
-        // });
+
+
+          this.subscriberService.create(dataSuscriber)
+              .subscribe(
+                  response => {
+                    console.log(response);
+
+                  },
+                  error => {
+                    console.log(error);
+                  });
+
   }
 
 }
