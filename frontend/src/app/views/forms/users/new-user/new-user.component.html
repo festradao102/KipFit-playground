@@ -54,6 +54,16 @@
                                    [showMaskTyped]="true" name="txtEmergencyPhone" [(ngModel)]="fitUser.emergencyPhone" #txtEmergencyPhoneReq="ngModel" required>
                             <p class="text-danger mt-1" *ngIf="txtEmergencyPhoneReq?.errors?.required">*</p>
                         </div>
+                        <div class="form-group">
+                            <label for="sltRole">Rol</label>
+                            <select ng-model='nrSelect' formControlName="sltRole" id="sltRole" [(ngModel)]="this.fitUser.role.roleId" #sltRole
+                                    (change)='onRoleSelected(sltRole.value)' required>
+                                <option *ngFor="let role of roles; let i = index" [value]="roles[i].roleId">
+                                    {{roles[i].roleName}}
+                                </option>
+                            </select>
+                            <!--<p class="text-danger mt-1" *ngIf="txtEmergencyPhoneReq?.errors?.required">*</p>-->
+                        </div>
 
                         <div class="form-check form-check-flat form-check-primary mt-0">
                             <label class="form-check-label">

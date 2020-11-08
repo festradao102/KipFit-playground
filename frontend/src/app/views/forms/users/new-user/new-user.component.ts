@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FitUserService} from "../../../../../services/fit-user.service";
 import Swal from "sweetalert2";
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import {RoleService} from "../../../../../services/role.service";
 
 @Component({
   selector: 'app-new-user',
@@ -12,6 +13,7 @@ export class NewUserComponent implements OnInit {
 
   isUpdate = true;
   id: string;
+  roles: any;
   fitUser = {
     legalId:'',
     bday:'',
@@ -32,21 +34,18 @@ export class NewUserComponent implements OnInit {
       lastModifiedDate:null,
       authorities:null
     },
-    'schedules': [ ],
-    'role' : {
-      'id' : 1,
-      'roleId' : 96382,
-      'roleName' : '',
-      'fitUsers' : null
-    }
+    schedules: [ ],
+    role : null,
   };
 
   constructor(private fitUserService: FitUserService,
+              private roleService: RoleService,
               private activeRoute: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe((params: Params) => this.id = params.id );
+    this.getRoles();
     if (this.id === '-1') {
       this.isUpdate = false;
     }else{
@@ -93,7 +92,6 @@ export class NewUserComponent implements OnInit {
   }
 
   deleteUser(): void {
-
     this.fitUserService.delete(this.id)
         .subscribe(
             response => {
@@ -194,5 +192,35 @@ export class NewUserComponent implements OnInit {
 
   navigateToList(): void {
     this.router.navigate(['/users/list-user']);
+  }
+
+  getRoles(): void {
+    this.roleService.getAll()
+        .subscribe(
+            response => {
+              console.log(response);
+              this.roles = response;
+            },
+            error => {
+              console.log(error);
+              Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Code:' + error.status + '| Detail:' + error.message,
+                showConfirmButton: false,
+                timer: 1500
+              })
+            });
+  }
+
+  onRoleSelected(pRoleId) : void {
+    console.log("the selected value is " + pRoleId);
+    for (let _i = 0; _i < this.roles.length; _i++) {
+      console.log("role " + this.roles[_i].roleId.toString());
+      if (this.roles[_i].roleId.toString() === pRoleId) {
+        this.fitUser.role = this.roles[_i];
+        console.log(this.fitUser.role.id);
+      }
+    }
   }
 }

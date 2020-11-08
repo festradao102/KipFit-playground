@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import {NewUserComponent} from "./new-user/new-user.component";
 import {ListUserComponent} from "./list-user/list-user.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxMaskModule} from "ngx-mask";
 
 const routes: Routes = [
@@ -28,7 +28,8 @@ const routes: Routes = [
         CommonModule,
         RouterModule.forChild(routes),
         FormsModule,
-        NgxMaskModule
+        NgxMaskModule,
+        ReactiveFormsModule
     ]
 })
 export class UsersModule { }
