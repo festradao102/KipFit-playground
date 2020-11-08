@@ -55,9 +55,8 @@
                             <p class="text-danger mt-1" *ngIf="txtEmergencyPhoneReq?.errors?.required">*</p>
                         </div>
                         <div class="form-group">
-                            <label for="sltRole">Rol</label>
-                            <select ng-model='nrSelect' formControlName="sltRole" id="sltRole" [(ngModel)]="this.fitUser.role.roleId" #sltRole
-                                    (change)='onRoleSelected(sltRole.value)' required>
+                            <label>Rol</label>
+                                <select name="sltRole" class='form-control' [(ngModel)]="fitUser.role.roleId" #sltRole (change)='onRoleSelected(sltRole.value)' required="true">
                                 <option *ngFor="let role of roles; let i = index" [value]="roles[i].roleId">
                                     {{roles[i].roleName}}
                                 </option>
@@ -77,7 +76,7 @@
                                                                          txtFirstNameReq?.errors?.required || txtLastNameReq?.errors?.required ||
                                                                          txtEmailReq?.errors?.required || dtBdayReq?.errors?.required ||
                                                                          txtPhoneReq?.errors?.required || txtEmergencyPhoneReq?.errors?.required"
-                                (click)="saveOrUpdate()">Agregar</button>
+                                (click)="saveOrUpdate()">{{ isUpdate ? "Actualizar" : "Registrar" }}</button>
                         <button class="btn btn-secondary mr-2" [hidden]="!isUpdate" (click)="showDeleteConfirmation()">Eliminar</button>
                         <!--<button class="btn btn-light">Cancelar</button>-->
                     </form>

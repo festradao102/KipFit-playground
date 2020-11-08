@@ -35,7 +35,11 @@ export class NewUserComponent implements OnInit {
       authorities:null
     },
     schedules: [ ],
-    role : null,
+    role :  {
+      id : 1,
+      roleId : 44429,
+      roleName : '',
+    },
   };
 
   constructor(private fitUserService: FitUserService,
