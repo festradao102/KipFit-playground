@@ -7,11 +7,11 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Ver usuarios',
-        link: '/ui-components/alerts',
+        link: '/users/list-user',
       },
       {
         label: 'Crear un usuario',
-        link: '/ui-components/badges',
+        link: '/users/new-user',
       }
     ]
   },
