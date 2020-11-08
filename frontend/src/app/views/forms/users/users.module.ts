@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import {NewUserComponent} from "./new-user/new-user.component";
-import {ListUserComponent} from "./list/list-user/list-user.component";
+import {ListUserComponent} from "./list-user/list-user.component";
 import {FormsModule} from "@angular/forms";
+import {NgxMaskModule} from "ngx-mask";
 
 const routes: Routes = [
     {
@@ -12,7 +13,7 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'new-user',
+        path: 'new-user/:id',
         component: NewUserComponent
     },
     {
@@ -26,7 +27,8 @@ const routes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-        FormsModule
+        FormsModule,
+        NgxMaskModule
     ]
 })
 export class UsersModule { }

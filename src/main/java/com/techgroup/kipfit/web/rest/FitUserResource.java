@@ -95,11 +95,6 @@ public class FitUserResource {
                 throw new EmailAlreadyUsedException();
             }
 
-            existingUser = userRepository.findOneByLogin(fitUser.getUser().getLogin().toLowerCase());
-            if (existingUser.isPresent() && (!existingUser.get().getId().equals(fitUser.getUser().getId()))) {
-                throw new LoginAlreadyUsedException();
-            }
-
             updatedUser.setId(existingUser.get().getId());
             updatedUser.setLogin(existingUser.get().getLogin());
             updatedUser.setEmail(existingUser.get().getEmail());
@@ -117,10 +112,10 @@ public class FitUserResource {
 
             userService.updateUser(updatedUser);
 
-            fitUser.setUser(null);
+            //fitUser.setUser(null);
         }
 
-        FitUser result = fitUserRepository.saveAndFlush(fitUser);
+        FitUser result = fitUserRepository.save(fitUser);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, fitUser.getId().toString()))
             .body(result);

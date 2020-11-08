@@ -11,7 +11,7 @@ export const MENU: MenuItem[] = [
       },
       {
         label: 'Crear un usuario',
-        link: '/users/new-user',
+        link: '/users/new-user/-1',
       }
     ]
   },
