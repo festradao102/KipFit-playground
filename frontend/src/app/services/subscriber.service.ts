@@ -31,6 +31,9 @@ export class SubscriberService {
   update(id, data): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
+  updateOnly(id, data): Observable<any> {
+    return this.http.put(baseUrl, data);
+  }
 
   delete(id): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
