@@ -1,19 +1,22 @@
 package com.techgroup.kipfit.domain;
 
+import com.mysql.cj.jdbc.Blob;
 import com.techgroup.kipfit.config.Constants;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import liquibase.datatype.core.NVarcharType;
+import liquibase.datatype.core.VarcharType;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.awt.*;
 import java.io.Serializable;
+import java.sql.Clob;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Locale;
@@ -66,8 +69,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "lang_key", length = 10)
     private String langKey;
 
-    @Size(max = 256)
-    @Column(name = "image_url", length = 256)
+    @Size(max = Integer.MAX_VALUE )
+    @Column(name = "image_url")
     private String imageUrl;
 
     @Size(max = 20)
@@ -84,7 +87,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private Instant resetDate = null;
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "jhi_user_authority",
         joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},

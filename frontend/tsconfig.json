@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": { "cloudinary": ["."] },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

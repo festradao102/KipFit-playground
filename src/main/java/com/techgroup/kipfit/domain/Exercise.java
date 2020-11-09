@@ -40,7 +40,7 @@ public class Exercise implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<ExerciseType> exerciseTypes = new HashSet<>();
 
-    @ManyToMany(mappedBy = "exercises")
+    @ManyToMany(mappedBy = "exercises" ,fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnore
     private Set<ExercisesSet> exercisesSets = new HashSet<>();

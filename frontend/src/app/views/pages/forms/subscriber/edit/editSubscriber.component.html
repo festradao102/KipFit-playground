@@ -1,4 +1,4 @@
-<form class="row" (ngSubmit)="saveSubscriber()">
+<form class="row" (ngSubmit)="updateSubscriber()">
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -9,62 +9,62 @@
                     <div class="form-group row">
                         <label for="legalId" class="col-sm-3 col-form-label">Cedula:</label>
                         <div class="col-sm-9">
-                            <input type="text" [(ngModel)]="fitUser.legalId" class="form-control" name="legalId" id="legalId" autocomplete="off" placeholder="Cedula">
+                            <input type="text" [(ngModel)]="currentFitSubscriber.legalId" class="form-control" name="legalId" id="legalId" autocomplete="off" placeholder="Cedula">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="firstName" class="col-sm-3 col-form-label">Nombre:</label>
                         <div class="col-sm-9">
-                            <input type="text" [(ngModel)]="user.firstName" class="form-control" name="firstName" id="firstName" autocomplete="off" placeholder="Nombre">
+                            <input type="text" [(ngModel)]="currentFitSubscriber.user.firstName" class="form-control" name="firstName" id="firstName" autocomplete="off" placeholder="Nombre">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="lastName" class="col-sm-3 col-form-label">Apellido:</label>
                         <div class="col-sm-9">
-                            <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName" id="lastName" autocomplete="off" placeholder="Apellido">
+                            <input type="text" [(ngModel)]="currentFitSubscriber.user.lastName" class="form-control" name="lastName" id="lastName" autocomplete="off" placeholder="Apellido">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-sm-3 col-form-label">Email:</label>
                         <div class="col-sm-9">
-                            <input type="email" [(ngModel)]="user.email" class="form-control" name="email" id="email" placeholder="Email@correo.com">
+                            <input type="email" [(ngModel)]="currentFitSubscriber.user.email" class="form-control" name="email" id="email" placeholder="Email@correo.com">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="bday" class="col-sm-3 col-form-label">Fecha Nacimiento:</label>
                         <div class="col-sm-9">
-                            <input type="date" [(ngModel)]="fitUser.bday" class="form-control" name="bday" id="bday" placeholder="05/02/02">
+                            <input type="date" [(ngModel)]="currentFitSubscriber.bday" class="form-control" name="bday" id="bday" placeholder="05/02/02">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="phone" class="col-sm-3 col-form-label">Teléfono:</label>
                         <div class="col-sm-9">
-                            <input type="text" [(ngModel)]="fitUser.phone" class="form-control" name="phone" id="phone" autocomplete="off" placeholder="Teléfono">
+                            <input type="text" [(ngModel)]="currentFitSubscriber.phone" class="form-control" name="phone" id="phone" autocomplete="off" placeholder="Teléfono">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="emergencyPhone" class="col-sm-3 col-form-label">Teléfono de Emergencia:</label>
                         <div class="col-sm-9">
-                            <input type="text" [(ngModel)]="fitUser.emergencyPhone" class="form-control" name="emergencyPhone" id="emergencyPhone" autocomplete="off" placeholder="Teléfono Emergencia">
+                            <input type="text" [(ngModel)]="currentFitSubscriber.emergencyPhone" class="form-control" name="emergencyPhone" id="emergencyPhone" autocomplete="off" placeholder="Teléfono Emergencia">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="medicalConditions" class="col-sm-3 col-form-label">Condiciones Médicas:</label>
                         <div class="col-sm-9">
-                            <textarea type="text" [(ngModel)]="subscriber.medicalConditions" class="form-control" name="medicalConditions" id="medicalConditions" autocomplete="off" placeholder="Condiciones Médicas"></textarea>
+                            <textarea type="text" [(ngModel)]="currentFitSubscriber.subscriber.medicalConditions" class="form-control" name="medicalConditions" id="medicalConditions" autocomplete="off" placeholder="Condiciones Médicas"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="paymentFreq" class="col-sm-3 col-form-label">Frecuencia de Pago:</label>
                         <div class="col-sm-9">
-                            <select type="text" [(ngModel)]="subscriber.paymentFreq" class="form-control" id="paymentFreq" name="paymentFreq" autocomplete="off" >
+                            <select type="text" [(ngModel)]="currentFitSubscriber.subscriber.paymentFreq" class="form-control" id="paymentFreq" name="paymentFreq" autocomplete="off" >
                                 <option  *ngFor="let tiempos of tiemposDePago" [ngValue]="tiempos.valueOf()">{{ tiempos.valueOf() }}</option>
                             </select>
                         </div>
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                    <button type="submit" class="btn btn-primary mr-2">Actualizar</button>
                     <a routerLink="/dashboard" class="btn btn-light">Cancelar</a>
 
 
@@ -93,7 +93,7 @@
                         </div>
                         <div class="d-flex justify-content-between align-items-center flex-wrap">
                             <div class="form-group d-flex align-items-center flex-wrapp mb-0 mr-2 mt-3">
-                                <button class="btn btn-primary crop mb-2 mb-md-0" (click)="cropImage()">Crop me</button>
+                                <button type="button" class="btn btn-primary crop mb-2 mb-md-0" (click)="cropImage()">Crop me</button>
                             </div>
                             <div class="mb-4 mb-md-0 mt-3">
                                 <a href="" class="btn btn-outline-primary download" download="imageName.png">Download croped image</a>

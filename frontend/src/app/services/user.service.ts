@@ -5,12 +5,12 @@ import {HttpClient} from "@angular/common/http";
 
 
 
-const baseUrl = 'http://localhost:8080/api/subscribers';
+const baseUrl = 'http://localhost:8080/api/users';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SubscriberService {
+export class UserService {
 
   // constructor() { }
   constructor(private http: HttpClient){}
@@ -31,6 +31,7 @@ export class SubscriberService {
   update(id, data): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
+
   updateOnly(id, data): Observable<any> {
     return this.http.put(baseUrl, data);
   }

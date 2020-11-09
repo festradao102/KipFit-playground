@@ -57,7 +57,7 @@ public class Subscriber implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "guided_training_id", referencedColumnName = "id"))
     private Set<GuidedTraining> guidedTrainings = new HashSet<>();
 
-    @OneToOne(mappedBy = "subscriber")
+    @OneToOne(mappedBy = "subscriber", fetch = FetchType.LAZY)
     @JsonIgnore
     private FitUser fitUser;
 
@@ -198,6 +198,7 @@ public class Subscriber implements Serializable {
     }
 
     public FitUser getFitUser() {
+
         return fitUser;
     }
 
