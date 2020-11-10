@@ -3,8 +3,6 @@ import {FitUserService} from "../../../../../services/fit-user.service";
 import Swal from "sweetalert2";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {RoleService} from "../../../../../services/role.service";
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-user',
@@ -13,8 +11,6 @@ import { map } from 'rxjs/operators';
 })
 export class NewUserComponent implements OnInit {
 
-  DEF_IMG_PATH = './assets/images/empty-profile.png';
-
   isUpdate = true;
   id: string;
   roles: any;
@@ -22,7 +18,6 @@ export class NewUserComponent implements OnInit {
     legalId:'',
     bday:'',
     phone:'',
-    image:'',
     emergencyPhone:'',
     user : {
       login:'',
@@ -47,20 +42,16 @@ export class NewUserComponent implements OnInit {
     },
   };
 
-  imageBaseData:string | ArrayBuffer=null;
-
   constructor(private fitUserService: FitUserService,
               private roleService: RoleService,
               private activeRoute: ActivatedRoute,
-              private router: Router,
-              private http:HttpClient) { }
+              private router: Router) { }
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe((params: Params) => this.id = params.id );
     this.getRoles();
     if (this.id === '-1') {
       this.isUpdate = false;
-      this.imageBaseData = this.DEF_IMG_PATH;
     }else{
       this.getUser();
     }
@@ -183,7 +174,6 @@ export class NewUserComponent implements OnInit {
               this.fitUser = response;
               let date = this.changeDateFormat(this.fitUser.bday.toString())
               this.fitUser.bday = date;
-              this.imageBaseData = (this.fitUser.image != null && this.fitUser.image != '') ? this.fitUser.image : this.DEF_IMG_PATH;
             },
             error => {
               console.log(error);
@@ -236,21 +226,5 @@ export class NewUserComponent implements OnInit {
         console.log(this.fitUser.role.id);
       }
     }
-  }
-
-  //IMAGE
-  handleFileInput(files: FileList) {
-    let me = this;
-    let file = files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      console.log(reader.result);
-      me.imageBaseData=reader.result;
-      me.fitUser.image = reader.result.toString();
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
   }
 }
