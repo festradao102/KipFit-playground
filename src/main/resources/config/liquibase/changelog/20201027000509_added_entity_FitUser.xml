@@ -25,6 +25,9 @@
             <column name="phone" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="image" type="varchar(max)">
+                <constraints nullable="true" />
+            </column>
             <column name="emergency_phone" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
