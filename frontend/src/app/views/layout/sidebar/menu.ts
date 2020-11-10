@@ -21,7 +21,7 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Ver suscriptores',
-        link: '/subscriberTable',
+        link: '/subscribers',
       },
       {
         label: 'Crear un suscriptor',

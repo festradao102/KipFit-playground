@@ -58,7 +58,7 @@ export class AddSubscriberComponent implements OnInit {
   };
 
   tiemposDePago = [
-      "Mensual", "Semanal","Quincenal"
+    "Mensual", "Semanal","Quincenal"
   ];
   @ViewChild('angularCropper') public angularCropper: CropperComponent;
   @ViewChild('imageUploadComponent') public imageUploadComponent: ImageUploadComponent;
@@ -121,59 +121,59 @@ export class AddSubscriberComponent implements OnInit {
     };
 
 
-      this.subscriberService.create(dataSuscriber)
-          .subscribe(
-              subscriberNuevo => {
-                console.log(subscriberNuevo);
-                this.userService.create(dataUser)
-                    .subscribe(
-                        userNuevo => {
-                          console.log(subscriberNuevo);
-                          dataFitUser.user=userNuevo;
-                          dataFitUser.subscriber=subscriberNuevo;
-                          this.fitUserService.create(dataFitUser)
-                              .subscribe(
-                                  response => {
-                                    console.log(response);
-                                    Swal.fire(
-                                        {
+    this.subscriberService.create(dataSuscriber)
+        .subscribe(
+            subscriberNuevo => {
+              console.log(subscriberNuevo);
+              this.userService.create(dataUser)
+                  .subscribe(
+                      userNuevo => {
+                        console.log(subscriberNuevo);
+                        dataFitUser.user=userNuevo;
+                        dataFitUser.subscriber=subscriberNuevo;
+                        this.fitUserService.create(dataFitUser)
+                            .subscribe(
+                                response => {
+                                  console.log(response);
+                                  Swal.fire(
+                                      {
 
-                                          icon: "success",
-                                          title: "Suscriptor Agregado."
-                                        }
-                                    ).then(result => {
-                                    this.router.navigateByUrl("subscriberTable");
-                                    })
+                                        icon: "success",
+                                        title: "Suscriptor Agregado."
+                                      }
+                                  ).then(result => {
+                                    this.router.navigateByUrl("subscribers");
+                                  })
 
-                                  },
-                                  error => {
-                                    Swal.fire(
-                                        {
-                                          icon: "error",
-                                          title: error.error.title
-                                        }
-                                    )
-                                  });
+                                },
+                                error => {
+                                  Swal.fire(
+                                      {
+                                        icon: "error",
+                                        title: error.error.title
+                                      }
+                                  )
+                                });
 
-                        },
-                        error => {
-                          Swal.fire(
-                              {
-                                icon: "error",
-                                title: error.error.title
-                              }
-                          )
-                        });
+                      },
+                      error => {
+                        Swal.fire(
+                            {
+                              icon: "error",
+                              title: error.error.title
+                            }
+                        )
+                      });
 
-              },
-              error => {
-                Swal.fire(
-                    {
-                      icon: "error",
-                      title: error.error.title
-                    }
-                )
-              });
+            },
+            error => {
+              Swal.fire(
+                  {
+                    icon: "error",
+                    title: error.error.title
+                  }
+              )
+            });
 
 
 
@@ -182,7 +182,6 @@ export class AddSubscriberComponent implements OnInit {
 
 
   }
-
 
 
 
@@ -234,5 +233,3 @@ export class AddSubscriberComponent implements OnInit {
 
 
 }
-
-

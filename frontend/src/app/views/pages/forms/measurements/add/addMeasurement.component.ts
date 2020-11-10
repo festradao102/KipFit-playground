@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {formatDate} from "@angular/common";
 
-import { MeasurementService } from '../../../../../services/measurement.service';
+
 import { SubscriberService } from '../../../../../services/subscriber.service';
+import {MeasurementService} from "../../../../../services/measurement.service";
 
 @Component({
   selector: 'app-add-measurement-component',

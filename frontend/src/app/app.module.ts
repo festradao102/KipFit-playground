@@ -23,7 +23,10 @@ import {SubChartsComponent} from './views/pages/forms/subscribers/profile/subCha
 import {SubscriberProfileComponent} from './views/pages/forms/subscribers/profile/subscriberProfile.component';
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import { AddSubscriberComponent } from './views/pages/forms/subscriber/add-subscriber/add-subscriber.component';
+import { AddSubscriberComponent } from './views/pages/forms/subscriber/add/addSubscriber.component';
+import { EditSubscriberComponent } from './views/pages/forms/subscriber/edit/editSubscriber.component';
+import { SubscriberTableComponent } from './views/pages/tables/subscriber-table/subscriber-table.component';
+import {AngularCropperjsModule} from "angular-cropperjs";
 
 
 @NgModule({
@@ -31,6 +34,8 @@ import { AddSubscriberComponent } from './views/pages/forms/subscriber/add-subsc
     AppComponent,
     ErrorPageComponent,
     AddSubscriberComponent,
+    EditSubscriberComponent,
+    SubscriberTableComponent,
     AddMeasurementComponent,
     EditMeasurementComponent,
     SubscriberProfileComponent,
@@ -46,7 +51,8 @@ import { AddSubscriberComponent } from './views/pages/forms/subscriber/add-subsc
     HttpClientModule,
     NgxMaskModule.forRoot(),
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    AngularCropperjsModule
   ],
   providers: [
     AuthGuard,

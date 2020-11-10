@@ -100,7 +100,7 @@ public class FitUserResource {
             updatedUser.setEmail(existingUser.get().getEmail());
             updatedUser.setFirstName(fitUser.getUser().getFirstName().equals("") ? existingUser.get().getFirstName() : fitUser.getUser().getFirstName());
             updatedUser.setLastName(fitUser.getUser().getLastName().equals("") ? existingUser.get().getLastName() : fitUser.getUser().getLastName());
-            updatedUser.setImageUrl(fitUser.getUser().getImageUrl().equals("") ? existingUser.get().getImageUrl() : fitUser.getUser().getImageUrl());
+            //updatedUser.setImageUrl(fitUser.getUser().getImageUrl().equals("") ? existingUser.get().getImageUrl() : fitUser.getUser().getImageUrl());
             updatedUser.setActivated(fitUser.getUser().getActivated() != existingUser.get().getActivated() ? fitUser.getUser().getActivated() : existingUser.get().getActivated());
             updatedUser.setLangKey(fitUser.getUser().getLangKey() == "" ? existingUser.get().getLangKey() : fitUser.getUser().getLangKey());
             updatedUser.setCreatedBy(fitUser.getUser().getCreatedBy() == "" ? existingUser.get().getCreatedBy() : fitUser.getUser().getCreatedBy());
