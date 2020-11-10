@@ -37,9 +37,6 @@ public class FitUser implements Serializable {
     @Column(name = "emergency_phone")
     private String emergencyPhone;
 
-    @Column(name = "image")
-    private String image;
-
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(unique = true)
     private User user;
@@ -178,14 +175,6 @@ public class FitUser implements Serializable {
     public FitUser role(Role role) {
         this.role = role;
         return this;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public void setRole(Role role) {
