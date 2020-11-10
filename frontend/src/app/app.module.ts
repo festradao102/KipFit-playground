@@ -5,9 +5,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxMaskModule} from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import {FormsModule} from "@angular/forms";
+import {ChartsModule} from "ng2-charts";
 import { LayoutModule } from './views/layout/layout.module';
 import { AuthGuard } from './core/guard/auth.guard';
 
@@ -23,12 +23,14 @@ import {SubChartsComponent} from './views/pages/forms/subscribers/profile/subCha
 import {SubscriberProfileComponent} from './views/pages/forms/subscribers/profile/subscriberProfile.component';
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import {ChartsModule} from "ng2-charts";
+import { AddSubscriberComponent } from './views/pages/forms/subscriber/add-subscriber/add-subscriber.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
+    AddSubscriberComponent,
     AddMeasurementComponent,
     EditMeasurementComponent,
     SubscriberProfileComponent,
@@ -40,9 +42,9 @@ import {ChartsModule} from "ng2-charts";
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    FormsModule,
     HttpClientModule,
     NgxMaskModule.forRoot(),
-    FormsModule,
     HttpClientModule,
     ChartsModule
   ],

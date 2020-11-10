@@ -21,11 +21,11 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Ver suscriptores',
-        link: '/advanced-ui/cropper',
+        link: '/subscriberTable',
       },
       {
         label: 'Crear un suscriptor',
-        link: '/advanced-ui/owl-carousel',
+        link: '/add-subscriber',
       }
     ]
   },
