@@ -69,9 +69,10 @@ const routes: Routes = [
         path: 'users',
         loadChildren: () => import('./views/forms/users/users.module').then(m => m.UsersModule)
       },
+      { path:'subscribers', component: SubscriberTableComponent },
       { path:'add-subscriber', component: AddSubscriberComponent },
-      { path:'edit-subscriber', component: EditSubscriberComponent },
-      { path:'subscriberTable', component: SubscriberTableComponent },
+      { path:'subscribers/:id', component: EditSubscriberComponent, pathMatch: 'full' },
+
 
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
