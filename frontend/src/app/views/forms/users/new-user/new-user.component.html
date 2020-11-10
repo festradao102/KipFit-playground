@@ -1,0 +1,98 @@
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink=".">Formularios</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Registrar Usuario</li>
+    </ol>
+</nav>
+
+<form novalidate name="frmNewUser">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Registrar Usuario</h6>
+                    <form>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <figure class="mb-0 mr-2">
+                                    <img src="{{imageBaseData}}" alt="image" class="img-lg rounded-circle">
+                                    <div class="status online"></div>
+                                    <input type="file" id="flImage" name="flImage" accept=".png, .jpg, .jpeg" (change)="handleFileInput($event.target.files)">
+                                    <div class="status online"></div>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtId">Identificación</label>
+                            <input type="text" class="form-control" id="txtId" placeholder="Identificación" name="txtId"
+                                   [(ngModel)]="fitUser.legalId" #txtIdReq="ngModel" required maxlength="14" minlength="9" [disabled]="isUpdate">
+                            <p class="text-danger mt-1" *ngIf="txtIdReq?.errors?.required || txtIdReq?.errors?.minlength">*</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtName">Nombre</label>
+                            <input type="text" class="form-control" id="txtName" autocomplete="off" placeholder="Nombre" name="txtName"
+                                   [(ngModel)]="fitUser.user.firstName" #txtFirstNameReq="ngModel" required maxlength="20">
+                            <p class="text-danger mt-1" *ngIf="txtFirstNameReq?.errors?.required">*</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtName">Apellidos</label>
+                            <input type="text" class="form-control" id="txtLastName" autocomplete="off" placeholder="Apellidos" name="txtLastName"
+                                   [(ngModel)]="fitUser.user.lastName" #txtLastNameReq="ngModel" required maxlength="50">
+                            <p class="text-danger mt-1" *ngIf="txtLastNameReq?.errors?.required">*</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail">Correo</label>
+                            <input type="email" class="form-control" id="txtEmail" placeholder="Correo" name="txtEmail"
+                                   [(ngModel)]="fitUser.user.email" #txtEmailReq="ngModel" required maxlength="60" [disabled]="isUpdate">
+                            <p class="text-danger mt-1" *ngIf="txtEmailReq?.errors?.required">*</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="dtBday">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" id="dtBday" autocomplete="off" name="dtBday"
+                                   [(ngModel)]="fitUser.bday" #dtBdayReq="ngModel" required>
+                            <p class="text-danger mt-1" *ngIf="dtBdayReq?.errors?.required">*</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPhone">Teléfono</label>
+                            <input type="text" class="form-control" id="txtPhone" autocomplete="off" placeholder="Teléfono" mask="0000-0000"
+                                   [showMaskTyped]="true"  name="txtPhone"  [(ngModel)]="fitUser.phone" #txtPhoneReq="ngModel" required>
+                            <p class="text-danger mt-1" *ngIf="txtPhoneReq?.errors?.required">*</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmergencyPhone">Teléfono de Emergencia</label>
+                            <input type="text" class="form-control" id="txtEmergencyPhone" autocomplete="off" placeholder="Teléfono de Emergencia" mask="0000-0000"
+                                   [showMaskTyped]="true" name="txtEmergencyPhone" [(ngModel)]="fitUser.emergencyPhone" #txtEmergencyPhoneReq="ngModel" required>
+                            <p class="text-danger mt-1" *ngIf="txtEmergencyPhoneReq?.errors?.required">*</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Rol</label>
+                                <select name="sltRole" class='form-control' [(ngModel)]="fitUser.role.roleId" #sltRole (change)='onRoleSelected(sltRole.value)' required="true">
+                                <option *ngFor="let role of roles; let i = index" [value]="roles[i].roleId">
+                                    {{roles[i].roleName}}
+                                </option>
+                            </select>
+                            <!--<p class="text-danger mt-1" *ngIf="txtEmergencyPhoneReq?.errors?.required">*</p>-->
+                        </div>
+
+                        <div class="form-check form-check-flat form-check-primary mt-0">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="chkActivated"
+                                       [(ngModel)]="fitUser.user.activated" >
+                                <i class="input-frame"></i>
+                                Activo
+                            </label>
+                        </div>
+                        <button class="btn btn-primary mr-2" [disabled]="txtIdReq?.errors?.required ||
+                                                                         txtFirstNameReq?.errors?.required || txtLastNameReq?.errors?.required ||
+                                                                         txtEmailReq?.errors?.required || dtBdayReq?.errors?.required ||
+                                                                         txtPhoneReq?.errors?.required || txtEmergencyPhoneReq?.errors?.required"
+                                (click)="saveOrUpdate()">{{ isUpdate ? "Actualizar" : "Registrar" }}</button>
+                        <button class="btn btn-secondary mr-2" [hidden]="!isUpdate" (click)="showDeleteConfirmation()">Eliminar</button>
+                        <!--<button class="btn btn-light">Cancelar</button>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
