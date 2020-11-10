@@ -23,7 +23,7 @@ import {SubChartsComponent} from './views/pages/forms/subscribers/profile/subCha
 import {SubscriberProfileComponent} from './views/pages/forms/subscribers/profile/subscriberProfile.component';
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import { AddSubscriberComponent } from './views/pages/forms/subscriber/add-subscriber/add-subscriber.component';
+import { AddSubscriberComponent } from './views/pages/forms/subscriber/add/addSubscriber.component';
 
 
 @NgModule({

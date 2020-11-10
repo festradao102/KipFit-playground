@@ -4,10 +4,12 @@ import { BaseComponent } from './views/layout/base/base.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 
-import {AddSubscriberComponent} from './views/pages/forms/subscriber/add-subscriber/add-subscriber.component';
+import {AddSubscriberComponent} from './views/pages/forms/subscriber/add/addSubscriber.component';
 import {AddMeasurementComponent} from './views/pages/forms/measurements/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurements/edit/editMeasurement.component';
 import {SubscriberProfileComponent} from './views/pages/forms/subscribers/profile/subscriberProfile.component';
+import {EditSubscriberComponent} from "./views/pages/forms/subscriber/edit/editSubscriber.component";
+import {SubscriberTableComponent} from "./views/pages/tables/subscriber-table/subscriber-table.component";
 
 
 const routes: Routes = [
@@ -68,6 +70,8 @@ const routes: Routes = [
         loadChildren: () => import('./views/forms/users/users.module').then(m => m.UsersModule)
       },
       { path:'add-subscriber', component: AddSubscriberComponent },
+      { path:'edit-subscriber', component: EditSubscriberComponent },
+      { path:'subscriberTable', component: SubscriberTableComponent },
 
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
