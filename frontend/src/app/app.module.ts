@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxMaskModule} from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LayoutModule } from './views/layout/layout.module';
 import { AuthGuard } from './core/guard/auth.guard';
@@ -12,14 +14,26 @@ import { AuthGuard } from './core/guard/auth.guard';
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import {AddMeasurementComponent} from './views/pages/forms/measurements/add/addMeasurement.component';
+import {EditMeasurementComponent} from './views/pages/forms/measurements/edit/editMeasurement.component';
 
-import {HttpClientModule} from "@angular/common/http";
+import {MeasurementsDataTableComponent} from './views/pages/forms/subscribers/profile/measurementsDataTable.component';
+import {SubChartsComponent} from './views/pages/forms/subscribers/profile/subCharts.component';
+
+import {SubscriberProfileComponent} from './views/pages/forms/subscribers/profile/subscriberProfile.component';
+
+import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import {ChartsModule} from "ng2-charts";
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
+    AddMeasurementComponent,
+    EditMeasurementComponent,
+    SubscriberProfileComponent,
+    MeasurementsDataTableComponent,
+    SubChartsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +41,10 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserAnimationsModule,
     LayoutModule,
     HttpClientModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    FormsModule,
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [
     AuthGuard,

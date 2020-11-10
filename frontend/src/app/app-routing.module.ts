@@ -4,21 +4,35 @@ import { BaseComponent } from './views/layout/base/base.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 
+import {AddMeasurementComponent} from './views/pages/forms/measurements/add/addMeasurement.component';
+import {EditMeasurementComponent} from './views/pages/forms/measurements/edit/editMeasurement.component';
+import {SubscriberProfileComponent} from './views/pages/forms/subscribers/profile/subscriberProfile.component';
+
 
 const routes: Routes = [
   { path:'auth', loadChildren: () => import('./views/pages/auth/auth.module').then(m => m.AuthModule) },
   {
     path: '',
     component: BaseComponent,
-    canActivate: [AuthGuard],
+    canActivate: [],
     children: [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/pages/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
-        path: 'apps',
-        loadChildren: () => import('./views/pages/apps/apps.module').then(m => m.AppsModule)
+        path: 'subscriber-profile/:id',
+        component: SubscriberProfileComponent
+      },
+      {
+        path: 'add-measurement',
+        component: AddMeasurementComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'measurements/:id',
+        component: EditMeasurementComponent,
+        pathMatch: 'full'
       },
       {
         path: 'ui-components',
@@ -49,18 +63,13 @@ const routes: Routes = [
         loadChildren: () => import('./views/pages/icons/icons.module').then(m => m.IconsModule)
       },
       {
-        path: 'general',
-        loadChildren: () => import('./views/pages/general/general.module').then(m => m.GeneralModule)
-      },
-      {
         path: 'users',
         loadChildren: () => import('./views/forms/users/users.module').then(m => m.UsersModule)
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      // { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
-  { 
+  {
     path: 'error',
     component: ErrorPageComponent,
     data: {

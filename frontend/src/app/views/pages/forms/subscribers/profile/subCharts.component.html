@@ -1,0 +1,43 @@
+<div class="row grid-margin">
+    <div class="col-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Bar chart</h6>
+
+                <canvas baseChart
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [colors]="barChartColors"
+                        [plugins]="barChartPlugins"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType">
+                </canvas>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row grid-margin">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Line chart</h6>
+
+                <canvas baseChart
+                        [datasets]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="lineChartType"
+                        [plugins]="lineChartPlugins">
+                </canvas>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

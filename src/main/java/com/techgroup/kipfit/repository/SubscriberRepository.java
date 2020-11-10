@@ -17,13 +17,13 @@ import java.util.Optional;
 @Repository
 public interface SubscriberRepository extends JpaRepository<Subscriber, Long> {
 
-    @Query(value = "select distinct subscriber from Subscriber subscriber left join fetch subscriber.guidedTrainings",
+    @Query(value = "select distinct subscriber from Subscriber subscriber left join fetch subscriber.guidedTrainings left join fetch subscriber.measurements",
         countQuery = "select count(distinct subscriber) from Subscriber subscriber")
     Page<Subscriber> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct subscriber from Subscriber subscriber left join fetch subscriber.guidedTrainings")
+    @Query("select distinct subscriber from Subscriber subscriber left join fetch subscriber.guidedTrainings left join fetch subscriber.measurements")
     List<Subscriber> findAllWithEagerRelationships();
 
-    @Query("select subscriber from Subscriber subscriber left join fetch subscriber.guidedTrainings where subscriber.id =:id")
+    @Query("select subscriber from Subscriber subscriber left join fetch subscriber.guidedTrainings left join fetch subscriber.measurements where subscriber.id =:id")
     Optional<Subscriber> findOneWithEagerRelationships(@Param("id") Long id);
 }

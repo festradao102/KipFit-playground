@@ -1,0 +1,205 @@
+<form class="forms-sample" *ngIf="!submitted">
+    <div class="row">
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Agregar medidas</h6>
+
+                    <div class="form-group row">
+                        <label for="employeeId" class="col-sm-3 col-form-label">Medidas del suscriptor</label>
+                        <div class="col-sm-9">
+                            <select
+                                class="form-control"
+                                id="employeeId"
+                                name="employeeId"
+                                [(ngModel)]="measurement.subscriber.id">
+                                <option *ngFor="let sub of subscribers" [ngValue]="sub.id"> {{ sub.name }}
+                                    (Id: {{ sub.id }})
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="metabolicage" class="col-sm-3 col-form-label">Edad Metabolica</label>
+                        <div class="col-sm-9">
+                            <input type="number" min="0" class="form-control" id="metabolicage" name="metabolicage"
+                                   [(ngModel)]="measurement.metabolicage">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="bmr" class="col-sm-3 col-form-label">Metabolismo Basal</label>
+                        <div class="col-sm-9">
+                            <input type="number" min="0" class="form-control" id="bmr" name="bmr"
+                                   [(ngModel)]="measurement.bmr">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="boneMass" class="col-sm-3 col-form-label">Masa osea</label>
+                        <div class="col-sm-9">
+                            <input type="number" min="0" class="form-control" id="boneMass" name="boneMass"
+                                   [(ngModel)]="measurement.boneMass">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="height" class="col-sm-3 col-form-label">Altura</label>
+                        <div class="col-sm-9">
+                            <input type="number" min="0" class="form-control" id="height" name="height"
+                                   [(ngModel)]="measurement.height">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="weight" class="col-sm-3 col-form-label">Masa</label>
+                        <div class="col-sm-9">
+                            <input type="number" min="0" class="form-control" id="weight" name="weight"
+                                   [(ngModel)]="measurement.weight">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="fatPercentage" class="col-sm-3 col-form-label">Porcentaje de grasa</label>
+                        <div class="col-sm-9">
+                            <input type="number" min="0" class="form-control" id="fatPercentage" name="fatPercentage"
+                                   [(ngModel)]="measurement.fatPercentage">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-block d-lg-none">
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <label for="neck" class="col-3 col-form-label">Cuello</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="neck" name="neck"
+                                   [(ngModel)]="measurement.neck">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="leftArm" class="col-3 col-form-label">Brazo Izq.</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="leftArm" name="leftArm"
+                                   [(ngModel)]="measurement.leftArm">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="rightArm" class="col-3 col-form-label">Brazo Der.</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="rightArm" name="rightArm"
+                                   [(ngModel)]="measurement.rightArm">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="wrist" class="col-3 col-form-label">Muneca</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="wrist" name="wrist"
+                                   [(ngModel)]="measurement.wrist">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="core" class="col-3 col-form-label">Abdomen</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="core" name="core"
+                                   [(ngModel)]="measurement.core">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="hip" class="col-3 col-form-label">Cadera</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="hip" name="hip"
+                                   [(ngModel)]="measurement.hip">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="thorax" class="col-3 col-form-label">Torax</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="thorax" name="thorax"
+                                   [(ngModel)]="measurement.thorax">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="leftThigh" class="col-3 col-form-label">Muslo Izq.</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="leftThigh" name="leftThigh"
+                                   [(ngModel)]="measurement.leftThigh">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="rightThigh" class="col-3 col-form-label">Muslo Der.</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="rightThigh" name="rightThigh"
+                                   [(ngModel)]="measurement.rightThigh">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="leftCalve" class="col-3 col-form-label">Pantorilla Izq.</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="leftCalve" name="leftCalve"
+                                   [(ngModel)]="measurement.leftCalve">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="rightCalve" class="col-3 col-form-label">Pantorilla Der.</label>
+                        <div class="col-9">
+                            <input type="number" min="0" class="form-control" id="rightCalve" name="rightCalve"
+                                   [(ngModel)]="measurement.rightCalve">
+                        </div>
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2" (click)="saveMeasurement()">Crear</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-none d-lg-block">
+        <div class="col-md-8 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <div id="human-body-form">
+                        <input type="number" class="form-control" min="0" style="top: 75px; left: 35%;" name="neck" [(ngModel)]="measurement.neck">
+                        <input type="number" class="form-control" min="0" style="top: 150px; left: 20%;" name="rightArm" [(ngModel)]="measurement.rightArm">
+                        <input type="number" class="form-control" min="0" style="top: 260px; left: 20%;" name="wrist" [(ngModel)]="measurement.wrist">
+                        <input type="number" class="form-control" min="0" style="top: 355px; left: 20%;" name="core" [(ngModel)]="measurement.core">
+                        <input type="number" class="form-control" min="0" style="top: 415px; left: 20%;" name="hip" [(ngModel)]="measurement.hip">
+                        <input type="number" class="form-control" min="0" style="top: 450px; left: 30%;" name="rightThigh" [(ngModel)]="measurement.rightThigh">
+                        <input type="number" class="form-control" min="0" style="top: 540px; left: 30%;" name="rightCalve" [(ngModel)]="measurement.rightCalve">
+
+                        <input type="number" class="form-control" min="0" style="top: 170px; right: 20%;" name="leftArm" [(ngModel)]="measurement.leftArm">
+                        <input type="number" class="form-control" min="0" style="top: 340px; right: 20%;" name="thorax" [(ngModel)]="measurement.thorax" >
+                        <input type="number" class="form-control" min="0" style="top: 385px; right: 20%;" name="leftThigh"[(ngModel)]="measurement.leftThigh">
+                        <input type="number" class="form-control" min="0" style="top: 495px; right: 20%;" name="leftCalve" [(ngModel)]="measurement.leftCalve">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2" (click)="saveMeasurement()">Crear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row ">
+    <div class="" *ngIf="submitted">
+        <h6>Las medidas se almacenaron correctamente.</h6>
+    </div>
+</div>
