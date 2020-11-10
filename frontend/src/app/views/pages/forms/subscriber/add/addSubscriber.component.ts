@@ -185,6 +185,7 @@ export class AddSubscriberComponent implements OnInit {
 
 
 
+
   //imagen
   openFileBrowser(event: any) {
     event.preventDefault();
