@@ -119,6 +119,52 @@ export class EditSubscriberComponent implements OnInit {
 
     }
 
+    deleteSubscriber(fitUser) {
+        Swal.fire(
+            {
+                showCancelButton: true,
+                confirmButtonText: 'Eliminar',
+                cancelButtonText: 'Cancelar',
+                icon: "warning",
+                title: "¿Desea eliminar suscriptor?"
+            }
+        ).then(result => {
+
+            this.fitUserService.delete(fitUser.id).subscribe(
+                response => {
+                    if (result.isConfirmed) {
+                        this.userService.delete(fitUser.user.id).subscribe(
+                            response2 => {
+                                this.subscriberService.delete(fitUser.subscriber.id).subscribe(
+                                    response3 => {
+                                        Swal.fire(
+                                            'Eliminado!',
+                                            'Se elimino el suscriptor.',
+                                            'info'
+                                        ).then(result => {
+                                            this.router.navigateByUrl("subscriberTable");
+                                        })
+
+                                    }
+                                )
+                            }
+                        )
+                    }
+                },
+                error => {
+
+                }
+            )
+
+
+
+
+
+        })
+
+    }
+
+
 
 
 
