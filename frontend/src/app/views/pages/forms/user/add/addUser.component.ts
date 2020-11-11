@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {FitUserService} from "../../../../../services/fit-user.service";
-import Swal from "sweetalert2";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {RoleService} from "../../../../../services/role.service";
+import {FitUserService} from '../../../../../../services/fit-user.service';
+import Swal from 'sweetalert2';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {RoleService} from '../../../../../../services/role.service';
 
 @Component({
-  selector: 'app-new-user',
-  templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.scss']
+  selector: 'app-add-user',
+  templateUrl: './addUser.component.html',
+  styleUrls: ['./addUser.component.scss']
 })
-export class NewUserComponent implements OnInit {
-
+export class AddUserComponent implements OnInit {
   isUpdate = true;
   id: string;
   roles: any;
@@ -68,7 +67,7 @@ export class NewUserComponent implements OnInit {
   saveUser(): void {
     console.log('saveUser');
     this.fitUser.user.login = this.fitUser.user.email;
-    let bday = new Date(this.fitUser.bday);
+    const bday = new Date(this.fitUser.bday);
     this.fitUser.bday = bday.toISOString();
 
     this.fitUserService.create(this.fitUser)
@@ -139,7 +138,7 @@ export class NewUserComponent implements OnInit {
   updateUser(): void {
     console.log('update');
     this.fitUser.user.login = this.fitUser.user.email;
-    let bday = new Date(this.fitUser.bday);
+    const bday = new Date(this.fitUser.bday);
     this.fitUser.bday = bday.toISOString();
 
     this.fitUserService.update(this.fitUser)
@@ -172,7 +171,7 @@ export class NewUserComponent implements OnInit {
             response => {
               console.log(response);
               this.fitUser = response;
-              let date = this.changeDateFormat(this.fitUser.bday.toString())
+              const date = this.changeDateFormat(this.fitUser.bday.toString())
               this.fitUser.bday = date;
             },
             error => {
@@ -188,14 +187,14 @@ export class NewUserComponent implements OnInit {
   }
 
   changeDateFormat(pDate): string{
-    let year = pDate.slice(0,4);
-    let month = pDate.slice(5,7);
-    let day = pDate.slice(8,10);
+    const year = pDate.slice(0,4);
+    const month = pDate.slice(5,7);
+    const day = pDate.slice(8,10);
     return (year + '-' + month + '-' + day);
   }
 
   navigateToList(): void {
-    this.router.navigate(['/users/list-user']);
+    this.router.navigate(['/user/userDataTable']);
   }
 
   getRoles(): void {
@@ -218,9 +217,9 @@ export class NewUserComponent implements OnInit {
   }
 
   onRoleSelected(pRoleId) : void {
-    console.log("the selected value is " + pRoleId);
+    console.log('the selected value is ' + pRoleId);
     for (let _i = 0; _i < this.roles.length; _i++) {
-      console.log("role " + this.roles[_i].roleId.toString());
+      console.log('role ' + this.roles[_i].roleId.toString());
       if (this.roles[_i].roleId.toString() === pRoleId) {
         this.fitUser.role = this.roles[_i];
         console.log(this.fitUser.role.id);

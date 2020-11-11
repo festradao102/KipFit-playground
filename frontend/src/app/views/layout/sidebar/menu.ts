@@ -7,11 +7,11 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Ver usuarios',
-        link: '/users/list-user',
+        link: '/users',
       },
       {
         label: 'Crear un usuario',
-        link: '/users/new-user/-1',
+        link: '/add-user/-1',
       }
     ]
   },
@@ -35,11 +35,11 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Ver planes',
-        link: '/form-elements/basic-elements'
+        link: '/'
       },
       {
         label: 'Crear un plan',
-        link: '/advanced-form-elements/ngx-dropzone-wrapper'
+        link: '/'
       },
     ]
   },
@@ -49,11 +49,11 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Ver ejercicios',
-        link: '/charts-graphs/apexcharts',
+        link: '/',
       },
       {
         label: 'Crear un ejercicio',
-        link: '/charts-graphs/chartjs',
+        link: '/',
       },
     ]
   },
@@ -63,11 +63,11 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Ver clases',
-        link: '/tables/basic-table',
+        link: '/',
       },
       {
         label: 'Crear una clase',
-        link: '/tables/data-table',
+        link: '/',
       }
     ]
   },
@@ -87,11 +87,11 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Ver reporte de pagos',
-        link: '/auth/login',
+        link: '/',
       },
       {
         label: 'Pagar suscripcion',
-        link: '/auth/register',
+        link: '/',
       },
     ]
   },

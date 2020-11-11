@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubscriberTableComponent } from './subscriber-table.component';
+import { SubscriberDataTableComponent } from './subscriberDataTable.component';
 
 describe('SubscriberTableComponent', () => {
-  let component: SubscriberTableComponent;
-  let fixture: ComponentFixture<SubscriberTableComponent>;
+  let component: SubscriberDataTableComponent;
+  let fixture: ComponentFixture<SubscriberDataTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SubscriberTableComponent ]
+      declarations: [ SubscriberDataTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SubscriberTableComponent);
+    fixture = TestBed.createComponent(SubscriberDataTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

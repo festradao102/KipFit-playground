@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {SubscriberService} from "../../../../services/subscriber.service";
-import {UserService} from "../../../../services/user.service";
-import {FitUserService} from "../../../../services/fit-user.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {SubscriberService} from '../../../../services/subscriber.service';
+import {UserService} from '../../../../services/user.service';
+import {FitUserService} from '../../../../services/fit-user.service';
 import {DataTable} from 'simple-datatables';
-import {any} from "codelyzer/util/function";
-import {formatDate} from "@angular/common";
+import {any} from 'codelyzer/util/function';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-subscriber-table',
-  templateUrl: './subscriber-table.component.html',
-  styleUrls: ['./subscriber-table.component.scss']
+  templateUrl: './subscriberDataTable.component.html',
+  styleUrls: ['./subscriberDataTable.component.scss']
 })
-export class SubscriberTableComponent implements OnInit {
+export class SubscriberDataTableComponent implements OnInit {
 
   subscriberTable = DataTable;
 
@@ -29,15 +29,15 @@ export class SubscriberTableComponent implements OnInit {
           const dataTableRows = [];
           for (const fitUser of data) {
               if(fitUser.subscriber!=null){
-                let estado = fitUser.user.activated = (true) ? "Activo" : "Inactivo";
+                const estado = fitUser.user.activated = (true) ? 'Activo' : 'Inactivo';
                 dataTableRows.push([
                   fitUser.legalId,
-                  fitUser.user.firstName+" "+fitUser.user.lastName,
+                  fitUser.user.firstName+' '+fitUser.user.lastName,
                   fitUser.user.email,
                   fitUser.phone,
                   formatDate(fitUser.subscriber.initialDate, 'yyyy-MM-dd', 'en'),
                   estado,
-                  `<a href="/subscribers/${fitUser.id}">Ver Detalles</a>`
+                  `<a href="/subscriber-profile/${fitUser.id}">Ver Detalles</a>`
                 ]);
               }
 
