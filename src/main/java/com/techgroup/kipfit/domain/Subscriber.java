@@ -41,14 +41,15 @@ public class Subscriber implements Serializable {
     @JoinColumn(unique = true)
     private SubscriptionPayment subscriptionPayment;
 
-    @OneToMany(mappedBy = "subscriber", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "subscriber")
     @NotFound(action = NotFoundAction.IGNORE)
     // @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private List<Measurement> measurements;
 
     @OneToMany(mappedBy = "subscriber")
+    @NotFound(action = NotFoundAction.IGNORE)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Plan> plans = new HashSet<>();
+    private List<Plan> plans;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -147,11 +148,11 @@ public class Subscriber implements Serializable {
         this.measurements = measurements;
     }
 
-    public Set<Plan> getPlans() {
+    public List<Plan> getPlans() {
         return plans;
     }
 
-    public Subscriber plans(Set<Plan> plans) {
+    public Subscriber plans(List<Plan> plans) {
         this.plans = plans;
         return this;
     }
@@ -168,7 +169,7 @@ public class Subscriber implements Serializable {
         return this;
     }
 
-    public void setPlans(Set<Plan> plans) {
+    public void setPlans(List<Plan> plans) {
         this.plans = plans;
     }
 

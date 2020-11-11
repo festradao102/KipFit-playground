@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -39,11 +40,11 @@ public class Plan implements Serializable {
 
     @OneToMany(mappedBy = "plan")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Routine> routines = new HashSet<>();
+    private List<Routine> routines;
 
     @OneToMany(mappedBy = "plan")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<ObjectiveType> objectiveTypes = new HashSet<>();
+    private List<ObjectiveType> objectiveTypes;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "plans", allowSetters = true)
@@ -110,11 +111,11 @@ public class Plan implements Serializable {
         this.active = active;
     }
 
-    public Set<Routine> getRoutines() {
+    public List<Routine> getRoutines() {
         return routines;
     }
 
-    public Plan routines(Set<Routine> routines) {
+    public Plan routines(List<Routine> routines) {
         this.routines = routines;
         return this;
     }
@@ -131,15 +132,15 @@ public class Plan implements Serializable {
         return this;
     }
 
-    public void setRoutines(Set<Routine> routines) {
+    public void setRoutines(List<Routine> routines) {
         this.routines = routines;
     }
 
-    public Set<ObjectiveType> getObjectiveTypes() {
+    public List<ObjectiveType> getObjectiveTypes() {
         return objectiveTypes;
     }
 
-    public Plan objectiveTypes(Set<ObjectiveType> objectiveTypes) {
+    public Plan objectiveTypes(List<ObjectiveType> objectiveTypes) {
         this.objectiveTypes = objectiveTypes;
         return this;
     }
@@ -156,7 +157,7 @@ public class Plan implements Serializable {
         return this;
     }
 
-    public void setObjectiveTypes(Set<ObjectiveType> objectiveTypes) {
+    public void setObjectiveTypes(List<ObjectiveType> objectiveTypes) {
         this.objectiveTypes = objectiveTypes;
     }
 

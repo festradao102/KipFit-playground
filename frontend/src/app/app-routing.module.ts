@@ -4,13 +4,14 @@ import { BaseComponent } from './views/layout/base/base.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 
+import {AddSubscriberComponent} from './views/pages/forms/subscriber/add/addSubscriber.component';
 import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
-
-import {AddSubscriberComponent} from './views/pages/forms/subscriber/add/addSubscriber.component';
-import {EditSubscriberComponent} from "./views/pages/forms/subscriber/edit/editSubscriber.component";
 import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
-import {SubscriberDataTableComponent} from "./views/pages/tables/subscriberDataTable/subscriberDataTable.component";
+import {EditSubscriberComponent} from './views/pages/forms/subscriber/edit/editSubscriber.component';
+import {SubscriberDataTableComponent} from './views/pages/tables/subscriberDataTable/subscriberDataTable.component';
+import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
+import {ListPlanComponent} from './views/pages/forms/plan/list/listPlan.component';
 
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
@@ -36,8 +37,10 @@ const routes: Routes = [
 
       { path: 'add-measurement', component: AddMeasurementComponent},
       { path: 'measurements/:id', component: EditMeasurementComponent},
-
+      { path: 'add-plan', component: AddPlanComponent},
+      { path: 'list-plan', component: ListPlanComponent},
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+
     ]
   },
   {

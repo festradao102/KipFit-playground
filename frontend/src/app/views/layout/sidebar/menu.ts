@@ -35,11 +35,13 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Ver planes',
-        link: '/'
+      //  link: '/form-elements/basic-elements'
+        link: 'list-plan'
       },
       {
         label: 'Crear un plan',
-        link: '/'
+      //  link: '/advanced-form-elements/ngx-dropzone-wrapper'
+        link: 'add-plan'
       },
     ]
   },
