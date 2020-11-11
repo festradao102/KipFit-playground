@@ -8,8 +8,10 @@ import {AddSubscriberComponent} from './views/pages/forms/subscriber/add/addSubs
 import {AddMeasurementComponent} from './views/pages/forms/measurements/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurements/edit/editMeasurement.component';
 import {SubscriberProfileComponent} from './views/pages/forms/subscribers/profile/subscriberProfile.component';
-import {EditSubscriberComponent} from "./views/pages/forms/subscriber/edit/editSubscriber.component";
-import {SubscriberTableComponent} from "./views/pages/tables/subscriber-table/subscriber-table.component";
+import {EditSubscriberComponent} from './views/pages/forms/subscriber/edit/editSubscriber.component';
+import {SubscriberTableComponent} from './views/pages/tables/subscriber-table/subscriber-table.component';
+import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
+import {ListPlanComponent} from './views/pages/forms/plan/list/listPlan.component';
 
 
 const routes: Routes = [
@@ -35,6 +37,16 @@ const routes: Routes = [
       {
         path: 'measurements/:id',
         component: EditMeasurementComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'add-plan',
+        component: AddPlanComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'list-plan',
+        component: ListPlanComponent,
         pathMatch: 'full'
       },
       {

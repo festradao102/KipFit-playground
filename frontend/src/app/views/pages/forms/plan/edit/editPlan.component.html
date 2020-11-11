@@ -1,0 +1,63 @@
+<form class="forms-sample">
+    <div class="row">
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Editar plan</h6>
+
+                    <div class="form-group row">
+                        <label for="subid" class="col-sm-3 col-form-label">Plan del suscriptor</label>
+                        <div class="col-sm-9">
+                            <input type="number" min="0" class="form-control" id="subid" name="subid" readonly
+                                   [(ngModel)]="currentPlan.subscriber.id">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="dateCreated" class="col-sm-3 col-form-label">Fecha de creación</label>
+                        <div class="col-sm-9">
+                            <input type="date" min="0" class="form-control" id="dateCreated" name="dateCreated" readonly
+                                   [(ngModel)]="currentPlan.dateCreated">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="creatorName" class="col-sm-3 col-form-label">Creador del plan</label>
+                        <div class="col-sm-9">
+                            <input type="text" min="0" class="form-control" id="creatorName" name="creatorName"
+                                   [(ngModel)]="currentPlan.creatorName">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="objective" class="col-sm-3 col-form-label">Objetivo</label>
+                        <div class="col-sm-9">
+                            <input type="text" min="0" class="form-control" id="objective" name="objective"
+                                   [(ngModel)]="currentPlan.objective">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="objectiveType" class="col-sm-3 col-form-label">Tipo de objetivo</label>
+                        <div class="col-sm-9">
+                            <input type="text" min="0" class="form-control" id="objectiveType" name="objectiveType"
+                                   [(ngModel)]="currentPlan.objectiveType.objectiveName">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="active" class="col-sm-3 col-form-label">Activo</label>
+                        <div class="col-sm-9">
+                            <input type="checkbox" min="0" class="form-control" id="active" name="active"
+                                   [(ngModel)]="currentPlan.active">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2" (click)="updatePlan()">Actualizar</button>
+                    <button type="submit" class="btn btn-light" (click)="deletePlan()">Borrar</button>
+                    <p>{{ message }}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

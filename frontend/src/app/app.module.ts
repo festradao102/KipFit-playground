@@ -6,8 +6,8 @@ import {NgxMaskModule} from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from "@angular/forms";
-import {ChartsModule} from "ng2-charts";
+import {FormsModule} from '@angular/forms';
+import {ChartsModule} from 'ng2-charts';
 import { LayoutModule } from './views/layout/layout.module';
 import { AuthGuard } from './core/guard/auth.guard';
 
@@ -26,7 +26,11 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { AddSubscriberComponent } from './views/pages/forms/subscriber/add/addSubscriber.component';
 import { EditSubscriberComponent } from './views/pages/forms/subscriber/edit/editSubscriber.component';
 import { SubscriberTableComponent } from './views/pages/tables/subscriber-table/subscriber-table.component';
-import {AngularCropperjsModule} from "angular-cropperjs";
+import {AngularCropperjsModule} from 'angular-cropperjs';
+import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
+import {EditPlanComponent} from './views/pages/forms/plan/edit/editPlan.component';
+import {ListPlanComponent} from './views/pages/forms/plan/list/listPlan.component';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -40,20 +44,24 @@ import {AngularCropperjsModule} from "angular-cropperjs";
     EditMeasurementComponent,
     SubscriberProfileComponent,
     MeasurementsDataTableComponent,
-    SubChartsComponent
+    SubChartsComponent,
+    AddPlanComponent,
+    EditPlanComponent,
+    ListPlanComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    FormsModule,
-    HttpClientModule,
-    NgxMaskModule.forRoot(),
-    HttpClientModule,
-    ChartsModule,
-    AngularCropperjsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        FormsModule,
+        HttpClientModule,
+        NgxMaskModule.forRoot(),
+        HttpClientModule,
+        ChartsModule,
+        AngularCropperjsModule,
+        NgSelectModule
+    ],
   providers: [
     AuthGuard,
     {
