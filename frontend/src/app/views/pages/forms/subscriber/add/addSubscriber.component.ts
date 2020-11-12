@@ -1,19 +1,19 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 
-import {any} from "codelyzer/util/function";
+import {any} from 'codelyzer/util/function';
 import {ActivatedRoute, Router} from '@angular/router';
-import {formatDate} from "@angular/common";
-import {SubscriberService} from "../../../../../services/subscriber.service";
-import {UserService} from "../../../../../services/user.service";
-import {FitUserService} from "../../../../../services/fit-user.service";
+import {formatDate} from '@angular/common';
+import {SubscriberService} from '../../../../../services/subscriber.service';
+import {UserService} from '../../../../../services/user.service';
+import {FitUserService} from '../../../../../services/fit-user.service';
 // import {ImageCropperComponent} from "../../../../../views/pages/advanced-ui/image-cropper/cropper.component";
-import {CropperComponent} from "angular-cropperjs";
+import {CropperComponent} from 'angular-cropperjs';
 
-import {ImageUploadComponent} from "../../../ui-components/image-upload-component/image-upload-component.component";
-import Swal from "sweetalert2";
+import {ImageUploadComponent} from '../../../ui-components/image-upload-component/image-upload-component.component';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-addSubscriber',
+  selector: 'app-add-subscriber-component',
   templateUrl: './addSubscriber.component.html',
   styleUrls: ['./addSubscriber.component.scss']
 })
@@ -58,7 +58,7 @@ export class AddSubscriberComponent implements OnInit {
   };
 
   tiemposDePago = [
-    "Mensual", "Semanal","Quincenal"
+    'Mensual', 'Semanal','Quincenal'
   ];
   @ViewChild('angularCropper') public angularCropper: CropperComponent;
   @ViewChild('imageUploadComponent') public imageUploadComponent: ImageUploadComponent;
@@ -138,18 +138,18 @@ export class AddSubscriberComponent implements OnInit {
                                   Swal.fire(
                                       {
 
-                                        icon: "success",
-                                        title: "Suscriptor Agregado."
+                                        icon: 'success',
+                                        title: 'Suscriptor Agregado.'
                                       }
                                   ).then(result => {
-                                    this.router.navigateByUrl("subscribers");
+                                    this.router.navigateByUrl('subscribers');
                                   })
 
                                 },
                                 error => {
                                   Swal.fire(
                                       {
-                                        icon: "error",
+                                        icon: 'error',
                                         title: error.error.title
                                       }
                                   )
@@ -159,7 +159,7 @@ export class AddSubscriberComponent implements OnInit {
                       error => {
                         Swal.fire(
                             {
-                              icon: "error",
+                              icon: 'error',
                               title: error.error.title
                             }
                         )
@@ -169,7 +169,7 @@ export class AddSubscriberComponent implements OnInit {
             error => {
               Swal.fire(
                   {
-                    icon: "error",
+                    icon: 'error',
                     title: error.error.title
                   }
               )
@@ -185,23 +185,23 @@ export class AddSubscriberComponent implements OnInit {
 
 
 
-  //imagen
+  // imagen
   openFileBrowser(event: any) {
     event.preventDefault();
-    let element: HTMLElement = document.querySelector("#cropperImageUpload") as HTMLElement;
+    const element: HTMLElement = document.querySelector('#cropperImageUpload') as HTMLElement;
     element.click()
 
   }
 
   handleFileInput(event: any) {
     if (event.target.files.length) {
-      let element: HTMLElement = document.querySelector("#cropperImageUpload + .input-group .file-upload-info") as HTMLElement;
-      let fileName = event.target.files[0].name;
+      const element: HTMLElement = document.querySelector('#cropperImageUpload + .input-group .file-upload-info') as HTMLElement;
+      const fileName = event.target.files[0].name;
       element.setAttribute( 'value', fileName)
-      var fileTypes = ['jpg', 'jpeg', 'png'];  //acceptable file types
-      var extension = event.target.files[0].name.split('.').pop().toLowerCase(),  //file extension from input file
-          isSuccess = fileTypes.indexOf(extension) > -1;  //is extension in acceptable types
-      if (isSuccess) { //yes
+      const fileTypes = ['jpg', 'jpeg', 'png'];  // acceptable file types
+      const extension = event.target.files[0].name.split('.').pop().toLowerCase(),  // file extension from input file
+          isSuccess = fileTypes.indexOf(extension) > -1;  // is extension in acceptable types
+      if (isSuccess) { // yes
         // start file reader
         const reader = new FileReader();
         const angularCropper = this.angularCropper;
@@ -211,7 +211,7 @@ export class AddSubscriberComponent implements OnInit {
           }
         };
         reader.readAsDataURL(event.target.files[0]);
-      } else { //no
+      } else { // no
         alert('Selected file is not an image. Please select an image file.')
       }
     }
@@ -219,7 +219,7 @@ export class AddSubscriberComponent implements OnInit {
 
   cropImage() {
     this.resultImage = this.angularCropper.cropper.getCroppedCanvas().toDataURL();
-    let dwn: HTMLElement = document.querySelector('.download') as HTMLElement;
+    const dwn: HTMLElement = document.querySelector('.download') as HTMLElement;
     dwn.setAttribute('href', this.resultImage);
 
 

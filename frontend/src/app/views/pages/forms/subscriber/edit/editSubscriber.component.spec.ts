@@ -1,25 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-//import {MeasurementDataTableComponent} from './measurementDataTable.component';
+import {EditSubscriberComponent} from './editSubscriber.component';
 
-describe('MeasurementDataTableComponent', () => {
-  // let component: MeasurementDataTableComponent;
-  // let fixture: ComponentFixture<MeasurementDataTableComponent>;
+describe('EditSubscriberComponent', () => {
+  let component: EditSubscriberComponent;
+  let fixture: ComponentFixture<EditSubscriberComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      //declarations: [ MeasurementDataTableComponent ]
+      declarations: [ EditSubscriberComponent ]
     })
         .compileComponents();
   }));
 
   beforeEach(() => {
-    // fixture = TestBed.createComponent(MeasurementDataTableComponent);
-    // component = fixture.componentInstance;
-    // fixture.detectChanges();
+    fixture = TestBed.createComponent(EditSubscriberComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
-  //  expect(component).toBeTruthy();
+   expect(component).toBeTruthy();
   });
 });

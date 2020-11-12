@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {DataTable} from 'simple-datatables';
-import {ActivatedRoute, Router} from "@angular/router";
-import {FitUserService} from "../../../../../services/fit-user.service";
-import Swal from "sweetalert2";
+import {ActivatedRoute, Router} from '@angular/router';
+import {FitUserService} from '../../../../../services/fit-user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-user',
-  templateUrl: './list-user.component.html',
-  styleUrls: ['./list-user.component.scss']
+  templateUrl: './userDataTable.component.html',
+  styleUrls: ['./userDataTable.component.scss']
 })
-export class ListUserComponent implements OnInit {
+export class UserDataTableComponent implements OnInit {
 
   users: any;
   usersDataTable: any;
@@ -33,8 +33,8 @@ export class ListUserComponent implements OnInit {
               for (const user of this.users) {
                 dataTableRows.push([
                   user.legalId.toString(),
-                  user.user === null ? "" : user.user.firstName + " " + user.user.lastName,
-                  `<a href="/users/new-user/${user.id}">Ver Detalles</a>`
+                  user.user === null ? '' : user.user.firstName + ' ' + user.user.lastName,
+                  `<a href="/add-user/${user.id}">Ver Detalles</a>`
                 ]);
               }
               console.log(dataTableRows);
