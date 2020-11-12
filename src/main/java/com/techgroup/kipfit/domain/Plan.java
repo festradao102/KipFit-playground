@@ -51,8 +51,8 @@ public class Plan implements Serializable {
     private Set<ObjectiveType> objectiveTypes;
 
     @ManyToOne
-    //@JsonIgnoreProperties(value = "plans", allowSetters = true)
-    @JsonBackReference
+    @JsonIgnoreProperties(value = "plans", allowSetters = true)
+    // @JsonBackReference
     private Subscriber subscriber;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
