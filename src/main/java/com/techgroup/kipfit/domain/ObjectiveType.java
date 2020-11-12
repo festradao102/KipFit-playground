@@ -28,7 +28,7 @@ public class ObjectiveType implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToOne
     @JsonIgnoreProperties(value = "objectiveTypes", allowSetters = true)
     private Plan plan;
 

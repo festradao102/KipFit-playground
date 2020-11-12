@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PlanService} from '../../../../../services/plan.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -11,14 +12,14 @@ import {PlanService} from '../../../../../services/plan.service';
 export class EditPlanComponent implements OnInit {
   subscribers: any;
   currentPlan = null;
-  message = '';
+  // message = '';
   constructor(
     private planService: PlanService,
     private route: ActivatedRoute,
     private router: Router) {
   }
   ngOnInit(): void {
-    this.message = '';
+    // this.message = '';
     this.getPlan(this.route.snapshot.paramMap.get('id'));
   }
 
@@ -32,14 +33,23 @@ export class EditPlanComponent implements OnInit {
         error => {
           console.log(error);
         });
-  }
+    }
 
   updatePlan(): void {
-    this.planService.update(this.currentPlan.id, this.currentPlan)
+    this.planService.update(this.currentPlan)
       .subscribe(
         response => {
           console.log(response);
-          this.message = 'El plan fue actualizado';
+         // this.message = 'El plan fue actualizado';
+            Swal.fire({
+                //  position: 'top-end',
+                icon: 'success',
+                title: 'Plan actualizado satisfactoriamente',
+                showConfirmButton: false,
+                timer: 1500
+            }).then (result => {
+                this.router.navigateByUrl('dashboard');
+            })
         },
         error => {
           console.log(error);
@@ -47,12 +57,12 @@ export class EditPlanComponent implements OnInit {
   }
 
   deletePlan(): void {
-   // const subId = this.currentPlan.subscriber.id;
+    const subscriberId = this.currentPlan.subscriber.id;
     this.planService.delete(this.currentPlan.id)
       .subscribe(
         response => {
           console.log(response);
-          this.router.navigate(['/dashboard/']);
+          this.router.navigate(['/subscriber-profile/'+subscriberId]);
         },
         error => {
           console.log(error);

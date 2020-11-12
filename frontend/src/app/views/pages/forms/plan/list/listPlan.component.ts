@@ -33,7 +33,7 @@ export class ListPlanComponent implements OnInit {
                             singlePlan.objective,
                             singlePlan.dateCreated,
                             singlePlan.creatorName,
-                            `<a href="/add/add-plan/${singlePlan.id}">Ver Detalles</a>`
+                            `<a href="/plans/${singlePlan.id}">Ver Detalles</a>`
                         ]);
                     }
                     console.log(dataTableRows);

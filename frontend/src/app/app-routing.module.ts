@@ -15,6 +15,7 @@ import {ListPlanComponent} from './views/pages/forms/plan/list/listPlan.componen
 
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
+import {EditPlanComponent} from './views/pages/forms/plan/edit/editPlan.component';
 
 const routes: Routes = [
   { path:'auth', loadChildren: () => import('./views/pages/auth/auth.module').then(m => m.AuthModule) },
@@ -39,6 +40,7 @@ const routes: Routes = [
       { path: 'measurements/:id', component: EditMeasurementComponent},
       { path: 'add-plan', component: AddPlanComponent},
       { path: 'list-plan', component: ListPlanComponent},
+      { path: 'plans/:id', component: EditPlanComponent},
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
     ]

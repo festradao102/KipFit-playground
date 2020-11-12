@@ -78,9 +78,6 @@ export class AddPlanComponent implements OnInit {
         this.planService.create(data).subscribe(
             response => {
                 console.log(response);
-                //this.servicio objetivo get by id
-                //objetuivoquetrae.plan=response
-                //thiss.servicio de objeti  .update .put (objetuivoquetrae)
                 this.submitted = true;
                 Swal.fire({
                   //  position: 'top-end',

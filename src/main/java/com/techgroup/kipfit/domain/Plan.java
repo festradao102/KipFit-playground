@@ -1,8 +1,11 @@
 package com.techgroup.kipfit.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.FetchMode;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
@@ -40,14 +43,16 @@ public class Plan implements Serializable {
 
     @OneToMany(mappedBy = "plan")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private List<Routine> routines;
+    private Set<Routine> routines;
 
-    @OneToMany(mappedBy = "plan")
+    @OneToMany(mappedBy = "plan", fetch = FetchType.EAGER)
+    // @Fetch (fetch = FetchMode.SUBSELECT)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private List<ObjectiveType> objectiveTypes;
+    private Set<ObjectiveType> objectiveTypes;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "plans", allowSetters = true)
+    //@JsonIgnoreProperties(value = "plans", allowSetters = true)
+    @JsonBackReference
     private Subscriber subscriber;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -111,11 +116,11 @@ public class Plan implements Serializable {
         this.active = active;
     }
 
-    public List<Routine> getRoutines() {
+    public Set<Routine> getRoutines() {
         return routines;
     }
 
-    public Plan routines(List<Routine> routines) {
+    public Plan routines(Set<Routine> routines) {
         this.routines = routines;
         return this;
     }
@@ -132,15 +137,15 @@ public class Plan implements Serializable {
         return this;
     }
 
-    public void setRoutines(List<Routine> routines) {
+    public void setRoutines(Set<Routine> routines) {
         this.routines = routines;
     }
 
-    public List<ObjectiveType> getObjectiveTypes() {
+    public Set<ObjectiveType> getObjectiveTypes() {
         return objectiveTypes;
     }
 
-    public Plan objectiveTypes(List<ObjectiveType> objectiveTypes) {
+    public Plan objectiveTypes(Set<ObjectiveType> objectiveTypes) {
         this.objectiveTypes = objectiveTypes;
         return this;
     }
@@ -157,7 +162,7 @@ public class Plan implements Serializable {
         return this;
     }
 
-    public void setObjectiveTypes(List<ObjectiveType> objectiveTypes) {
+    public void setObjectiveTypes(Set<ObjectiveType> objectiveTypes) {
         this.objectiveTypes = objectiveTypes;
     }
 

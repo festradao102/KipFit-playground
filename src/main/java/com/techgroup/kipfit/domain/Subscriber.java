@@ -44,12 +44,12 @@ public class Subscriber implements Serializable {
     @OneToMany(mappedBy = "subscriber")
     @NotFound(action = NotFoundAction.IGNORE)
     // @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private List<Measurement> measurements;
+    private Set<Measurement> measurements;
 
-    @OneToMany(mappedBy = "subscriber")
+    @OneToMany(mappedBy = "subscriber", fetch = FetchType.EAGER)
     @NotFound(action = NotFoundAction.IGNORE)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private List<Plan> plans;
+    // @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<Plan> plans;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -123,11 +123,11 @@ public class Subscriber implements Serializable {
         this.subscriptionPayment = subscriptionPayment;
     }
 
-    public List<Measurement> getMeasurements() {
+    public Set<Measurement> getMeasurements() {
         return measurements;
     }
 
-    public Subscriber measurements(List<Measurement> measurements) {
+    public Subscriber measurements(Set<Measurement> measurements) {
         this.measurements = measurements;
         return this;
     }
@@ -144,15 +144,15 @@ public class Subscriber implements Serializable {
         return this;
     }
 
-    public void setMeasurements(List<Measurement> measurements) {
+    public void setMeasurements(Set<Measurement> measurements) {
         this.measurements = measurements;
     }
 
-    public List<Plan> getPlans() {
+    public Set<Plan> getPlans() {
         return plans;
     }
 
-    public Subscriber plans(List<Plan> plans) {
+    public Subscriber plans(Set<Plan> plans) {
         this.plans = plans;
         return this;
     }
@@ -169,7 +169,7 @@ public class Subscriber implements Serializable {
         return this;
     }
 
-    public void setPlans(List<Plan> plans) {
+    public void setPlans(Set<Plan> plans) {
         this.plans = plans;
     }
 
