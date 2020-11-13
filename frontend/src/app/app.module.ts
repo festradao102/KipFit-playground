@@ -13,9 +13,11 @@ import { AuthGuard } from './core/guard/auth.guard';
 
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
+import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
+import {MeasurementsDataTableComponent} from "./views/pages/forms/subscriber/profile/measurementsDataTable.component";
 
 import {MeasurementsDataTableComponent} from './views/pages/forms/subscriber/profile/measurementsDataTable.component';
 import {SubChartsComponent} from './views/pages/forms/subscriber/profile/subCharts.component';
@@ -26,12 +28,20 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { AddSubscriberComponent } from './views/pages/forms/subscriber/add/addSubscriber.component';
 import { EditSubscriberComponent } from './views/pages/forms/subscriber/edit/editSubscriber.component';
 import {SubscriberDataTableComponent} from "./views/pages/tables/subscriberDataTable/subscriberDataTable.component";
+import {SubChartsComponent} from "./views/pages/forms/subscriber/profile/subCharts.component";
+
+import {EditExerciseComponent} from "./views/pages/forms/exercises/edit-exercise/edit-exercise.component";
+import {ListExercisesComponent} from "./views/pages/forms/exercises/list-exercises/list-exercises.component";
+import {AddExerciseComponent} from "./views/pages/forms/exercises/add-exercise/add-exercise.component";
+
 import {AngularCropperjsModule} from "angular-cropperjs";
 import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
 import {EditPlanComponent} from './views/pages/forms/plan/edit/editPlan.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
+
+import {AngularCropperjsModule} from "angular-cropperjs";
 
 
 import { CommonModule } from '@angular/common';
@@ -42,19 +52,26 @@ import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDat
   declarations: [
     AppComponent,
     ErrorPageComponent,
+
+    AddMeasurementComponent,
+    EditMeasurementComponent,
+    MeasurementsDataTableComponent,
+
     AddSubscriberComponent,
     EditSubscriberComponent,
     SubscriberDataTableComponent,
     AddMeasurementComponent,
     EditMeasurementComponent,
     SubscriberProfileComponent,
-    MeasurementsDataTableComponent,
+    SubscriberDataTableComponent,
     SubChartsComponent,
-    AddPlanComponent,
-    EditPlanComponent,
-    PlanDataTableComponent,
+
     AddUserComponent,
     UserDataTableComponent,
+
+    AddExerciseComponent,
+    EditExerciseComponent,
+    ListExercisesComponent,
   ],
   imports: [
     CommonModule,
@@ -63,13 +80,12 @@ import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDat
     BrowserAnimationsModule,
     LayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgxMaskModule.forRoot(),
     HttpClientModule,
     ChartsModule,
-    AngularCropperjsModule,
-    NgSelectModule,
-    ReactiveFormsModule
+    AngularCropperjsModule
   ],
   providers: [
     AuthGuard,

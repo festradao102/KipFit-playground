@@ -36,9 +36,9 @@ public class Exercise implements Serializable {
     @Column(name = "video_path")
     private String videoPath;
 
-    @OneToMany(mappedBy = "exercise")
+    @OneToMany(mappedBy = "exercise", fetch=FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<ExerciseType> exerciseTypes = new HashSet<>();
+    private Set<ExerciseType> exerciseTypes;
 
     @ManyToMany(mappedBy = "exercises" ,fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -177,11 +177,12 @@ public class Exercise implements Serializable {
     @Override
     public String toString() {
         return "Exercise{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", position='" + getPosition() + "'" +
-            ", instructions='" + getInstructions() + "'" +
-            ", videoPath='" + getVideoPath() + "'" +
-            "}";
+                "id=" + getId() +
+                ", name='" + getName() + "'" +
+                ", position='" + getPosition() + "'" +
+                ", instructions='" + getInstructions() + "'" +
+                ", videoPath='" + getVideoPath() + "'" +
+                "}";
     }
 }
+

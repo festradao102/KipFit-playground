@@ -46,11 +46,11 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Ver ejercicios',
-        link: '/',
+        link: '/exercises',
       },
       {
         label: 'Crear un ejercicio',
-        link: '/',
+        link: '/add-exercise',
       },
     ]
   },

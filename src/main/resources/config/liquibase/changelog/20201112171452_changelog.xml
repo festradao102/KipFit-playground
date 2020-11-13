@@ -1,0 +1,39 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="root (generated)" id="1605201302616-1">
+        <createTable tableName="exercise_type_exercise">
+            <column name="exercise_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="exercise_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="root (generated)" id="1605201302616-2">
+        <addColumn tableName="exercise">
+            <column name="exercise_types_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="root (generated)" id="1605201302616-3">
+        <addUniqueConstraint columnNames="exercise_id" constraintName="UK_ltlhwp73e1auot9avrde2wvgb" tableName="exercise_type_exercise"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1605201302616-4">
+        <addForeignKeyConstraint baseColumnNames="exercise_type_id" baseTableName="exercise_type_exercise" constraintName="FKgt8rsqrgw1fgm99mjxja3ql32" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="exercise_type" validate="true"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1605201302616-5">
+        <addForeignKeyConstraint baseColumnNames="exercise_id" baseTableName="exercise_type_exercise" constraintName="FKjaawto3wli71nixqqle4bio1x" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="exercise" validate="true"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1605201302616-6">
+        <addForeignKeyConstraint baseColumnNames="exercise_types_id" baseTableName="exercise" constraintName="FKjs878cei5ugea8kj0lxedye7s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="exercise_type" validate="true"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1605201302616-7">
+        <dropForeignKeyConstraint baseTableName="EXERCISE_TYPE" constraintName="FK_EXERCISE_TYPE_EXERCISE_ID"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1605201302616-8">
+        <dropColumn columnName="EXERCISE_ID" tableName="EXERCISE_TYPE"/>
+    </changeSet>
+    <changeSet author="root (generated)" id="1605201302616-9">
+        <dropColumn columnName="MEASUREMENT_ID" tableName="MEASUREMENT"/>
+    </changeSet>
+</databaseChangeLog>
