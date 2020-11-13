@@ -19,7 +19,8 @@
                         </div>
                         <div class="form-group">
                             <label>Objetivo</label>
-                            <select id="objective" class="form-control" [(ngModel)]="plan.objective" name="objective">
+                            <p class="text-danger form-check-inline" *ngIf="txtObjective?.errors?.required">*</p>
+                            <select id="objective" class="form-control" [(ngModel)]="plan.objective" #txtObjective="ngModel" name="objective" required>
                                 <option value="Disminuir grasa corporal">Disminuir grasa corporal</option>
                                 <option value="Aumentar masa muscular">Aumentar masa muscular</option>
                                 <option value="Aumentar resistencia muscular">Aumentar resistencia muscular</option>
@@ -67,7 +68,7 @@
 
                         </div>
                         <button type="submit" class="btn btn-light  ">Agregar rutina</button>
-                        <button type="submit" class="btn btn-primary mr-2 float-right" (click)="savePlan()">Crear</button>
+                        <button type="submit" class="btn btn-primary mr-2 float-right" [disabled]="txtObjective?.errors?.required" (click)="savePlan()">Crear</button>
 
                     </form>
                 </div>

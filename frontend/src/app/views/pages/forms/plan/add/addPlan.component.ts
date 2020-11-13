@@ -80,9 +80,9 @@ export class AddPlanComponent implements OnInit {
                 console.log(response);
                 this.submitted = true;
                 Swal.fire({
-                  //  position: 'top-end',
+                    position: 'top-end',
                     icon: 'success',
-                    title: 'Plan registrado satisfactoriamente',
+                    title: 'El plan se creó correctamente',
                     showConfirmButton: false,
                     timer: 1500
                 }).then (result => {

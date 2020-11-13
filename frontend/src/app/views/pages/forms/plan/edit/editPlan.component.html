@@ -27,12 +27,24 @@
 
                     </div>
 
-                    <div class="form-group">
+<!--                    <div class="form-group">
                         <label for="objective">Objetivo</label>
 
-                            <input type="text" min="0" class="form-control" id="objective" name="objective"
+                            <input type="" min="0" class="form-control" id="objective" name="objective"
                                    [(ngModel)]="currentPlan.objective">
 
+                    </div>-->
+
+                    <div class="form-group">
+                        <label>Objetivo</label>
+                        <select id="objective" class="form-control" [(ngModel)]="currentPlan.objective" name="objective">
+                            <option >{{currentPlan.objective}}</option>
+                            <option value="Disminuir grasa corporal">Disminuir grasa corporal</option>
+                            <option value="Aumentar masa muscular">Aumentar masa muscular</option>
+                            <option value="Aumentar resistencia muscular">Aumentar resistencia muscular</option>
+                            <option value="Mejorar fuerza">Mejorar fuerza</option>
+                            <option value="Mejorar base cardiovascular">Mejorar base cardiovascular</option>
+                        </select>
                     </div>
 
                  <!--   <div class="form-group row">
