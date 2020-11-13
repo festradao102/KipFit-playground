@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {ListPlanComponent} from './listPlan.component';
+import {ListPlanComponent} from './planDataTable.component';
 
 describe('ListPlanComponent', () => {
     let component: ListPlanComponent;

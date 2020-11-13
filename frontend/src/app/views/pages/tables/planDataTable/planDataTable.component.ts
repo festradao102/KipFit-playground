@@ -1,20 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SubscriberService} from '../../../../../services/subscriber.service';
 import {DataTable} from 'simple-datatables';
+import {FitUserService} from '../../../../../services/fit-user.service';
 
 @Component({
-  selector: 'app-list-plan-component',
-  templateUrl: './listPlan.component.html',
-  styleUrls: ['./listPlan.component.scss']
+  selector: 'app-plan-data-table-component',
+  templateUrl: './planDataTable.component.html',
+  styleUrls: ['./planDataTable.component.scss']
 })
 
-export class ListPlanComponent implements OnInit {
+export class PlanDataTableComponent implements OnInit {
     plans: any;
     plansDataTable: any;
 
     constructor(private router: Router,
-                private subscriberService:SubscriberService,
+                private fitUserService:FitUserService,
                 private route: ActivatedRoute) { }
 
     ngOnInit(): void {
@@ -23,12 +23,12 @@ export class ListPlanComponent implements OnInit {
     }
 
     retrievePlansSubById(id): void {
-        this.subscriberService.get(id)
+        this.fitUserService.get(id)
             .subscribe(
                 data => {
                     console.log(data);
                     const dataTableRows = [];
-                    for (const singlePlan of data.plans) {
+                    for (const singlePlan of data.subscriber.plans) {
                         dataTableRows.push([
                             singlePlan.objective,
                             singlePlan.dateCreated,

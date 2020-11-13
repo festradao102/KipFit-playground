@@ -29,13 +29,13 @@ import {SubscriberDataTableComponent} from "./views/pages/tables/subscriberDataT
 import {AngularCropperjsModule} from "angular-cropperjs";
 import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
 import {EditPlanComponent} from './views/pages/forms/plan/edit/editPlan.component';
-import {ListPlanComponent} from './views/pages/forms/plan/list/listPlan.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
 
 
 import { CommonModule } from '@angular/common';
+import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDataTable.component';
 
 
 @NgModule({
@@ -52,7 +52,7 @@ import { CommonModule } from '@angular/common';
     SubChartsComponent,
     AddPlanComponent,
     EditPlanComponent,
-    ListPlanComponent,
+    PlanDataTableComponent,
     AddUserComponent,
     UserDataTableComponent,
   ],

@@ -11,7 +11,6 @@ import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile
 import {EditSubscriberComponent} from './views/pages/forms/subscriber/edit/editSubscriber.component';
 import {SubscriberDataTableComponent} from './views/pages/tables/subscriberDataTable/subscriberDataTable.component';
 import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
-import {ListPlanComponent} from './views/pages/forms/plan/list/listPlan.component';
 
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
@@ -39,7 +38,6 @@ const routes: Routes = [
       { path: 'add-measurement', component: AddMeasurementComponent},
       { path: 'measurements/:id', component: EditMeasurementComponent},
       { path: 'add-plan', component: AddPlanComponent},
-      { path: 'list-plan', component: ListPlanComponent},
       { path: 'plans/:id', component: EditPlanComponent},
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
