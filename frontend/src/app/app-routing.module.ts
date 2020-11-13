@@ -1,31 +1,33 @@
+import { AuthGuard } from './core/guard/auth.guard';
+import { BaseComponent } from './views/layout/base/base.component';
+import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BaseComponent } from './views/layout/base/base.component';
-import { AuthGuard } from './core/guard/auth.guard';
-import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 
 import {AddSubscriberComponent} from './views/pages/forms/subscriber/add/addSubscriber.component';
+import {EditSubscriberComponent} from './views/pages/forms/subscriber/edit/editSubscriber.component';
+import {SubscriberDataTableComponent} from './views/pages/tables/subscriberDataTable/subscriberDataTable.component';
+import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
+
 import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
-import {EditSubscriberComponent} from "./views/pages/forms/subscriber/edit/editSubscriber.component";
-import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
-import {SubscriberDataTableComponent} from "./views/pages/tables/subscriberDataTable/subscriberDataTable.component";
-//ARTURO-INICIO
+
 import {AddRoutineComponent} from './views/pages/forms/routine/add/addRoutine.component'
 import {EditRoutineComponent} from "./views/pages/forms/routine/edit/editRoutine.component";
 import {RoutineDataTableComponent} from "./views/pages/tables/routineDataTable/routineDataTable.component";
 import {EditExercisesSetComponent} from "./views/pages/forms/exercisesSet/edit/editExercisesSet.component";
-//ARTURO-FIN
-import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
 
+import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
 
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
-import {EditExerciseComponent} from "./views/pages/forms/exercises/edit-exercise/edit-exercise.component";
-import {ListExercisesComponent} from "./views/pages/forms/exercises/list-exercises/list-exercises.component";
-import {AddExerciseComponent} from "./views/pages/forms/exercises/add-exercise/add-exercise.component";
 import {ChartsGraphsComponent} from "./views/pages/charts-graphs/charts-graphs.component";
 import {EditPlanComponent} from './views/pages/forms/plan/edit/editPlan.component';
+
+import {AddExerciseComponent} from "./views/pages/forms/exercises/add/addExercise.component";
+import {EditExerciseComponent} from "./views/pages/forms/exercises/edit/editExercise.component";
+import {ExercisesDataTableComponent} from './views/pages/tables/exercisesDataTable/exercisesDataTable.component';
+import {ExercisesFilterByTypeDataTableComponent} from "./views/pages/tables/exercisesFilterByTypeDataTable/exercisesFilterByTypeDataTable.component";
 
 const routes: Routes = [
   { path:'auth', loadChildren: () => import('./views/pages/auth/auth.module').then(m => m.AuthModule) },
@@ -42,31 +44,28 @@ const routes: Routes = [
       { path: 'subscribers', component: SubscriberDataTableComponent },
       { path: 'subscribers/:id', component: EditSubscriberComponent, pathMatch: 'full' },
       { path: 'subscriber-profile/:id', component: SubscriberProfileComponent },
-      //ARTURO-INICIO
+
       { path: 'add-routine', component: AddRoutineComponent },
       { path: 'routines', component: RoutineDataTableComponent },
       { path: 'routines/:id', component: EditRoutineComponent, pathMatch: 'full' },
-      //ARTURO-FIN
 
       { path: 'add-user/:id',  component: AddUserComponent },
       { path: 'users', component: UserDataTableComponent },
 
       { path: 'add-measurement', component: AddMeasurementComponent},
       { path: 'measurements/:id', component: EditMeasurementComponent},
+
       { path: 'add-plan', component: AddPlanComponent},
       { path: 'plans/:id', component: EditPlanComponent},
-      {
-        path: 'exercises', component: ListExercisesComponent
-      },
-      {
-        path: 'add-exercise', component: AddExerciseComponent
-      },
-      {
-        path: 'exercises/:id', pathMatch: 'full', component: EditExerciseComponent
-      },
+
+      { path: 'add-exercise', component: AddExerciseComponent },
+      { path: 'exercises/:id', component: EditExerciseComponent, pathMatch: 'full' },
+      { path: 'exercises', component: ExercisesDataTableComponent},
+      { path: 'exercises-types/:id', component: ExercisesFilterByTypeDataTableComponent, pathMatch: 'full'},
+      { path: 'exercises-types', redirectTo: 'exercises-types/1', pathMatch: 'full'},
 
       {
-        path: 'charts', component: ChartsGraphsComponent
+        path: 'charts', component: ChartsGraphsComponent // TODO: Remove this
       },
 
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

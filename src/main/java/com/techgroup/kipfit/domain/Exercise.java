@@ -1,6 +1,7 @@
 package com.techgroup.kipfit.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -36,11 +37,12 @@ public class Exercise implements Serializable {
     @Column(name = "video_path")
     private String videoPath;
 
-    @OneToMany(mappedBy = "exercise", fetch=FetchType.EAGER)
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<ExerciseType> exerciseTypes;
+    @ManyToOne
+    @JsonIgnoreProperties(value = "exercise")
+    //@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private ExerciseType exerciseType;
 
-    @ManyToMany(mappedBy = "exercises" ,fetch = FetchType.EAGER)
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnore
     private Set<ExercisesSet> exercisesSets = new HashSet<>();
@@ -106,29 +108,19 @@ public class Exercise implements Serializable {
         this.videoPath = videoPath;
     }
 
-    public Set<ExerciseType> getExerciseTypes() {
-        return exerciseTypes;
+    public ExerciseType getExerciseType() {
+        return exerciseType;
     }
 
-    public Exercise exerciseTypes(Set<ExerciseType> exerciseTypes) {
-        this.exerciseTypes = exerciseTypes;
+    public Exercise exerciseType(ExerciseType exerciseType) {
+        this.exerciseType = exerciseType;
         return this;
     }
 
-    public Exercise addExerciseType(ExerciseType exerciseType) {
-        this.exerciseTypes.add(exerciseType);
-        exerciseType.setExercise(this);
-        return this;
-    }
 
-    public Exercise removeExerciseType(ExerciseType exerciseType) {
-        this.exerciseTypes.remove(exerciseType);
-        exerciseType.setExercise(null);
-        return this;
-    }
 
-    public void setExerciseTypes(Set<ExerciseType> exerciseTypes) {
-        this.exerciseTypes = exerciseTypes;
+    public void setExerciseTypes(ExerciseType exerciseType) {
+        this.exerciseType = exerciseType;
     }
 
     public Set<ExercisesSet> getExercisesSets() {

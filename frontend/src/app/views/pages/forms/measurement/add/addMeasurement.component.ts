@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {formatDate} from "@angular/common";
+import {formatDate} from '@angular/common';
 
 
 import { SubscriberService } from '../../../../../services/subscriber.service';
-import {MeasurementService} from "../../../../../services/measurement.service";
+import {MeasurementService} from '../../../../../services/measurement.service';
+import {FitUserService} from '../../../../../services/fit-user.service';
+import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-measurement-component',
@@ -37,7 +40,10 @@ export class AddMeasurementComponent implements OnInit {
     }
   };
   submitted = false;
-  constructor(private measurementService: MeasurementService, private subscriberService: SubscriberService) { }
+  constructor(private router: Router,
+              private measurementService: MeasurementService,
+              private fitUserService: FitUserService,
+              private subscriberService: SubscriberService) { }
 
   ngOnInit(): void {
     this.message = '';
@@ -45,10 +51,16 @@ export class AddMeasurementComponent implements OnInit {
   }
 
   retrieveSubscribers(): void {
-    this.subscriberService.getAll()
+    const subs = [];
+    this.fitUserService.getAll()
       .subscribe(
         data => {
-          this.subscribers = data;
+          for (const fitUser of data) {
+            if(fitUser.subscriber!=null) {
+              subs.push({id:fitUser.subscriber.id, name: fitUser.user.firstName + ' ' + fitUser.user.lastName})
+            }
+          }
+          this.subscribers = subs;
           console.log(data);
         },
         error => {
@@ -85,9 +97,12 @@ export class AddMeasurementComponent implements OnInit {
         response => {
           console.log(response);
           this.submitted = true;
+          Swal.fire({ icon: 'success', title: 'Las medidas se almacenaron correctamente.'})
+            .then(result => { this.router.navigateByUrl('subscriber-profile/'+this.measurement.subscriber.id);})
         },
         error => {
-          console.log(error);
+          console.log(error)
+          Swal.fire({ icon: 'error', title: error.error.title });
         });
   }
 }

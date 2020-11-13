@@ -24,8 +24,8 @@ export class FitUserService {
     return this.http.post(serviceUrl, pData);
   }
 
-  update(pId, pData): Observable<any> {
-    return this.http.put(`${serviceUrl}/${pId}`, pData);
+  update(pData): Observable<any> {
+    return this.http.put(serviceUrl, pData);
   }
 
   updateOnly(pId, pData): Observable<any> {

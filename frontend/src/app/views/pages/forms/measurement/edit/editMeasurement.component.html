@@ -164,10 +164,8 @@
                                    [(ngModel)]="currentMeasurement.rightCalve">
                         </div>
                     </div>
-
-                    <button type="submit" class="btn btn-danger mr-2"  (click)="deleteMeasurement()">Borrar</button>
-                    <button type="submit" class="btn btn-primary mr-2" (click)="updateMeasurement()">Actualizar</button>
-                    <p>{{ message }}</p>
+                    <button type="submit" class="btn btn-danger mr-2 float-right" (click)="deleteMeasurement()">Borrar</button>
+                    <button type="submit" class="btn btn-primary mr-2 float-right" (click)="updateMeasurement()">Actualizar</button>
                 </div>
             </div>
         </div>
@@ -178,22 +176,32 @@
             <div class="card">
                 <div class="card-body">
                     <div id="human-body-form">
-                        <input type="number" class="form-control" min="0" style="top: 75px; left: 35%;" name="neck" [(ngModel)]="currentMeasurement.neck">
-                        <input type="number" class="form-control" min="0" style="top: 150px; left: 20%;" name="rightArm" [(ngModel)]="currentMeasurement.rightArm">
-                        <input type="number" class="form-control" min="0" style="top: 260px; left: 20%;" name="wrist" [(ngModel)]="currentMeasurement.wrist">
-                        <input type="number" class="form-control" min="0" style="top: 355px; left: 20%;" name="core" [(ngModel)]="currentMeasurement.core">
-                        <input type="number" class="form-control" min="0" style="top: 415px; left: 20%;" name="hip" [(ngModel)]="currentMeasurement.hip">
-                        <input type="number" class="form-control" min="0" style="top: 450px; left: 30%;" name="rightThigh" [(ngModel)]="currentMeasurement.rightThigh">
-                        <input type="number" class="form-control" min="0" style="top: 540px; left: 30%;" name="rightCalve" [(ngModel)]="currentMeasurement.rightCalve">
+                        <input type="number" class="form-control" min="0" style="top: 75px; left: 35%;" name="neck"
+                               [(ngModel)]="currentMeasurement.neck">
+                        <input type="number" class="form-control" min="0" style="top: 150px; left: 20%;" name="rightArm"
+                               [(ngModel)]="currentMeasurement.rightArm">
+                        <input type="number" class="form-control" min="0" style="top: 260px; left: 20%;" name="wrist"
+                               [(ngModel)]="currentMeasurement.wrist">
+                        <input type="number" class="form-control" min="0" style="top: 355px; left: 20%;" name="core"
+                               [(ngModel)]="currentMeasurement.core">
+                        <input type="number" class="form-control" min="0" style="top: 415px; left: 20%;" name="hip"
+                               [(ngModel)]="currentMeasurement.hip">
+                        <input type="number" class="form-control" min="0" style="top: 450px; left: 30%;"
+                               name="rightThigh" [(ngModel)]="currentMeasurement.rightThigh">
+                        <input type="number" class="form-control" min="0" style="top: 540px; left: 30%;"
+                               name="rightCalve" [(ngModel)]="currentMeasurement.rightCalve">
 
-                        <input type="number" class="form-control" min="0" style="top: 170px; right: 20%;" name="leftArm" [(ngModel)]="currentMeasurement.leftArm">
-                        <input type="number" class="form-control" min="0" style="top: 340px; right: 20%;" name="thorax" [(ngModel)]="currentMeasurement.thorax" >
-                        <input type="number" class="form-control" min="0" style="top: 385px; right: 20%;" name="leftThigh"[(ngModel)]="currentMeasurement.leftThigh">
-                        <input type="number" class="form-control" min="0" style="top: 495px; right: 20%;" name="leftCalve" [(ngModel)]="currentMeasurement.leftCalve">
+                        <input type="number" class="form-control" min="0" style="top: 170px; right: 20%;" name="leftArm"
+                               [(ngModel)]="currentMeasurement.leftArm">
+                        <input type="number" class="form-control" min="0" style="top: 340px; right: 20%;" name="thorax"
+                               [(ngModel)]="currentMeasurement.thorax">
+                        <input type="number" class="form-control" min="0" style="top: 385px; right: 20%;"
+                               name="leftThigh" [(ngModel)]="currentMeasurement.leftThigh">
+                        <input type="number" class="form-control" min="0" style="top: 495px; right: 20%;"
+                               name="leftCalve" [(ngModel)]="currentMeasurement.leftCalve">
                     </div>
-                    <button type="submit" class="btn btn-danger mr-2"  (click)="deleteMeasurement()">Borrar</button>
-                    <button type="submit" class="btn btn-primary mr-2" (click)="updateMeasurement()">Actualizar</button>
-                    <p>{{ message }}</p>
+                    <button type="submit" class="btn btn-danger mr-2 float-right" (click)="deleteMeasurement()">Borrar</button>
+                    <button type="submit" class="btn btn-primary mr-2 float-right" (click)="updateMeasurement()">Actualizar</button>
                 </div>
             </div>
         </div>

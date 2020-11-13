@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {ExerciseService} from '../../../../../services/exercise.service';
+import {ExerciseService} from '../../../../services/exercise.service';
 import {DataTable} from 'simple-datatables';
 import {single} from "rxjs/operators";
 import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-list-exercises',
-  templateUrl: './list-exercises.component.html',
-  styleUrls: ['./list-exercises.component.scss']
+  selector: 'app-exercises-data-table-component',
+  templateUrl: './exercisesDataTable.component.html',
+  styleUrls: ['./exercisesDataTable.component.scss']
 })
-export class ListExercisesComponent implements OnInit {
+export class ExercisesDataTableComponent implements OnInit {
 
     exercises: any;
     exercisesDataTable: any;

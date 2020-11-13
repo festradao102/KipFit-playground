@@ -16,7 +16,6 @@ import java.util.Optional;
  */
 @Repository
 public interface SubscriberRepository extends JpaRepository<Subscriber, Long> {
-
     @Query(value = "select distinct subscriber from Subscriber subscriber left join fetch subscriber.guidedTrainings left join fetch subscriber.measurements",
         countQuery = "select count(distinct subscriber) from Subscriber subscriber")
     Page<Subscriber> findAllWithEagerRelationships(Pageable pageable);

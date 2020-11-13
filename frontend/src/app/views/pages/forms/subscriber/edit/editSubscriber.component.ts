@@ -20,22 +20,25 @@ import Swal from 'sweetalert2';
 export class EditSubscriberComponent implements OnInit {
   measurements: any;
 
-    currentFitSubscriber = null;
+  currentFitSubscriber = null;
   measurementsDataTable: any;
-    tiemposDePago = [
-        'Mensual', 'Semanal','Quincenal'
-    ];
-    imageUrl: any = 'assets/images/placeholder.jpg';
-    resultImage: any;
-    // Plugin configuration
-    config = {
-        zoomable: true
-    };
-    @ViewChild('angularCropper') public angularCropper: CropperComponent;
+  tiemposDePago = [
+    'Mensual', 'Semanal', 'Quincenal'
+  ];
+  imageUrl: any = 'assets/images/placeholder.jpg';
+  resultImage: any;
+  // Plugin configuration
+  config = {
+    zoomable: true
+  };
+  @ViewChild('angularCropper') public angularCropper: CropperComponent;
 
   constructor(private router: Router,
-              private subscriberService: SubscriberService, private userService: UserService, private fitUserService: FitUserService,
-              private route: ActivatedRoute) { }
+              private subscriberService: SubscriberService,
+              private userService: UserService,
+              private fitUserService: FitUserService,
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.retrieveSubById(this.route.snapshot.paramMap.get('id'));
@@ -43,156 +46,133 @@ export class EditSubscriberComponent implements OnInit {
 
   retrieveSubById(id): void {
     this.fitUserService.get(id)
-        .subscribe(
-            data => {
-              console.log(data);
-              this.currentFitSubscriber = data;
-              this.currentFitSubscriber.bday = formatDate(data.bday, 'yyyy-MM-dd', 'en');
-            },
-            error => {
-              console.log(error);
-            });
+      .subscribe(
+        data => {
+          console.log(data);
+          this.currentFitSubscriber = data;
+          this.currentFitSubscriber.bday = formatDate(data.bday, 'yyyy-MM-dd', 'en');
+        },
+        error => {
+          console.log(error);
+        });
   }
 
-    updateSubscriber() {
+  updateSubscriber() {
+    this.currentFitSubscriber.bday = new Date(this.currentFitSubscriber.bday);
+    this.fitUserService.updateOnly(this.currentFitSubscriber.id, this.currentFitSubscriber).subscribe(
+      updatedFituser => {
+        this.subscriberService.updateOnly(this.currentFitSubscriber.subscriber.id,
+          this.currentFitSubscriber.subscriber).subscribe(
+          updatedSubscriber => {
+            console.log(updatedSubscriber);
+            this.currentFitSubscriber.user.authorities = ['ROLE_USER'];
+            this.userService.updateOnly(this.currentFitSubscriber.user.id, this.currentFitSubscriber.user).subscribe(
+              updatedUser => {
+                console.log(updatedUser);
+                Swal.fire(
+                  {
+                    position: 'center',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    icon: 'success',
+                    title: 'Suscriptor Actualizado.'
+                  }
+                ).then(result => {
+                  this.retrieveSubById(this.route.snapshot.paramMap.get('id'));
+                })
 
 
-        this.currentFitSubscriber.bday = new Date(this.currentFitSubscriber.bday);
-        this.fitUserService.updateOnly(this.currentFitSubscriber.id, this.currentFitSubscriber).subscribe(
-            updatedFituser => {
-
-                this.subscriberService.updateOnly(this.currentFitSubscriber.subscriber.id, this.currentFitSubscriber.subscriber).subscribe(
-                    updatedSubscriber => {
-                        console.log(updatedSubscriber);
-                        this.currentFitSubscriber.user.authorities = ['ROLE_USER'];
-                        this.userService.updateOnly(this.currentFitSubscriber.user.id, this.currentFitSubscriber.user).subscribe(
-                            updatedUser => {
-                                console.log(updatedUser);
-
-                                Swal.fire(
-                                    {
-                                        position: 'center',
-                                        showConfirmButton: false,
-                                        timer: 1500,
-                                        icon: 'success',
-                                        title: 'Suscriptor Actualizado.'
-                                    }
-                                ).then(result => {
-                                    this.retrieveSubById(this.route.snapshot.paramMap.get('id'));
-                                })
-
-
-                            },
-                            error => {
-                                console.log(error);
-                            }
-                        );
-
-                    },
-                    error => {
-                        console.log(error);
-                    }
-                );
-
-
-            },
-            error => {
+              },
+              error => {
                 console.log(error);
-            }
+              }
+            );
+
+          },
+          error => {
+            console.log(error);
+          }
         );
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 
+  deleteSubscriber(fitUser) {
+    Swal.fire(
+      {
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: 'Cancelar',
+        icon: 'warning',
+        title: '¿Desea eliminar suscriptor?'
+      }
+    ).then(result => {
 
+      this.fitUserService.delete(fitUser.id).subscribe(
+        response => {
+          if (result.isConfirmed) {
+            this.userService.delete(fitUser.user.id).subscribe(
+              response2 => {
+                this.subscriberService.delete(fitUser.subscriber.id).subscribe(
+                  response3 => {
+                    Swal.fire(
+                      'Eliminado!',
+                      'Se eliminó el suscriptor.',
+                      'info'
+                    ).then(result => {
+                      this.router.navigateByUrl('subscribers');
+                    })
 
-
-    }
-
-    deleteSubscriber(fitUser) {
-        Swal.fire(
-            {
-                showCancelButton: true,
-                confirmButtonText: 'Eliminar',
-                cancelButtonText: 'Cancelar',
-                icon: 'warning',
-                title: '¿Desea eliminar suscriptor?'
-            }
-        ).then(result => {
-
-            this.fitUserService.delete(fitUser.id).subscribe(
-                response => {
-                    if (result.isConfirmed) {
-                        this.userService.delete(fitUser.user.id).subscribe(
-                            response2 => {
-                                this.subscriberService.delete(fitUser.subscriber.id).subscribe(
-                                    response3 => {
-                                        Swal.fire(
-                                            'Eliminado!',
-                                            'Se eliminó el suscriptor.',
-                                            'info'
-                                        ).then(result => {
-                                            this.router.navigateByUrl('subscribers');
-                                        })
-
-                                    }
-                                )
-                            }
-                        )
-                    }
-                },
-                error => {
-
-                }
+                  }
+                )
+              }
             )
-
-
-
-
-
-        })
-
-    }
-
-
-
-
-
-    // imagen
-    openFileBrowser(event: any) {
-        event.preventDefault();
-        const element: HTMLElement = document.querySelector('#cropperImageUpload') as HTMLElement;
-        element.click()
-
-    }
-
-    handleFileInput(event: any) {
-        if (event.target.files.length) {
-            const element: HTMLElement = document.querySelector('#cropperImageUpload + .input-group .file-upload-info') as HTMLElement;
-            const fileName = event.target.files[0].name;
-            element.setAttribute( 'value', fileName)
-            const fileTypes = ['jpg', 'jpeg', 'png'];  // acceptable file types
-            const extension = event.target.files[0].name.split('.').pop().toLowerCase(),  // file extension from input file
-                isSuccess = fileTypes.indexOf(extension) > -1;  // is extension in acceptable types
-            if (isSuccess) { // yes
-                // start file reader
-                const reader = new FileReader();
-                const angularCropper = this.angularCropper;
-                reader.onload = (event) => {
-                    if(event.target.result) {
-                        angularCropper.imageUrl = event.target.result;
-                    }
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            } else { // no
-                alert('Selected file is not an image. Please select an image file.')
-            }
+          }
+        },
+        error => {
         }
+      )
+    })
+  }
+
+
+  // imagen
+  openFileBrowser(event: any) {
+    event.preventDefault();
+    const element: HTMLElement = document.querySelector('#cropperImageUpload') as HTMLElement;
+    element.click()
+  }
+
+  handleFileInput(event: any) {
+    if (event.target.files.length) {
+      const element: HTMLElement = document.querySelector('#cropperImageUpload + .input-group .file-upload-info') as HTMLElement;
+      const fileName = event.target.files[0].name;
+      element.setAttribute('value', fileName)
+      const fileTypes = ['jpg', 'jpeg', 'png'];  // acceptable file types
+      const extension = event.target.files[0].name.split('.').pop().toLowerCase(),  // file extension from input file
+        isSuccess = fileTypes.indexOf(extension) > -1;  // is extension in acceptable types
+      if (isSuccess) { // yes
+        // start file reader
+        const reader = new FileReader();
+        const angularCropper = this.angularCropper;
+        reader.onload = (event) => {
+          if (event.target.result) {
+            angularCropper.imageUrl = event.target.result;
+          }
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      } else { // no
+        alert('Selected file is not an image. Please select an image file.')
+      }
     }
+  }
 
-    cropImage() {
-        this.resultImage = this.angularCropper.cropper.getCroppedCanvas().toDataURL();
-        const dwn: HTMLElement = document.querySelector('.download') as HTMLElement;
-        dwn.setAttribute('href', this.resultImage);
-
-
-    }
-
+  cropImage() {
+    this.resultImage = this.angularCropper.cropper.getCroppedCanvas().toDataURL();
+    const dwn: HTMLElement = document.querySelector('.download') as HTMLElement;
+    dwn.setAttribute('href', this.resultImage);
+  }
 }

@@ -7,7 +7,7 @@
                     <div class="form-group row">
                         <label for="id" class="col-sm-3 col-form-label">ID</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="id" name="id" disabled
+                            <input type="text" class="form-control" id="id" name="id" readonly
                                    [(ngModel)]="currentExercise.id">
                         </div>
                     </div>
@@ -42,20 +42,13 @@
 
                     <div class="form-group row">
                         <label for="txtExerciseTypeId" class="col-sm-3 col-form-label">Tipo</label>
-                        <select class="col-sm-9" id="txtExerciseTypeId" name="txtExerciseTypeId" [(ngModel)]="exerciseTypes" #txtExerciseTypeIdReq="ngModel">
-                            <option *ngFor="let exerciseType of exerciseTypes" [ngValue]="exerciseType"> {{ exerciseType.typeName}} </option>
+                        <select class="col-sm-9" id="txtExerciseTypeId" name="txtExerciseTypeId"
+                                [(ngModel)]="currentExercise.exerciseType.id" #txtExerciseTypeIdReq="ngModel">
+                            <option *ngFor="let exerciseType of exerciseTypes"
+                                    [ngValue]="currentExercise.exerciseType.id"> {{ exerciseType.typeName }} </option>
                         </select>
                         <p class="text-danger mt-1" *ngIf="txtExerciseTypeIdReq?.errors?.required">*</p>
                     </div>
-
-                    <!--
-                    <div class="form-group">
-                        <label>Tipo</label>
-                        <select class="form-control" id="exerciseTypeId" name="exerciseTypeId" [(ngModel)]="exerciseTypes">
-                            <option *ngFor="let exerciseType of exerciseTypes" [ngValue]="exerciseType.id"> {{ exerciseType.typeName }} </option>
-                        </select>
-                    </div>
-                    -->
 
                     <div>
                         <button type="submit" class="btn btn-secondary mr-2" (click)="updateExercise()">Actualizar</button>

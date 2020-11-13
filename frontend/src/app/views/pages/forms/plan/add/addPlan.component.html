@@ -13,7 +13,7 @@
                                     name="subscriber"
                                     [(ngModel)]="plan.subscriber.id">
                                 <option *ngFor="let subscriber of subscribers"
-                                        [ngValue]="subscriber.id"> {{ subscriber.id }}</option>
+                                        [ngValue]="subscriber.id"> {{ subscriber.name }} (Id: {{ subscriber.id }})</option>
                             </select>
 
                         </div>

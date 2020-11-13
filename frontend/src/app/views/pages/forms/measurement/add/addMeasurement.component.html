@@ -163,11 +163,9 @@
                                    [(ngModel)]="measurement.rightCalve">
                         </div>
                     </div>
-
-
-
-                    <button type="submit" class="btn btn-primary mr-2" (click)="saveMeasurement()">Crear</button>
-
+                    <div>
+                        <button type="submit" class="btn btn-primary mr-2 float-right" (click)="saveMeasurement()">Crear</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -191,15 +189,9 @@
                         <input type="number" class="form-control" min="0" style="top: 385px; right: 20%;" name="leftThigh"[(ngModel)]="measurement.leftThigh">
                         <input type="number" class="form-control" min="0" style="top: 495px; right: 20%;" name="leftCalve" [(ngModel)]="measurement.leftCalve">
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2" (click)="saveMeasurement()">Crear</button>
+                    <button type="submit" class="btn btn-primary mr-2 float-right" (click)="saveMeasurement()">Crear</button>
                 </div>
             </div>
         </div>
     </div>
 </form>
-
-<div class="row ">
-    <div class="" *ngIf="submitted">
-        <h6>Las medidas se almacenaron correctamente.</h6>
-    </div>
-</div>

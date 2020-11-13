@@ -7,6 +7,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import com.techgroup.kipfit.domain.enumeration.ExercisesSetTypeName;
 
@@ -28,9 +29,9 @@ public class ExerciseType implements Serializable {
     @Column(name = "type_name")
     private ExercisesSetTypeName typeName;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "exerciseTypes", allowSetters = true)
-    private Exercise exercise;
+    @OneToMany(mappedBy = "exerciseType", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties(value = "exerciseType", allowSetters = true)
+    private Set<Exercise> exercises;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -54,17 +55,29 @@ public class ExerciseType implements Serializable {
         this.typeName = typeName;
     }
 
-    public Exercise getExercise() {
-        return exercise;
+    public Set<Exercise> getExercise() {
+        return exercises;
     }
 
-    public ExerciseType exercise(Exercise exercise) {
-        this.exercise = exercise;
+    public ExerciseType exercise(Set<Exercise> exercise) {
+        this.exercises = exercise;
         return this;
     }
 
-    public void setExercise(Exercise exercise) {
-        this.exercise = exercise;
+    public ExerciseType addExercise(Exercise exercise) {
+        this.exercises.add(exercise);
+        exercise.setExerciseTypes(this);
+        return this;
+    }
+
+    public ExerciseType removeExercise(Exercise exercise) {
+        this.exercises.remove(exercise);
+        exercise.setExerciseTypes(this);
+        return this;
+    }
+
+    public void setExercise(Set<Exercise> exercises) {
+        this.exercises = exercises;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
