@@ -88,8 +88,10 @@ public class ExerciseType implements Serializable {
     @Override
     public String toString() {
         return "ExerciseType{" +
-            "id=" + getId() +
-            ", typeName='" + getTypeName() + "'" +
-            "}";
+                "id=" + getId() +
+                ", typeName='" + getTypeName() + "'" +
+                "}";
     }
 }
+
+
