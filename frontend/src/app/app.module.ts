@@ -15,6 +15,7 @@ import {NgModule} from '@angular/core';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {NgxMaskModule} from 'ngx-mask';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+import { EmbedVideo } from 'ngx-embed-video';
 
 import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
@@ -89,23 +90,22 @@ import {UiComponentsModule} from "./views/pages/ui-components/ui-components.modu
     ExercisesDataTableComponent,
     ExercisesFilterByTypeDataTableComponent
   ],
-    imports: [
-        CommonModule,
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        LayoutModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        NgxMaskModule.forRoot(),
-        NgxWebstorageModule.forRoot(),
-        HttpClientModule,
-        ChartsModule,
-        AngularCropperjsModule,
-        UiComponentsModule,
-        NgSelectModule
-    ],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxMaskModule.forRoot(),
+    NgxWebstorageModule.forRoot(),
+    HttpClientModule,
+    ChartsModule,
+    AngularCropperjsModule,
+    EmbedVideo
+  ],
   providers: [
     AuthGuard,
     {
