@@ -19,16 +19,14 @@ import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMe
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
 import {MeasurementsDataTableComponent} from "./views/pages/forms/subscriber/profile/measurementsDataTable.component";
 
-import {MeasurementsDataTableComponent} from './views/pages/forms/subscriber/profile/measurementsDataTable.component';
 import {SubChartsComponent} from './views/pages/forms/subscriber/profile/subCharts.component';
 
 import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
 
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+
 import { AddSubscriberComponent } from './views/pages/forms/subscriber/add/addSubscriber.component';
 import { EditSubscriberComponent } from './views/pages/forms/subscriber/edit/editSubscriber.component';
 import {SubscriberDataTableComponent} from "./views/pages/tables/subscriberDataTable/subscriberDataTable.component";
-import {SubChartsComponent} from "./views/pages/forms/subscriber/profile/subCharts.component";
 
 import {EditExerciseComponent} from "./views/pages/forms/exercises/edit-exercise/edit-exercise.component";
 import {ListExercisesComponent} from "./views/pages/forms/exercises/list-exercises/list-exercises.component";
@@ -41,7 +39,6 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
 
-import {AngularCropperjsModule} from "angular-cropperjs";
 
 
 import { CommonModule } from '@angular/common';
