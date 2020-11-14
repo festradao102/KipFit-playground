@@ -1,10 +1,6 @@
 import {Injectable, Injector} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient} from "@angular/common/http";
-
-
-
-
+import {HttpClient} from '@angular/common/http';
 const baseUrl = 'http://localhost:8080/api/subscribers';
 
 @Injectable({

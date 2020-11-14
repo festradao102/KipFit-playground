@@ -1,0 +1,78 @@
+<form class="forms-sample" *ngIf="!submitted">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Agregar Plan</h6>
+                    <form>
+                        <div class="form-group">
+                            <label for="subscriber">Suscriptor</label>
+                            <select
+                                    class="form-control"
+                                    id="subscriber"
+                                    name="subscriber"
+                                    [(ngModel)]="plan.subscriber.id">
+                                <option *ngFor="let subscriber of subscribers"
+                                        [ngValue]="subscriber.id"> {{ subscriber.id }}</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Objetivo</label>
+                            <p class="text-danger form-check-inline" *ngIf="txtObjective?.errors?.required">*</p>
+                            <select id="objective" class="form-control" [(ngModel)]="plan.objective" #txtObjective="ngModel" name="objective" required>
+                                <option value="Disminuir grasa corporal">Disminuir grasa corporal</option>
+                                <option value="Aumentar masa muscular">Aumentar masa muscular</option>
+                                <option value="Aumentar resistencia muscular">Aumentar resistencia muscular</option>
+                                <option value="Mejorar fuerza">Mejorar fuerza</option>
+                                <option value="Mejorar base cardiovascular">Mejorar base cardiovascular</option>
+                            </select>
+                        </div>
+
+                        <!-- <div class="form-group row">
+                             <label for="objective" class="col-sm-3 col-form-label">Objetivo</label>
+                             <div class="col-sm-9">
+                                 <select class="form-control"
+                                         id="objective"
+                                         name="objective"
+                                         [(ngModel)]="plan.objective">
+                                     <option *ngFor="let objective of objectives"
+                                             [ngValue]="objective.id"></option>
+                                 </select>
+                             </div>
+                         </div>-->
+                        <!--        <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Tipos de objetivo</label>
+                                    <div class="col-sm-9">
+                                        <ng-select [multiple]="true"  name= "objectiveType" [(ngModel)]="objectiveListSelected">
+                                            <ng-option *ngFor="let objective of objectives"
+                                                       [value]="objective">{{objective.objectiveName}}</ng-option>
+                                            &lt;!&ndash; <ng-option [value]="'custom'">Custom</ng-option>&ndash;&gt;
+                                        </ng-select>
+                                    </div>
+                                </div>-->
+                        <!-- <div class="form-group row">
+                             <label for="objective" class="col-sm-3 col-form-label">Objetivo</label>
+                             <div class="col-sm-9">
+                                 <input type="text" min="0" class="form-control" id="objective" name="objective"
+                                        [(ngModel)]="plan.objective">
+                             </div>
+                         </div>-->
+                        <div class="form-check form-check-flat form-check-primary mt-0">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="chkActivated"
+                                       [(ngModel)]="plan.active">
+                                <i class="input-frame"></i>
+                                Activar plan
+                            </label>
+
+                        </div>
+                        <button type="submit" class="btn btn-light  ">Agregar rutina</button>
+                        <button type="submit" class="btn btn-primary mr-2 float-right" [disabled]="txtObjective?.errors?.required" (click)="savePlan()">Crear</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

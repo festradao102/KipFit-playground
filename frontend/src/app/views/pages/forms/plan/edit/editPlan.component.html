@@ -1,0 +1,74 @@
+<form class="forms-sample">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Editar plan</h6>
+
+                    <div class="form-group">
+                        <label>Plan del suscriptor</label>
+                        <input type="number" min="0" class="form-control" id="subscriberId" name="subscriberId" readonly
+                                   [(ngModel)]="currentPlan.subscriber.id">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dateCreated">Fecha de creación</label>
+
+                            <input type="text" min="0" class="form-control" id="dateCreated" name="dateCreated" readonly
+                                   [(ngModel)]="currentPlan.dateCreated">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="creatorName">Creador del plan</label>
+
+                            <input type="text" min="0" class="form-control" id="creatorName" name="creatorName"
+                                   [(ngModel)]="currentPlan.creatorName">
+
+                    </div>
+
+<!--                    <div class="form-group">
+                        <label for="objective">Objetivo</label>
+
+                            <input type="" min="0" class="form-control" id="objective" name="objective"
+                                   [(ngModel)]="currentPlan.objective">
+
+                    </div>-->
+
+                    <div class="form-group">
+                        <label>Objetivo</label>
+                        <select id="objective" class="form-control" [(ngModel)]="currentPlan.objective" name="objective">
+                            <option >{{currentPlan.objective}}</option>
+                            <option value="Disminuir grasa corporal">Disminuir grasa corporal</option>
+                            <option value="Aumentar masa muscular">Aumentar masa muscular</option>
+                            <option value="Aumentar resistencia muscular">Aumentar resistencia muscular</option>
+                            <option value="Mejorar fuerza">Mejorar fuerza</option>
+                            <option value="Mejorar base cardiovascular">Mejorar base cardiovascular</option>
+                        </select>
+                    </div>
+
+                 <!--   <div class="form-group row">
+                        <label for="objectiveType" class="col-sm-3 col-form-label">Tipo de objetivo</label>
+                        <div class="col-sm-9">
+                            <input type="text" min="0" class="form-control" id="objectiveType" name="objectiveType"
+                                   [(ngModel)]="currentPlan.objectiveType.objectiveName">
+                        </div>
+                    </div>-->
+
+                    <div class="form-check form-check-flat form-check-primary mt-0">
+                        <label class="form-check-label">
+                            <input type="checkbox" min="0" class="form-check-input" id="active" name="active"
+                                   [(ngModel)]="currentPlan.active">
+                            <i class="input-frame"></i>
+                            Plan activo
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-light float-right grid-margin" (click)="deletePlan()">Borrar</button>
+                    <button type="submit" class="btn btn-primary mr-2 float-right" (click)="updatePlan()">Actualizar</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

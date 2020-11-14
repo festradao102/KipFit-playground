@@ -1,14 +1,18 @@
 package com.techgroup.kipfit.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.FetchMode;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -39,14 +43,16 @@ public class Plan implements Serializable {
 
     @OneToMany(mappedBy = "plan")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Routine> routines = new HashSet<>();
+    private Set<Routine> routines;
 
-    @OneToMany(mappedBy = "plan")
+    @OneToMany(mappedBy = "plan", fetch = FetchType.EAGER)
+    // @Fetch (fetch = FetchMode.SUBSELECT)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<ObjectiveType> objectiveTypes = new HashSet<>();
+    private Set<ObjectiveType> objectiveTypes;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "plans", allowSetters = true)
+    // @JsonBackReference
     private Subscriber subscriber;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

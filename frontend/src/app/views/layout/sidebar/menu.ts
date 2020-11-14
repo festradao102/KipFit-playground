@@ -34,12 +34,9 @@ export const MENU: MenuItem[] = [
     icon: 'file-text',
     subItems: [
       {
-        label: 'Ver planes',
-        link: '/'
-      },
-      {
         label: 'Crear un plan',
-        link: '/'
+      //  link: '/advanced-form-elements/ngx-dropzone-wrapper'
+        link: 'add-plan'
       },
     ]
   },
