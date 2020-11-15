@@ -1,19 +1,20 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Injectable, Injector} from '@angular/core';
 import {Observable} from 'rxjs';
+import {HttpClient} from "@angular/common/http";
 
 
 
 
-
-const baseUrl = 'http://localhost:8080/api/exercises';
+const baseUrl = 'http://localhost:8080/api/exercises-set-types';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExerciseService {
+export class ExercisesSetTypeService {
 
-constructor(private http: HttpClient) { }
+  // constructor() { }
+  constructor(private http: HttpClient){}
+
 
   getAll(): Observable<any> {
     return this.http.get(baseUrl);
@@ -30,7 +31,6 @@ constructor(private http: HttpClient) { }
   update(id, data): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
-
   updateOnly(id, data): Observable<any> {
     return this.http.put(baseUrl, data);
   }
@@ -43,7 +43,9 @@ constructor(private http: HttpClient) { }
     return this.http.delete(baseUrl);
   }
 
-  findByName(name): Observable<any> {
-    return this.http.get(`${baseUrl}?name=${name}`);
+  findByName(nombre): Observable<any> {
+    return this.http.get(`${baseUrl}?nombre=${nombre}`);
   }
 }
+
+

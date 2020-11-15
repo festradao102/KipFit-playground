@@ -30,11 +30,11 @@ public class ExercisesSet implements Serializable {
     @Column(name = "rest_time")
     private Integer restTime;
 
-    @OneToMany(mappedBy = "exercisesSet")
+    @OneToMany(mappedBy = "exercisesSet",fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<ExercisesSetType> exercisesSetTypes = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JoinTable(name = "exercises_set_exercise",
                joinColumns = @JoinColumn(name = "exercises_set_id", referencedColumnName = "id"),
@@ -42,7 +42,7 @@ public class ExercisesSet implements Serializable {
     private Set<Exercise> exercises = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "exercisesSets", allowSetters = true)
+    @JsonIgnoreProperties(value = "exercisesSets",allowSetters = true)
     private Routine routine;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

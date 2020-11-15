@@ -33,8 +33,9 @@ public class Routine implements Serializable {
     @Column(name = "freq")
     private String freq;
 
-    @OneToMany(mappedBy = "routine")
+    @OneToMany(mappedBy = "routine", fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = "routine", allowSetters = true)
     private Set<ExercisesSet> exercisesSets = new HashSet<>();
 
     @ManyToOne

@@ -19,7 +19,6 @@ import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMe
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
 import {MeasurementsDataTableComponent} from "./views/pages/forms/subscriber/profile/measurementsDataTable.component";
 
-import {SubChartsComponent} from './views/pages/forms/subscriber/profile/subCharts.component';
 
 import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
 
@@ -27,6 +26,17 @@ import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile
 import { AddSubscriberComponent } from './views/pages/forms/subscriber/add/addSubscriber.component';
 import { EditSubscriberComponent } from './views/pages/forms/subscriber/edit/editSubscriber.component';
 import {SubscriberDataTableComponent} from "./views/pages/tables/subscriberDataTable/subscriberDataTable.component";
+import {SubChartsComponent} from "./views/pages/forms/subscriber/profile/subCharts.component";
+
+//ARTURO-INICIO
+import {EditExercisesSetComponent} from './views/pages/forms/exercisesSet/edit/editExercisesSet.component'
+import {AddExercisesSetComponent} from './views/pages/forms/exercisesSet/add/addExercisesSet.component'
+import {AddRoutineComponent} from './views/pages/forms/routine/add/addRoutine.component'
+import {EditRoutineComponent} from "./views/pages/forms/routine/edit/editRoutine.component";
+import {RoutineDataTableComponent} from "./views/pages/tables/routineDataTable/routineDataTable.component";
+import {ExercisesSetDataTableComponent} from "./views/pages/tables/exercisesSetDataTable/exercisesSetDataTable.component";
+//ARTURO-FIN
+
 
 import {EditExerciseComponent} from "./views/pages/forms/exercises/edit-exercise/edit-exercise.component";
 import {ListExercisesComponent} from "./views/pages/forms/exercises/list-exercises/list-exercises.component";
@@ -40,9 +50,9 @@ import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
 
 
-
 import { CommonModule } from '@angular/common';
 import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDataTable.component';
+import {UiComponentsModule} from "./views/pages/ui-components/ui-components.module";
 
 
 @NgModule({
@@ -53,6 +63,14 @@ import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDat
     AddMeasurementComponent,
     EditMeasurementComponent,
     MeasurementsDataTableComponent,
+    //ARTURO-INICIO
+    AddRoutineComponent,
+    EditRoutineComponent,
+    RoutineDataTableComponent,
+    EditExercisesSetComponent,
+    AddExercisesSetComponent,
+    ExercisesSetDataTableComponent,
+    //ARTURO-FIN
 
     AddSubscriberComponent,
     EditSubscriberComponent,
@@ -70,20 +88,22 @@ import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDat
     EditExerciseComponent,
     ListExercisesComponent,
   ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgxMaskModule.forRoot(),
-    HttpClientModule,
-    ChartsModule,
-    AngularCropperjsModule
-  ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NgxMaskModule.forRoot(),
+        HttpClientModule,
+        ChartsModule,
+        AngularCropperjsModule,
+        UiComponentsModule,
+        NgSelectModule
+    ],
   providers: [
     AuthGuard,
     {

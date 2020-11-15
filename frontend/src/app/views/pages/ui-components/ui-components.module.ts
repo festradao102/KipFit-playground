@@ -152,21 +152,24 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [UiComponentsComponent, AlertsComponent, BadgesComponent, BreadcrumbsComponent, ButtonsComponent, ButtonGroupComponent, CardsComponent, CarouselComponent, CollapseComponent, DropdownsComponent, ListGroupComponent, MediaObjectComponent, ModalComponent, NavsComponent, NavbarComponent, PaginationComponent, PopoversComponent, ProgressComponent, ScrollbarComponent, SpinnersComponent, TooltipsComponent, RatingComponent, TimepickerComponent, DatepickerComponent, TypeaheadComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    CodePreviewModule,
-    NgbModule,
-    PerfectScrollbarModule,
-    FormsModule,
-    FeahterIconModule
-  ],
-  providers: [
-    {
-      provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
-  ]
+    declarations: [UiComponentsComponent, AlertsComponent, BadgesComponent, BreadcrumbsComponent, ButtonsComponent, ButtonGroupComponent, CardsComponent, CarouselComponent, CollapseComponent, DropdownsComponent, ListGroupComponent, MediaObjectComponent, ModalComponent, NavsComponent, NavbarComponent, PaginationComponent, PopoversComponent, ProgressComponent, ScrollbarComponent, SpinnersComponent, TooltipsComponent, RatingComponent, TimepickerComponent, DatepickerComponent, TypeaheadComponent],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        CodePreviewModule,
+        NgbModule,
+        PerfectScrollbarModule,
+        FormsModule,
+        FeahterIconModule
+    ],
+    exports: [
+        ModalComponent
+    ],
+    providers: [
+        {
+            provide: PERFECT_SCROLLBAR_CONFIG,
+            useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+        }
+    ]
 })
 export class UiComponentsModule { }

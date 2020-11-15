@@ -7,11 +7,18 @@ import { ErrorPageComponent } from './views/pages/error-page/error-page.componen
 import {AddSubscriberComponent} from './views/pages/forms/subscriber/add/addSubscriber.component';
 import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
+import {EditSubscriberComponent} from "./views/pages/forms/subscriber/edit/editSubscriber.component";
 import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
-import {EditSubscriberComponent} from './views/pages/forms/subscriber/edit/editSubscriber.component';
-import {SubscriberDataTableComponent} from './views/pages/tables/subscriberDataTable/subscriberDataTable.component';
+import {SubscriberDataTableComponent} from "./views/pages/tables/subscriberDataTable/subscriberDataTable.component";
+//ARTURO-INICIO
+import {AddRoutineComponent} from './views/pages/forms/routine/add/addRoutine.component'
+import {EditRoutineComponent} from "./views/pages/forms/routine/edit/editRoutine.component";
+import {RoutineDataTableComponent} from "./views/pages/tables/routineDataTable/routineDataTable.component";
+import {EditExercisesSetComponent} from "./views/pages/forms/exercisesSet/edit/editExercisesSet.component";
+
 import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
 
+//ARTURO-FIN
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
 import {EditExerciseComponent} from "./views/pages/forms/exercises/edit-exercise/edit-exercise.component";
@@ -35,6 +42,11 @@ const routes: Routes = [
       { path: 'subscribers', component: SubscriberDataTableComponent },
       { path: 'subscribers/:id', component: EditSubscriberComponent, pathMatch: 'full' },
       { path: 'subscriber-profile/:id', component: SubscriberProfileComponent },
+      //ARTURO-INICIO
+      { path: 'add-routine', component: AddRoutineComponent },
+      { path: 'routines', component: RoutineDataTableComponent },
+      { path: 'routines/:id', component: EditRoutineComponent, pathMatch: 'full' },
+      //ARTURO-FIN
 
       { path: 'add-user/:id',  component: AddUserComponent },
       { path: 'users', component: UserDataTableComponent },
