@@ -1,6 +1,8 @@
 package com.techgroup.kipfit.web.rest;
 
+import com.techgroup.kipfit.domain.ExercisesSet;
 import com.techgroup.kipfit.domain.Routine;
+import com.techgroup.kipfit.repository.ExercisesSetRepository;
 import com.techgroup.kipfit.repository.RoutineRepository;
 import com.techgroup.kipfit.web.rest.errors.BadRequestAlertException;
 
@@ -34,9 +36,11 @@ public class RoutineResource {
     private String applicationName;
 
     private final RoutineRepository routineRepository;
+    private final ExercisesSetRepository exercisesSetRepository;
 
-    public RoutineResource(RoutineRepository routineRepository) {
+    public RoutineResource(RoutineRepository routineRepository,ExercisesSetRepository exercisesSetRepository) {
         this.routineRepository = routineRepository;
+        this.exercisesSetRepository = exercisesSetRepository;
     }
 
     /**
@@ -112,7 +116,15 @@ public class RoutineResource {
     @DeleteMapping("/routines/{id}")
     public ResponseEntity<Void> deleteRoutine(@PathVariable Long id) {
         log.debug("REST request to delete Routine : {}", id);
+        Routine routine = routineRepository.getOne(id);
+        for (ExercisesSet set : routine.getExercisesSets())
+        {
+            exercisesSetRepository.deleteById(set.getId());
+        }
+        routine = routineRepository.getOne(id);
+        routineRepository.save(routine);
         routineRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+
 }

@@ -1,0 +1,65 @@
+<form #f="ngForm" class="row" (ngSubmit)="updateRoutine(f)">
+    <div class="col-md-6 grid-margin stretch-card" >
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Crear Rutina</h6>
+                <div class="forms-sample">
+
+
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Nombre:<span class="text-reddit"> *</span></label>
+                        <div class="col-sm-9">
+                            <input required="required" type="text" [(ngModel)]="currentRoutine.name" class="form-control" name="name" id="name" autocomplete="off" placeholder="Nombre">
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label for="freq" class="col-sm-3 col-form-label">Frecuencia:<span class="text-reddit"> *</span></label>
+                        <div class="col-sm-9">
+                            <select required="required" type="text" [(ngModel)]="currentRoutine.freq" class="form-control" id="freq" name="freq" autocomplete="off" >
+                                <option  *ngFor="let frecuencia of frecuencias" [ngValue]="frecuencia.valueOf()">{{ frecuencia.valueOf() }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6 ">
+                            <span for="" class="col-sm-3 col-form-label"><span class="text-reddit">*</span>Campo obligatorio.</span>
+                        </div>
+
+                        <div class="col-sm-6 d-flex justify-content-end">
+                            <button type="button" id="btnCrear" (click)="updateRoutine(f)" class="btn btn-primary mr-2">Actualizar</button>
+                            <button type="button" id="btnDelete" (click)="deleteRoutine(f)" class="btn btn-light mr-2">Eliminar</button>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div #listaSets class="col-md-6 grid-margin stretch-card" >
+        <div class="card">
+            <div class="card-body" #tip id="tip">
+
+
+                <app-exercises-set-table></app-exercises-set-table>
+                <button (click)="abrirNuevoSet(nuevoSet)"  type="button" class="btn btn-outline-primary d-flex float-right">Crear Set</button>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<!-- Modal -->
+<ng-template  #nuevoSet let-modal>
+
+
+    <app-add-exercisesSet-component (EventSendOut)="funcionEjemploOut($event)" ></app-add-exercisesSet-component>
+
+
+</ng-template>
+
