@@ -42,17 +42,21 @@ import {EditExerciseComponent} from "./views/pages/forms/exercises/edit-exercise
 import {ListExercisesComponent} from "./views/pages/forms/exercises/list-exercises/list-exercises.component";
 import {AddExerciseComponent} from "./views/pages/forms/exercises/add-exercise/add-exercise.component";
 
-import {AngularCropperjsModule} from "angular-cropperjs";
 import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
 import {EditPlanComponent} from './views/pages/forms/plan/edit/editPlan.component';
 import {NgSelectModule} from '@ng-select/ng-select';
+
+
+
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
 
+import {AngularCropperjsModule} from "angular-cropperjs";
+
 
 import { CommonModule } from '@angular/common';
-import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDataTable.component';
 import {UiComponentsModule} from "./views/pages/ui-components/ui-components.module";
+import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDataTable.component';
 
 
 @NgModule({

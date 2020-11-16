@@ -15,10 +15,10 @@ import {AddRoutineComponent} from './views/pages/forms/routine/add/addRoutine.co
 import {EditRoutineComponent} from "./views/pages/forms/routine/edit/editRoutine.component";
 import {RoutineDataTableComponent} from "./views/pages/tables/routineDataTable/routineDataTable.component";
 import {EditExercisesSetComponent} from "./views/pages/forms/exercisesSet/edit/editExercisesSet.component";
-
+//ARTURO-FIN
 import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
 
-//ARTURO-FIN
+
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
 import {EditExerciseComponent} from "./views/pages/forms/exercises/edit-exercise/edit-exercise.component";
