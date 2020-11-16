@@ -12,12 +12,12 @@ import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-edit-subscriber-component',
-  templateUrl: './editSubscriber.component.html',
-  styleUrls: ['./editSubscriber.component.scss']
+  selector: 'app-edit-exercisesSet-component',
+  templateUrl: './editExercisesSet.component.html',
+  styleUrls: ['./editExercisesSet.component.scss']
 })
 
-export class EditSubscriberComponent implements OnInit {
+export class EditExercisesSetComponent implements OnInit {
   measurements: any;
 
     currentFitSubscriber = null;
@@ -126,7 +126,7 @@ export class EditSubscriberComponent implements OnInit {
                                     response3 => {
                                         Swal.fire(
                                             'Eliminado!',
-                                            'Se eliminó el suscriptor.',
+                                            'Se elimino el suscriptor.',
                                             'info'
                                         ).then(result => {
                                             this.router.navigateByUrl('subscribers');

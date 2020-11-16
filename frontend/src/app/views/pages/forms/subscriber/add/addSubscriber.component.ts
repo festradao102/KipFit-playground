@@ -114,7 +114,7 @@ export class AddSubscriberComponent implements OnInit {
       bday: new Date(this.fitUser.bday),
       phone: this.fitUser.phone,
       emergencyPhone: this.fitUser.emergencyPhone,
-      user: any,
+      user: null,
       subscriber: any,
       schedules: any,
       role: any
@@ -125,35 +125,21 @@ export class AddSubscriberComponent implements OnInit {
         .subscribe(
             subscriberNuevo => {
               console.log(subscriberNuevo);
-              this.userService.create(dataUser)
+              dataFitUser.user=dataUser;
+              dataFitUser.subscriber=subscriberNuevo;
+              this.fitUserService.create(dataFitUser)
                   .subscribe(
-                      userNuevo => {
-                        console.log(subscriberNuevo);
-                        dataFitUser.user=userNuevo;
-                        dataFitUser.subscriber=subscriberNuevo;
-                        this.fitUserService.create(dataFitUser)
-                            .subscribe(
-                                response => {
-                                  console.log(response);
-                                  Swal.fire(
-                                      {
+                      response => {
+                        console.log(response);
+                        Swal.fire(
+                            {
 
-                                        icon: 'success',
-                                        title: 'Suscriptor Agregado.'
-                                      }
-                                  ).then(result => {
-                                    this.router.navigateByUrl('subscribers');
-                                  })
-
-                                },
-                                error => {
-                                  Swal.fire(
-                                      {
-                                        icon: 'error',
-                                        title: error.error.title
-                                      }
-                                  )
-                                });
+                              icon: 'success',
+                              title: 'Suscriptor Agregado.'
+                            }
+                        ).then(result => {
+                          this.router.navigateByUrl('subscribers');
+                        })
 
                       },
                       error => {

@@ -41,6 +41,34 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
+    label: 'Rutinas',
+    icon: 'folder',
+    subItems: [
+      {
+        label: 'Ver rutinas',
+        link: '/routines'
+      },
+      {
+        label: 'Crear una rutina',
+        link: '/add-routine'
+      },
+    ]
+  },
+  {
+    label: 'Rutinas',
+    icon: 'folder',
+    subItems: [
+      {
+        label: 'Ver rutinas',
+        link: '/routines'
+      },
+      {
+        label: 'Crear una rutina',
+        link: '/add-routine'
+      },
+    ]
+  },
+  {
     label: 'Ejercicios',
     icon: 'zap',
     subItems: [
