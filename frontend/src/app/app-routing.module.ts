@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: '',
     component: BaseComponent,
-    canActivate: [AuthGuard],
+    canActivate: [],
     children: [
       {
         path: 'dashboard',
