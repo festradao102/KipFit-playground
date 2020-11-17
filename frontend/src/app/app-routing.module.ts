@@ -1,8 +1,8 @@
-import { AuthGuard } from './core/guard/auth.guard';
-import { BaseComponent } from './views/layout/base/base.component';
-import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BaseComponent } from './views/layout/base/base.component';
+import { UserRouteAccessService} from "./core/auth/user-route-access-service";
+import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
 
 import {AddSubscriberComponent} from './views/pages/forms/subscriber/add/addSubscriber.component';
 import {EditSubscriberComponent} from './views/pages/forms/subscriber/edit/editSubscriber.component';
@@ -23,6 +23,7 @@ import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
 import {ChartsGraphsComponent} from "./views/pages/charts-graphs/charts-graphs.component";
 import {EditPlanComponent} from './views/pages/forms/plan/edit/editPlan.component';
+import {AuthGuard} from "./core/guard/auth.guard";
 
 import {AddExerciseComponent} from "./views/pages/forms/exercises/add/addExercise.component";
 import {EditExerciseComponent} from "./views/pages/forms/exercises/edit/editExercise.component";
@@ -34,7 +35,7 @@ const routes: Routes = [
   {
     path: '',
     component: BaseComponent,
-    canActivate: [],
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard',

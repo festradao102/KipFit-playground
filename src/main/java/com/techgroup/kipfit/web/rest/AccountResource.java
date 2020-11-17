@@ -53,7 +53,7 @@ public class AccountResource {
      * {@code POST  /register} : register the user.
      *
      * @param managedUserVM the managed user View Model.
-     * @throws InvalidPasswordException {@code 400 (Bad Request)} if the password is incorrect.
+     * @throws InvalidPasswordException  {@code 400 (Bad Request)} if the password is incorrect.
      * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is already used.
      * @throws LoginAlreadyUsedException {@code 400 (Bad Request)} if the login is already used.
      */
@@ -92,6 +92,7 @@ public class AccountResource {
         log.debug("REST request to check if the current user is authenticated");
         return request.getRemoteUser();
     }
+
 
     /**
      * {@code GET  /account} : get the current user.

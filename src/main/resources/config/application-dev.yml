@@ -47,6 +47,8 @@ spring:
     console:
       enabled: false
   jpa:
+    hibernate:
+      ddl-auto:
     database-platform: io.github.jhipster.domain.util.FixedH2Dialect
     show-sql: true
   liquibase:
