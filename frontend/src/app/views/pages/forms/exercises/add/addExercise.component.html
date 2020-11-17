@@ -1,67 +1,76 @@
 <form class="row">
     <div class="col-md-6 grid-margin stretch-card">
-    <div class="container">
-    <br>
-        <div class="card">
-            <div class="card-body">
-                <h6 class="card-title">Datos de Suscriptor</h6>
-                <div class="forms-sample">
+        <div class="container">
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Datos del ejercicio</h6>
+                    <div class="forms-sample">
 
-                    <div class="form-group row">
-                        <label for="txtName" class="col-sm-3 col-form-label">Nombre: </label>
-                        <div class="col-sm-9">
-                            <input [(ngModel)]="exercise.name" id="txtName" name="txtName" type="text" class="form-control"
-                               placeholder="Nombre" #txtNameReq="ngModel" required maxlength="20">
-                            <p class="text-danger mt-1" *ngIf="txtNameReq?.errors?.required">*</p>
+                        <div class="form-group row">
+                            <label for="txtName" class="col-sm-3 col-form-label">Nombre: </label>
+                            <div class="col-sm-9">
+                                <input [(ngModel)]="exercise.name" id="txtName" name="txtName" type="text"
+                                       class="form-control"
+                                       placeholder="Nombre" #txtNameReq="ngModel" required maxlength="20">
+                                <p class="text-danger mt-1" *ngIf="txtNameReq?.errors?.required">*</p>
+                            </div>
                         </div>
-                    </div>
 
 
-                    <div class="form-group row">
-                        <label for="txtPosition" class="col-sm-3 col-form-label">Posición: </label>
-                        <div class="col-sm-9">
-                            <input [(ngModel)]="exercise.position" id="txtPosition" name="txtPosition" type="text" class="form-control"
-                                   placeholder="Posición" #txtPositionReq="ngModel" required maxlength="20">
-                            <p class="text-danger mt-1" *ngIf="txtPositionReq?.errors?.required">*</p>
+                        <div class="form-group row">
+                            <label for="txtPosition" class="col-sm-3 col-form-label">Posición: </label>
+                            <div class="col-sm-9">
+                                <input [(ngModel)]="exercise.position" id="txtPosition" name="txtPosition" type="text"
+                                       class="form-control"
+                                       placeholder="Posición" #txtPositionReq="ngModel" required maxlength="20">
+                                <p class="text-danger mt-1" *ngIf="txtPositionReq?.errors?.required">*</p>
+                            </div>
                         </div>
-                    </div>
 
 
-                    <div class="form-group row">
-                        <label for="txtInstructions" class="col-sm-3 col-form-label">Instrucciones: </label>
-                        <div class="col-sm-9">
-                            <textarea [(ngModel)]="exercise.instructions" id="txtInstructions" name="txtInstructions" type="text"
-                                      class="form-control" placeholder="Instrucciones" style="height: 75px;" #txtInstructionsReq="ngModel"
+                        <div class="form-group row">
+                            <label for="txtInstructions" class="col-sm-3 col-form-label">Instrucciones: </label>
+                            <div class="col-sm-9">
+                            <textarea [(ngModel)]="exercise.instructions" id="txtInstructions" name="txtInstructions"
+                                      type="text"
+                                      class="form-control" placeholder="Instrucciones" style="height: 75px;"
+                                      #txtInstructionsReq="ngModel"
                                       required maxlength="50"></textarea>
-                            <p class="text-danger mt-1" *ngIf="txtInstructionsReq?.errors?.required">*</p>
+                                <p class="text-danger mt-1" *ngIf="txtInstructionsReq?.errors?.required">*</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <label for="txtVideoPath" class="col-sm-3 col-form-label">Video link: </label>
-                        <div class="col-sm-9">
-                            <input [(ngModel)]="exercise.videoPath" id="txtVideoPath" name="txtVideoPath" type="text" class="form-control"
-                                   placeholder="http://" #txtVideoPathReq="ngModel" required>
-                            <p class="text-danger mt-1" *ngIf="txtVideoPathReq?.errors?.required">*</p>
+                        <div class="form-group row">
+                            <label for="txtVideoPath" class="col-sm-3 col-form-label">Video link: </label>
+                            <div class="col-sm-9">
+                                <input [(ngModel)]="exercise.videoPath" id="txtVideoPath" name="txtVideoPath"
+                                       type="text" class="form-control"
+                                       placeholder="http://" #txtVideoPathReq="ngModel" required>
+                                <p class="text-danger mt-1" *ngIf="txtVideoPathReq?.errors?.required">*</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="txtExerciseTypeId">Tipo</label>
-                        <select class="form-control" id="txtExerciseTypeId" name="txtExerciseTypeId"
-                                [(ngModel)]="exercise.exerciseType.id" #txtExerciseTypeIdReq="ngModel">
-                            <option *ngFor="let exerciseType of exerciseTypes" [ngValue]="exerciseType.id"> {{ exerciseType.typeName}} </option>
-                        </select>
-                        <p class="text-danger mt-1" *ngIf="txtExerciseTypeIdReq?.errors?.required">*</p>
-                    </div>
+                        <div class="form-group">
+                            <label for="txtExerciseTypeId" class="col-sm-3 col-form-label">Tipo</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="txtExerciseTypeId" name="txtExerciseTypeId"
+                                        [(ngModel)]="exercise.exerciseType.id" #txtExerciseTypeIdReq="ngModel">
+                                    <option *ngFor="let exerciseType of exerciseTypes"
+                                            [ngValue]="exerciseType.id"> {{ exerciseType.typeName}} </option>
+                                </select>
+                            </div>
+                            <p class="text-danger mt-1" *ngIf="txtExerciseTypeIdReq?.errors?.required">*</p>
+                        </div>
 
-                    <br>
-                    <button (click)="saveExercise()" class="btn btn-primary mr-2"
-                            [disabled]="txtNameReq?.errors?.required || txtPositionReq?.errors?.required || txtPositionReq?.errors?.required ||
-                            txtVideoPathReq?.errors?.required">Crear</button>
+                        <br>
+                        <button (click)="saveExercise()" class="btn btn-primary mr-2"
+                                [disabled]="txtNameReq?.errors?.required || txtPositionReq?.errors?.required || txtPositionReq?.errors?.required ||
+                            txtVideoPathReq?.errors?.required">Crear
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-            </div>
     </div>
 </form>

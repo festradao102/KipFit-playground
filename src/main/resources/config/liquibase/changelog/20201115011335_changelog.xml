@@ -1,0 +1,36 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="esteban (generated)" id="1605402819010-1">
+        <createTable tableName="exercise_exercises_sets">
+            <column name="exercise_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="exercises_sets_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="esteban (generated)" id="1605402819010-2">
+        <addColumn tableName="exercise">
+            <column name="exercise_type_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="esteban (generated)" id="1605402819010-3">
+        <addForeignKeyConstraint baseColumnNames="exercise_id" baseTableName="exercise_exercises_sets" constraintName="FKaxtceusahsd4309pwoua9nnjj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="exercise" validate="true"/>
+    </changeSet>
+    <changeSet author="esteban (generated)" id="1605402819010-4">
+        <addForeignKeyConstraint baseColumnNames="exercises_sets_id" baseTableName="exercise_exercises_sets" constraintName="FKgtsib28ter6ek0b4thix4s922" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="exercises_set" validate="true"/>
+    </changeSet>
+    <changeSet author="esteban (generated)" id="1605402819010-5">
+        <addForeignKeyConstraint baseColumnNames="exercise_type_id" baseTableName="exercise" constraintName="FKnw91ts622h271oq286bdtng66" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="exercise_type" validate="true"/>
+    </changeSet>
+    <changeSet author="esteban (generated)" id="1605402819010-6">
+        <dropForeignKeyConstraint baseTableName="EXERCISE_TYPE" constraintName="FK_EXERCISE_TYPE_EXERCISE_ID"/>
+    </changeSet>
+    <changeSet author="esteban (generated)" id="1605402819010-7">
+        <dropColumn columnName="EXERCISE_ID" tableName="EXERCISE_TYPE"/>
+    </changeSet>
+    <changeSet author="esteban (generated)" id="1605402819010-8">
+        <dropColumn columnName="MEASUREMENT_ID" tableName="MEASUREMENT"/>
+    </changeSet>
+</databaseChangeLog>
