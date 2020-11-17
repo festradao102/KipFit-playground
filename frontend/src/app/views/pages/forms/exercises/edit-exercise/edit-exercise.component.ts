@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ExerciseService} from '../../../../../services/exercise.service';
 import Swal from "sweetalert2";
 import {ExerciseTypeService} from "../../../../../services/exercise-type.service";
-import { EmbedVideoService } from 'ngx-embed-video';
+
 
 @Component({
   selector: 'app-edit-exercise',
@@ -104,3 +104,4 @@ export class EditExerciseComponent implements OnInit {
         })
     }
 }
+*/
