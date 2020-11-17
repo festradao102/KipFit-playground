@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataTable} from 'simple-datatables';
-import {FitUserService} from '../../../../../services/fit-user.service';
+import {FitUserService} from "../../../../services/fit-user.service";
 
 @Component({
   selector: 'app-plan-data-table-component',

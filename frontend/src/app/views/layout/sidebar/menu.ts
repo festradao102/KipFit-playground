@@ -1,4 +1,4 @@
-import { MenuItem } from './menu.model';
+import {MenuItem} from './menu.model';
 
 export const MENU: MenuItem[] = [
   {
@@ -35,22 +35,7 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         label: 'Crear un plan',
-      //  link: '/advanced-form-elements/ngx-dropzone-wrapper'
         link: 'add-plan'
-      },
-    ]
-  },
-  {
-    label: 'Rutinas',
-    icon: 'folder',
-    subItems: [
-      {
-        label: 'Ver rutinas',
-        link: '/routines'
-      },
-      {
-        label: 'Crear una rutina',
-        link: '/add-routine'
       },
     ]
   },
@@ -75,6 +60,10 @@ export const MENU: MenuItem[] = [
       {
         label: 'Ver ejercicios',
         link: '/exercises',
+      },
+      {
+        label: 'Ver ejercicios por tipo',
+        link: '/exercises-types',
       },
       {
         label: 'Crear un ejercicio',

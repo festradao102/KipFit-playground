@@ -1,28 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AngularCropperjsModule} from "angular-cropperjs";
+import {AuthGuard} from './core/guard/auth.guard';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ChartsModule} from "ng2-charts";
+import {CommonModule} from '@angular/common';
+import {ErrorPageComponent} from './views/pages/error-page/error-page.component';
+import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {LayoutModule} from './views/layout/layout.module';
+import {NgModule} from '@angular/core';
+import {NgSelectModule} from '@ng-select/ng-select';
 import {NgxMaskModule} from 'ngx-mask';
 
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {ChartsModule} from "ng2-charts";
-import { LayoutModule } from './views/layout/layout.module';
-import { AuthGuard } from './core/guard/auth.guard';
-
-import { AppComponent } from './app.component';
-import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
 import {MeasurementsDataTableComponent} from "./views/pages/forms/subscriber/profile/measurementsDataTable.component";
 
-import {SubChartsComponent} from './views/pages/forms/subscriber/profile/subCharts.component';
-import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
-import { AddSubscriberComponent } from './views/pages/forms/subscriber/add/addSubscriber.component';
-import { EditSubscriberComponent } from './views/pages/forms/subscriber/edit/editSubscriber.component';
+import {AddSubscriberComponent} from './views/pages/forms/subscriber/add/addSubscriber.component';
+import {EditSubscriberComponent} from './views/pages/forms/subscriber/edit/editSubscriber.component';
 import {SubscriberDataTableComponent} from "./views/pages/tables/subscriberDataTable/subscriberDataTable.component";
+import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
 import {SubChartsComponent} from "./views/pages/forms/subscriber/profile/subCharts.component";
 
 import {EditExercisesSetComponent} from './views/pages/forms/exercisesSet/edit/editExercisesSet.component'
@@ -32,24 +32,19 @@ import {EditRoutineComponent} from "./views/pages/forms/routine/edit/editRoutine
 import {RoutineDataTableComponent} from "./views/pages/tables/routineDataTable/routineDataTable.component";
 import {ExercisesSetDataTableComponent} from "./views/pages/tables/exercisesSetDataTable/exercisesSetDataTable.component";
 
+import {AddExerciseComponent} from "./views/pages/forms/exercises/add/addExercise.component";
+import {EditExerciseComponent} from "./views/pages/forms/exercises/edit/editExercise.component";
+import {ExercisesDataTableComponent} from "./views/pages/tables/exercisesDataTable/exercisesDataTable.component";
+import {ExercisesFilterByTypeDataTableComponent} from "./views/pages/tables/exercisesFilterByTypeDataTable/exercisesFilterByTypeDataTable.component";
 
-import {EditExerciseComponent} from "./views/pages/forms/exercises/edit-exercise/edit-exercise.component";
-import {ListExercisesComponent} from "./views/pages/forms/exercises/list-exercises/list-exercises.component";
-import {AddExerciseComponent} from "./views/pages/forms/exercises/add-exercise/add-exercise.component";
-
-import {AngularCropperjsModule} from "angular-cropperjs";
 import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
 import {EditPlanComponent} from './views/pages/forms/plan/edit/editPlan.component';
-import {NgSelectModule} from '@ng-select/ng-select';
-
-
+import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDataTable.component';
 
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
 
-import { CommonModule } from '@angular/common';
 import {UiComponentsModule} from "./views/pages/ui-components/ui-components.module";
-import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDataTable.component';
 
 
 @NgModule({
@@ -60,30 +55,36 @@ import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDat
     AddMeasurementComponent,
     EditMeasurementComponent,
     MeasurementsDataTableComponent,
-    //ARTURO-INICIO
+
     AddRoutineComponent,
     EditRoutineComponent,
     RoutineDataTableComponent,
+
     EditExercisesSetComponent,
     AddExercisesSetComponent,
     ExercisesSetDataTableComponent,
-    //ARTURO-FIN
+
+    AddPlanComponent,
+    EditPlanComponent,
     PlanDataTableComponent,
+
     AddSubscriberComponent,
     EditSubscriberComponent,
     SubscriberDataTableComponent,
+
     AddMeasurementComponent,
     EditMeasurementComponent,
     SubscriberProfileComponent,
     SubscriberDataTableComponent,
     SubChartsComponent,
-    AddPlanComponent,
+
     AddUserComponent,
     UserDataTableComponent,
-    EditPlanComponent,
+
     AddExerciseComponent,
     EditExerciseComponent,
-    ListExercisesComponent,
+    ExercisesDataTableComponent,
+    ExercisesFilterByTypeDataTableComponent
   ],
     imports: [
         CommonModule,

@@ -73,18 +73,14 @@ export class AddSubscriberComponent implements OnInit {
   config = {
     zoomable: true
   };
-  constructor(private router: Router,private subscriberService: SubscriberService, private userService: UserService, private fitUserService: FitUserService) { }
+  constructor(private router: Router,
+              private subscriberService: SubscriberService,
+              private userService: UserService,
+              private fitUserService: FitUserService) { }
 
-  ngOnInit(): void {
-
-
-
-  }
-
-
+  ngOnInit(): void { }
 
   saveSubscriber(): void {
-
     const dataSuscriber = {
       medicalConditions: this.subscriber.medicalConditions,
       paymentFreq: this.subscriber.paymentFreq,
@@ -160,25 +156,13 @@ export class AddSubscriberComponent implements OnInit {
                   }
               )
             });
-
-
-
-
-
-
-
   }
-
-
-
   // imagen
   openFileBrowser(event: any) {
     event.preventDefault();
     const element: HTMLElement = document.querySelector('#cropperImageUpload') as HTMLElement;
     element.click()
-
   }
-
   handleFileInput(event: any) {
     if (event.target.files.length) {
       const element: HTMLElement = document.querySelector('#cropperImageUpload + .input-group .file-upload-info') as HTMLElement;
@@ -215,7 +199,4 @@ export class AddSubscriberComponent implements OnInit {
     const imageUploadComponent = this.imageUploadComponent
     imageUploadComponent.ngOnInit()
   }
-
-
-
 }

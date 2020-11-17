@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 
-import {DataTable} from 'simple-datatables';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {SubscriberService} from '../../../../../services/subscriber.service';
+import {DataTable} from 'simple-datatables';
+import {FitUserService} from '../../../../../services/fit-user.service';
 
 @Component({
   selector: 'app-measurements-data-table-component',
@@ -16,7 +16,7 @@ export class MeasurementsDataTableComponent implements OnInit {
   measurementsDataTable: any;
 
   constructor(private router: Router,
-              private subscriberService:SubscriberService,
+              private fitUserService: FitUserService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -25,12 +25,12 @@ export class MeasurementsDataTableComponent implements OnInit {
   }
 
   retrieveMeasurementsSubById(id): void {
-    this.subscriberService.get(id)
+    this.fitUserService.get(id)
       .subscribe(
         data => {
           console.log(data);
           const dataTableRows = [];
-          for (const singleMeasurement of data.measurements) {
+          for (const singleMeasurement of data.subscriber.measurements) {
             dataTableRows.push([
               singleMeasurement.weight.toString(),
               singleMeasurement.dateCreated,

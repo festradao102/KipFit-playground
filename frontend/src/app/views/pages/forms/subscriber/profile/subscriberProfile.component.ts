@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 
-import {DataTable} from 'simple-datatables';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {SubscriberService} from '../../../../../services/subscriber.service';
+import {formatDate} from '@angular/common';
+import {FitUserService} from '../../../../../services/fit-user.service';
 
 @Component({
   selector: 'app-subscriber-profile-component',
@@ -12,12 +12,13 @@ import {SubscriberService} from '../../../../../services/subscriber.service';
 })
 
 export class SubscriberProfileComponent implements OnInit {
-  measurements: any;
   currentSubscriber = null;
+  currentFitSubscriber = null;
   measurementsDataTable: any;
+  measurements: any;
 
   constructor(private router: Router,
-              private subscriberService: SubscriberService,
+              private fitUserService: FitUserService,
               private route: ActivatedRoute) {
   }
 
@@ -26,11 +27,12 @@ export class SubscriberProfileComponent implements OnInit {
   }
 
   retrieveSubById(id): void {
-    this.subscriberService.get(id)
+    this.fitUserService.get(id)
       .subscribe(
         data => {
-          this.currentSubscriber = data;
           console.log(data);
+          this.currentFitSubscriber = data;
+          this.currentFitSubscriber.bday = formatDate(data.bday, 'yyyy-MM-dd', 'en');
         },
         error => {
           console.log(error);

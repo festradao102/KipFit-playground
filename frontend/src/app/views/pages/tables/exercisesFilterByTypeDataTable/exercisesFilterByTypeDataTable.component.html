@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Seleccione un tipo de ejercicio</h6>
+                <div class="row justify-content-center">
+                    <a href="/exercises-types/1" class="exercise-type-btn" id="abdomen"></a>
+                    <a href="/exercises-types/2" class="exercise-type-btn" id="antebrazo"></a>
+                    <a href="/exercises-types/3" class="exercise-type-btn" id="biceps"></a>
+                    <a href="/exercises-types/4" class="exercise-type-btn" id="cardio"></a>
+                    <a href="/exercises-types/5" class="exercise-type-btn" id="espalda"></a>
+                    <a href="/exercises-types/6" class="exercise-type-btn" id="gluteos"></a>
+                    <a href="/exercises-types/7" class="exercise-type-btn" id="hombros"></a>
+                    <a href="/exercises-types/8" class="exercise-type-btn" id="pecho"></a>
+                    <a href="/exercises-types/9" class="exercise-type-btn" id="piernas"></a>
+                    <a href="/exercises-types/10" class="exercise-type-btn" id="triceps"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br>
+
+<div class="row grid-margin">
+    <div class="col-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Ejercicios para {{ typeName }}</h6>
+                <div class="table-responsive">
+                    <table id="exercisesDataTable" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

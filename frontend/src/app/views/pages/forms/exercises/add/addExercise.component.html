@@ -48,8 +48,9 @@
 
                     <div class="form-group">
                         <label for="txtExerciseTypeId">Tipo</label>
-                        <select class="form-control" id="txtExerciseTypeId" name="txtExerciseTypeId" [(ngModel)]="exercise.exerciseType" #txtExerciseTypeIdReq="ngModel">
-                            <option *ngFor="let exerciseType of exerciseTypes" [ngValue]="exerciseType"> {{ exerciseType.typeName}} </option>
+                        <select class="form-control" id="txtExerciseTypeId" name="txtExerciseTypeId"
+                                [(ngModel)]="exercise.exerciseType.id" #txtExerciseTypeIdReq="ngModel">
+                            <option *ngFor="let exerciseType of exerciseTypes" [ngValue]="exerciseType.id"> {{ exerciseType.typeName}} </option>
                         </select>
                         <p class="text-danger mt-1" *ngIf="txtExerciseTypeIdReq?.errors?.required">*</p>
                     </div>
@@ -58,46 +59,9 @@
                     <button (click)="saveExercise()" class="btn btn-primary mr-2"
                             [disabled]="txtNameReq?.errors?.required || txtPositionReq?.errors?.required || txtPositionReq?.errors?.required ||
                             txtVideoPathReq?.errors?.required">Crear</button>
-
             </div>
         </div>
         </div>
             </div>
     </div>
 </form>
-<!--
-        <br>
-        <div class="card">
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="txtExerciseType">Tipo</label>
-                    <select class="form-control" id="txtExerciseType" name="txtExerciseType">
-                        <option ngValue="SUPERIOR">SUPERIOR</option>
-                        <option ngValue="INFERIOR">INFERIOR</option>
-                        <option ngValue="NUCLEO">NUCLEO</option>
-                        <option ngValue="CARDIOVASCULAR">CARDIOVASCULAR</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="txtExerciseTypeId">Tipo</label>
-                    <select class="form-control" id="txtExerciseTypeId" name="txtExerciseTypeId" [(ngModel)]="exercise.exerciseType" #txtExerciseTypeIdReq="ngModel">
-                        <option *ngFor="let exerciseType of exerciseTypes" [ngValue]="exerciseType"> {{ exerciseType.typeName}} </option>
-                    </select>
-                    <p class="text-danger mt-1" *ngIf="txtExerciseTypeIdReq?.errors?.required">*</p>
-                </div>
-
-                <div class="form-group">
-                    <label for="txtExercise">Ejercicio</label>
-                    <select class="form-control" id="txtExercise" name="txtExercise" [(ngModel)]="exercises" #txtExerciseReq="ngModel">
-                        <option *ngFor="let exercise of exercises" [ngValue]="exercise"> {{ exercise.name}} </option>
-                    </select>
-                    <p class="text-danger mt-1" *ngIf="txtExerciseReq?.errors?.required">*</p>
-                </div>
-
-                <button (click)="saveExerciseType()" class="btn btn-primary mr-2">Asignar tipo</button>
-            </div>
-        </div>
-    </div>
-
--->

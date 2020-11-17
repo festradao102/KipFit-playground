@@ -1,6 +1,9 @@
 package com.techgroup.kipfit.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NotFound;
@@ -80,8 +83,9 @@ public class Measurement implements Serializable {
     private Instant dateCreated;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "measurements", allowSetters = true)
+    @JsonIgnoreProperties(value = {"plans", "measurements"}, allowSetters = true)
     @NotFound(action = NotFoundAction.IGNORE)
+    //@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
     private Subscriber subscriber;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

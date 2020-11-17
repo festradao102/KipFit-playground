@@ -1,6 +1,7 @@
 package com.techgroup.kipfit.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NotFound;
@@ -41,15 +42,17 @@ public class Subscriber implements Serializable {
     @JoinColumn(unique = true)
     private SubscriptionPayment subscriptionPayment;
 
-    @OneToMany(mappedBy = "subscriber")
+    @OneToMany(mappedBy = "subscriber", fetch = FetchType.EAGER)
     @NotFound(action = NotFoundAction.IGNORE)
+    @JsonIgnoreProperties(value = "subscriber")
     // @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Measurement> measurements;
+    private Set<Measurement> measurements = new HashSet<>();
 
     @OneToMany(mappedBy = "subscriber", fetch = FetchType.EAGER)
     @NotFound(action = NotFoundAction.IGNORE)
+    @JsonIgnoreProperties(value = "subscriber")
     // @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Plan> plans;
+    private Set<Plan> plans = new HashSet<>();
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)

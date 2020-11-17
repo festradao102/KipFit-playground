@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataTable} from 'simple-datatables';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FitUserService} from '../../../../../services/fit-user.service';
+import {FitUserService} from '../../../../services/fit-user.service';
 import Swal from 'sweetalert2';
 
 @Component({

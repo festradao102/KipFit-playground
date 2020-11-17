@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FitUserService} from '../../../../../../services/fit-user.service';
 import Swal from 'sweetalert2';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {RoleService} from '../../../../../../services/role.service';
+import {RoleService} from '../../../../../services/role.service';
+import {FitUserService} from '../../../../../services/fit-user.service';
+
 
 @Component({
   selector: 'app-add-user',
