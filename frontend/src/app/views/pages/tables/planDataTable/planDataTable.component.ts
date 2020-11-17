@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataTable} from 'simple-datatables';
-import {FitUserService} from "../../../../services/fit-user.service";
+import {FitUserService} from '../../../../services/fit-user.service';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-plan-data-table-component',
@@ -31,7 +32,7 @@ export class PlanDataTableComponent implements OnInit {
                     for (const singlePlan of data.subscriber.plans) {
                         dataTableRows.push([
                             singlePlan.objective,
-                            singlePlan.dateCreated,
+                            formatDate(singlePlan.dateCreated, 'yyyy-MM-dd', 'en'),
                             singlePlan.creatorName,
                             `<a href="/plans/${singlePlan.id}">Ver Detalle</a>`
                         ]);
