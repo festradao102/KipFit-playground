@@ -1,9 +1,17 @@
 import {AppComponent} from './app.component';
-import {AppRoutingModule} from './app-routing.module';
 import {AngularCropperjsModule} from "angular-cropperjs";
 import {AuthGuard} from './core/guard/auth.guard';
 import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {NgxMaskModule} from 'ngx-mask';
+import {NgxWebstorageModule} from 'ngx-webstorage';
+
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ChartsModule} from "ng2-charts";
 import {CommonModule} from '@angular/common';
 import {ErrorPageComponent} from './views/pages/error-page/error-page.component';
@@ -14,13 +22,15 @@ import {LayoutModule} from './views/layout/layout.module';
 import {NgModule} from '@angular/core';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {NgxMaskModule} from 'ngx-mask';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
 import {MeasurementsDataTableComponent} from "./views/pages/forms/subscriber/profile/measurementsDataTable.component";
 
-import {AddSubscriberComponent} from './views/pages/forms/subscriber/add/addSubscriber.component';
-import {EditSubscriberComponent} from './views/pages/forms/subscriber/edit/editSubscriber.component';
+import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
+import { AddSubscriberComponent } from './views/pages/forms/subscriber/add/addSubscriber.component';
+import { EditSubscriberComponent } from './views/pages/forms/subscriber/edit/editSubscriber.component';
 import {SubscriberDataTableComponent} from "./views/pages/tables/subscriberDataTable/subscriberDataTable.component";
 import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
 import {SubChartsComponent} from "./views/pages/forms/subscriber/profile/subCharts.component";
@@ -96,6 +106,7 @@ import {UiComponentsModule} from "./views/pages/ui-components/ui-components.modu
         ReactiveFormsModule,
         HttpClientModule,
         NgxMaskModule.forRoot(),
+        NgxWebstorageModule.forRoot(),
         HttpClientModule,
         ChartsModule,
         AngularCropperjsModule,
