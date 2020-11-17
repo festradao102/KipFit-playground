@@ -25,7 +25,7 @@ export class EditPlanComponent implements OnInit {
         this.getPlan(this.route.snapshot.paramMap.get('id'));
     }
 
-    getPlan(id): void {
+        getPlan(id): void {
         this.planService.get(id)
             .subscribe(
                 data => {

@@ -38,4 +38,32 @@ export class SubscriberProfileComponent implements OnInit {
           console.log(error);
         });
   }
+
+    retrievePlansSubscriberById(id): void {
+        this.fitUserService.get(id)
+            .subscribe(
+                data => {
+                    console.log(data);
+                    const idList = [];
+                    for (const plan of data.subscriber.plans) {
+                        idList.push([
+                            plan.id
+                        ]);
+
+                    }
+                    console.log(idList);
+                    // tslint:disable-next-line:only-arrow-functions
+                    // @ts-ignore
+                    if(idList.length === 1){
+                        this.router.navigate(['/plans/' + idList]);
+                    }else{
+                        // tslint:disable-next-line:only-arrow-functions
+                        const idPlanReciente = Math.max.apply(Math, idList.map(function(o) { return o; }))
+                        this.router.navigate(['/plans/' + idPlanReciente]);
+                    }
+                    },
+                error => {
+                    console.log(error);
+                });
+    }
 }
