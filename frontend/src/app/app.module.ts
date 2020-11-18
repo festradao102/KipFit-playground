@@ -2,16 +2,8 @@ import {AppComponent} from './app.component';
 import {AngularCropperjsModule} from "angular-cropperjs";
 import {AuthGuard} from './core/guard/auth.guard';
 import {BrowserModule} from '@angular/platform-browser';
-
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {NgxMaskModule} from 'ngx-mask';
-import {NgxWebstorageModule} from 'ngx-webstorage';
-
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app-routing.module';
 import {ChartsModule} from "ng2-charts";
 import {CommonModule} from '@angular/common';
 import {ErrorPageComponent} from './views/pages/error-page/error-page.component';
@@ -28,7 +20,6 @@ import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMe
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
 import {MeasurementsDataTableComponent} from "./views/pages/forms/subscriber/profile/measurementsDataTable.component";
 
-import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
 import { AddSubscriberComponent } from './views/pages/forms/subscriber/add/addSubscriber.component';
 import { EditSubscriberComponent } from './views/pages/forms/subscriber/edit/editSubscriber.component';
 import {SubscriberDataTableComponent} from "./views/pages/tables/subscriberDataTable/subscriberDataTable.component";
