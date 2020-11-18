@@ -7,15 +7,15 @@
 
                     <div class="form-group">
                         <label>Plan del suscriptor</label>
-                        <input type="number" min="0" class="form-control" id="subscriberId" name="subscriberId" readonly
-                                   [(ngModel)]="currentPlan.id">
+                        <input type="text" min="0" class="form-control" id="subscriberId" name="subscriberId" readonly
+                                   [(ngModel)]="subcriberName">
                     </div>
 
                     <div class="form-group">
                         <label for="dateCreated">Fecha de creación</label>
 
                             <input type="text" min="0" class="form-control" id="dateCreated" name="dateCreated" readonly
-                                   [(ngModel)]="currentPlan.dateCreated">
+                                   [(ngModel)]="formattedDate">
 
                     </div>
 
