@@ -4,7 +4,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {PlanService} from '../../../../../services/plan.service';
 import {formatDate} from '@angular/common';
 import {SubscriberService} from '../../../../../services/subscriber.service';
-import {FitUserService} from "../../../../../services/fit-user.service";
+import {FitUserService} from '../../../../../services/fit-user.service';
 import {ObjectiveTypeService} from '../../../../../services/objectiveType.service';
 
 @Component({
@@ -40,7 +40,7 @@ export class AddPlanComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveSubscribers();
-    this.retrieveObjectiveTypes();
+   // this.retrieveObjectiveTypes();
   }
 
   retrieveSubscribers(): void {
