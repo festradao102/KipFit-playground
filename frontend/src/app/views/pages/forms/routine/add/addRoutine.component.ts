@@ -43,7 +43,7 @@ export class AddRoutineComponent implements OnInit {
     exercisesSets = [];
     ejercicios = any;
     frecuencias = [
-        'Diaria', '2 dias por semana', '3 dias por semana'
+        'Diaria', '2 días por semana', '3 días por semana', '4 días por semana'
     ];
     ejemploPapa: String = "papa";
     outpapa: "";

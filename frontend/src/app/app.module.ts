@@ -29,6 +29,7 @@ import {SubChartsComponent} from "./views/pages/forms/subscriber/profile/subChar
 import {EditExercisesSetComponent} from './views/pages/forms/exercisesSet/edit/editExercisesSet.component'
 import {AddExercisesSetComponent} from './views/pages/forms/exercisesSet/add/addExercisesSet.component'
 import {AddRoutineComponent} from './views/pages/forms/routine/add/addRoutine.component'
+import {ViewRoutineComponent} from './views/pages/forms/routine/view/viewRoutine.component'
 import {EditRoutineComponent} from "./views/pages/forms/routine/edit/editRoutine.component";
 import {RoutineDataTableComponent} from "./views/pages/tables/routineDataTable/routineDataTable.component";
 import {ExercisesSetDataTableComponent} from "./views/pages/tables/exercisesSetDataTable/exercisesSetDataTable.component";
@@ -60,6 +61,7 @@ import {UiComponentsModule} from "./views/pages/ui-components/ui-components.modu
     AddRoutineComponent,
     EditRoutineComponent,
     RoutineDataTableComponent,
+      ViewRoutineComponent,
 
     EditExercisesSetComponent,
     AddExercisesSetComponent,

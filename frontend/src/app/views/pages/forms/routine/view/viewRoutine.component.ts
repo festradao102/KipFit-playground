@@ -18,12 +18,12 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
-    selector: 'app-edit-subscriber-component',
-    templateUrl: './editRoutine.component.html',
-    styleUrls: ['./editRoutine.component.scss']
+    selector: 'app-view-routine-component',
+    templateUrl: './viewRoutine.component.html',
+    styleUrls: ['./viewRoutine.component.scss']
 })
 
-export class EditRoutineComponent implements OnInit {
+export class ViewRoutineComponent implements OnInit {
     measurements: any;
     exercisesSets = [];
     exercisesSetsEliminados = [];
@@ -34,6 +34,8 @@ export class EditRoutineComponent implements OnInit {
     tipos = [];
     ejercicios = any;
     idsNuevos = 0;
+
+    myStyle = {}
 
     frecuencias = [
         'Diaria', '2 días por semana', '3 días por semana', '4 días por semana'
@@ -46,25 +48,20 @@ export class EditRoutineComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.dataTable = new DataTable('#exercisesSetDataTable', {
-            searchable: false,
-            header: true,
-            sortable: false,
-            paging: false
-        });
-        this.retrieveRoutineById(this.route.snapshot.paramMap.get('id'));
+
+       this.retrieveRoutineById(this.route.snapshot.paramMap.get('id'));
 
 
     }
 
     ngAfterViewInit() {
-        this.sets = this.currentRoutine.exercisesSets;
-        this.exercisesSetTypeService.getAll().subscribe(
-            tiposSet => {
-                this.tipos = tiposSet;
-                this.cargarTabla();
-            }
-        )
+        // this.sets = this.currentRoutine.exercisesSets;
+        // this.exercisesSetTypeService.getAll().subscribe(
+        //     tiposSet => {
+        //         this.tipos = tiposSet;
+        //         this.cargarTabla();
+        //     }
+        // )
 
     }
 

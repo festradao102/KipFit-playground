@@ -11,7 +11,7 @@ import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile
 
 import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
-
+import {ViewRoutineComponent} from './views/pages/forms/routine/view/viewRoutine.component'
 import {AddRoutineComponent} from './views/pages/forms/routine/add/addRoutine.component'
 import {EditRoutineComponent} from "./views/pages/forms/routine/edit/editRoutine.component";
 import {RoutineDataTableComponent} from "./views/pages/tables/routineDataTable/routineDataTable.component";
@@ -49,6 +49,7 @@ const routes: Routes = [
       { path: 'add-routine', component: AddRoutineComponent },
       { path: 'routines', component: RoutineDataTableComponent },
       { path: 'routines/:id', component: EditRoutineComponent, pathMatch: 'full' },
+      { path: 'view-routines/:id', component: ViewRoutineComponent},
 
       { path: 'add-user/:id',  component: AddUserComponent },
       { path: 'users', component: UserDataTableComponent },
@@ -65,9 +66,6 @@ const routes: Routes = [
       { path: 'exercises-types/:id', component: ExercisesFilterByTypeDataTableComponent, pathMatch: 'full'},
       { path: 'exercises-types', redirectTo: 'exercises-types/1', pathMatch: 'full'},
 
-      {
-        path: 'charts', component: ChartsGraphsComponent // TODO: Remove this
-      },
 
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
