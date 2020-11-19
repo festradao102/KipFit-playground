@@ -60,4 +60,22 @@ export class CreateRoutineComponent implements OnInit {
               })
             });
   }
+
+  //Routine events
+  routineOut($event): void {
+    console.log("routineOut");
+  }
+
+  openRoutineModal(content) {
+    /*this.exerciseService.getAll().subscribe(
+        exercises => {
+          // this.sets.ejercicios = exercises;
+          this.ejercicios = exercises;
+        }
+    )*/
+      this.modalService.open(content, {centered: true, size: 'md'}).result.then((result) => {
+      console.log("Modal closed" + result);
+      }).catch((res) => {
+    });
+  }
 }

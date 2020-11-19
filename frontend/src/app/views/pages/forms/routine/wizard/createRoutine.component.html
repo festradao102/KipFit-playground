@@ -31,7 +31,7 @@
                         </table>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary mr-2">Nueva Rutina</button>
+                    <button type="submit" class="btn btn-primary mr-2" (click)="openRoutineModal(newRoutine)">Nueva Rutina</button>
                 </form>
             </div>
         </div>
@@ -44,3 +44,9 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<ng-template  #newRoutine let-modal>
+    <app-single-routine (eventOut)="routineOut($event)" >
+
+    </app-single-routine>
+</ng-template>

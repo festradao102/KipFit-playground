@@ -49,6 +49,7 @@ import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDat
 import {UiComponentsModule} from "./views/pages/ui-components/ui-components.module";
 
 import {CreateRoutineComponent} from "./views/pages/forms/routine/wizard/createRoutine.component";
+import { SingleRoutineComponent } from './views/pages/forms/routine/wizard/single-routine/single-routine.component';
 
 
 @NgModule({
@@ -90,7 +91,8 @@ import {CreateRoutineComponent} from "./views/pages/forms/routine/wizard/createR
     EditExerciseComponent,
     ExercisesDataTableComponent,
     ExercisesFilterByTypeDataTableComponent,
-    CreateRoutineComponent
+    CreateRoutineComponent,
+    SingleRoutineComponent
   ],
     imports: [
         CommonModule,
