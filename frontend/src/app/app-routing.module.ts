@@ -29,6 +29,7 @@ import {AddExerciseComponent} from "./views/pages/forms/exercises/add/addExercis
 import {EditExerciseComponent} from "./views/pages/forms/exercises/edit/editExercise.component";
 import {ExercisesDataTableComponent} from './views/pages/tables/exercisesDataTable/exercisesDataTable.component';
 import {ExercisesFilterByTypeDataTableComponent} from "./views/pages/tables/exercisesFilterByTypeDataTable/exercisesFilterByTypeDataTable.component";
+import {CreateRoutineComponent} from "./views/pages/forms/routine/wizard/createRoutine.component"
 
 const routes: Routes = [
   { path:'auth', loadChildren: () => import('./views/pages/auth/auth.module').then(m => m.AuthModule) },
@@ -50,6 +51,8 @@ const routes: Routes = [
       { path: 'routines', component: RoutineDataTableComponent },
       { path: 'routines/:id', component: EditRoutineComponent, pathMatch: 'full' },
       { path: 'view-routines/:id', component: ViewRoutineComponent},
+      { path: 'routine-wizard', component: CreateRoutineComponent },
+
 
       { path: 'add-user/:id',  component: AddUserComponent },
       { path: 'users', component: UserDataTableComponent },

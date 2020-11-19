@@ -51,6 +51,10 @@ export const MENU: MenuItem[] = [
         label: 'Crear una rutina',
         link: '/add-routine'
       },
+      {
+        label: 'Crear rutina completa',
+        link: '/routine-wizard'
+      },
     ]
   },
   {
