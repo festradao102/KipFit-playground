@@ -115,4 +115,11 @@ public class PlanResource {
         planRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/planByUser/{id}")
+    public List<Plan> getPlanByUser(@PathVariable Long id) {
+        log.debug("REST request to get Plan : {}", id);
+        List<Plan> plans = planRepository.findAllBySubscriber(id);
+        return plans;
+    }
 }

@@ -27,4 +27,7 @@ public interface PlanRepository extends JpaRepository<Plan, Long> {
 
     @Query("select distinct plan from Plan plan left join fetch plan.objectiveTypes where plan.id =:id")
     Optional<Plan> findOneWithEagerRelationships(@Param("id") Long id);
+
+    @Query("select distinct plan from Plan plan left join fetch plan.subscriber where plan.subscriber.id=:id")
+    List<Plan> findAllBySubscriber(@Param("id") Long id);
 }

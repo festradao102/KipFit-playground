@@ -15,6 +15,10 @@ export class PlanService {
         return this.http.get(serviceUrl);
     }
 
+    getByUser(pId): Observable<any> {
+        return this.http.get(`http://localhost:8080/api/planByUser/${pId}`);
+    }
+
     get(pId): Observable<any> {
         return this.http.get(`${serviceUrl}/${pId}`);
     }
