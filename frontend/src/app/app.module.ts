@@ -104,7 +104,9 @@ import {UiComponentsModule} from "./views/pages/ui-components/ui-components.modu
     HttpClientModule,
     ChartsModule,
     AngularCropperjsModule,
-    EmbedVideo
+    EmbedVideo,
+    NgSelectModule,
+    UiComponentsModule
   ],
   providers: [
     AuthGuard,
