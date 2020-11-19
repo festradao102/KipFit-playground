@@ -9,6 +9,7 @@ import {EditSubscriberComponent} from './views/pages/forms/subscriber/edit/editS
 import {SubscriberDataTableComponent} from './views/pages/tables/subscriberDataTable/subscriberDataTable.component';
 import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
 import {DashboardSubscriberComponent} from './views/pages/forms/subscriber/dashboardSubscriber/dashboardSubscriber.component';
+import {DashboardAdminComponent} from './views/pages/dashboard/dashboardAdmin/dashboardAdmin.component';
 
 import {AddMeasurementComponent} from './views/pages/forms/measurement/add/addMeasurement.component';
 import {EditMeasurementComponent} from './views/pages/forms/measurement/edit/editMeasurement.component';
@@ -47,6 +48,7 @@ const routes: Routes = [
       { path: 'subscribers/:id', component: EditSubscriberComponent, pathMatch: 'full' },
       { path: 'subscriber-profile/:id', component: SubscriberProfileComponent },
       { path: 'subscriber-dashboard/:id', component: DashboardSubscriberComponent },
+      { path: 'admin-dashboard/:id', component: DashboardAdminComponent },
 
       { path: 'add-routine', component: AddRoutineComponent },
       { path: 'routines', component: RoutineDataTableComponent },

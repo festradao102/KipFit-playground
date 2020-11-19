@@ -1,0 +1,156 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+    <!-- <div>
+         <h3 class="col-12 format-float-center">Es tiempo de entrenar, ¿empezamos?</h3>
+     </div>-->
+</div>
+<!--<div class="row d-none d-lg-block">
+    <div class="col-12 grid-margin stretch-card">
+        <ngb-carousel *ngIf="images" [showNavigationArrows]="true" [showNavigationIndicators]="true">
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img [src]="images[0]" class="d-block w-100" alt="Random first slide">
+                </div>
+                <div class="carousel-caption">
+                    <h2>Es tiempo de entrenar</h2>
+                    <h4>¿Empezamos?</h4>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img [src]="images[1]" class="d-block w-100" alt="Random second slide">
+                </div>
+                <div class="carousel-caption">
+                    <h2>Es tiempo de entrenar</h2>
+                    <h4>¿Empezamos?</h4>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img [src]="images[2]" class="d-block w-100" alt="Random third slide">
+                </div>
+                <div class="carousel-caption">
+                    <h2>Es tiempo de entrenar</h2>
+                    <h4>¿Empezamos?</h4>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+</div>-->
+
+<div class="row">
+    <div class="col-12 col-xl-12 stretch-card">
+        <div class="row flex-grow">
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h6 class="card-title mb-0">Total de subscriptores</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-12 col-xl-5">
+                                <h3 class="mb-2">{{subscribersCount}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h6 class="card-title mb-0">Clases del día</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-12 col-xl-5">
+                                <h3 class="mb-2">3</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h6 class="card-title mb-0">Próxima cita de mediciones</h6>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-12 col-xl-7">
+                                <h3 class="mb-2">10/12/20</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- row -->
+
+<div class="row">
+    <div class="col-12 col-xl-4 grid-margin stretch-card">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                    <h6 class="card-title mb-0">Algunas acciones que puedes realizar</h6>
+                </div>
+                <div class="col-12 grid-margin">
+                    <div class="row">
+                        <button class="btn btn-primary btn-block grid-margin">Agregar clases</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-primary btn-block grid-margin" (click)="router.navigate(['/add-user/'+userId]);">Agregar usuario administrativo</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-primary btn-block grid-margin" (click)="router.navigate(['/add-subscriber']);">Agregar nuevo subscriptor</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-xl-4 grid-margin stretch-card">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                    <h6 class="card-title mb-0">CLASES PROGRAMADAS PARA HOY</h6>
+                </div>
+                <div class="col-12 grid-margin">
+                    <div class="row">
+                        <button class="btn btn-light btn-block grid-margin">Yoga - 1:30 pm</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-light btn-block grid-margin">Pilates - 3:00 pm</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-light btn-block grid-margin">Kick Boxing - 5:00 pm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-xl-4 grid-margin stretch-card">
+        <div class="card overflow-hidden">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                    <h6 class="card-title mb-0">REPORTE DE SUBSCRIPCIONES EN MORA</h6>
+                </div>
+                <div class="col-12 grid-margin">
+                    <div class="row">
+                        <h3>15</h3><h6> subscriptores se encuentran pendientes de pago.</h6>
+                    </div>
+                </div>
+                <div class="col-12 grid-margin">
+                    <div class="row">
+                        <h6>La fecha límite para enviar el recordatorio es el 15/12/20.</h6>
+                    </div>
+                </div>
+                <div class="col-12 grid-margin">
+                    <div class="row">
+                        <button class="btn btn-primary btn-block grid-margin">Ver reporte de mora</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

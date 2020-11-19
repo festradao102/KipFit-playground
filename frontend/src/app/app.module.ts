@@ -26,6 +26,7 @@ import {SubscriberDataTableComponent} from './views/pages/tables/subscriberDataT
 import {SubscriberProfileComponent} from './views/pages/forms/subscriber/profile/subscriberProfile.component';
 import {SubChartsComponent} from './views/pages/forms/subscriber/profile/subCharts.component';
 import {DashboardSubscriberComponent} from './views/pages/forms/subscriber/dashboardSubscriber/dashboardSubscriber.component';
+import {DashboardAdminComponent} from './views/pages/dashboard/dashboardAdmin/dashboardAdmin.component';
 
 import {EditExercisesSetComponent} from './views/pages/forms/exercisesSet/edit/editExercisesSet.component'
 import {AddExercisesSetComponent} from './views/pages/forms/exercisesSet/add/addExercisesSet.component'
@@ -73,7 +74,9 @@ import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 
     AddSubscriberComponent,
     EditSubscriberComponent,
-    SubscriberDataTableComponent, DashboardSubscriberComponent,
+    SubscriberDataTableComponent,
+      DashboardSubscriberComponent,
+      DashboardAdminComponent,
 
     AddMeasurementComponent,
     EditMeasurementComponent,
