@@ -19,6 +19,8 @@ export class PlanService {
         return this.http.get(`${serviceUrl}/${pId}`);
     }
 
+    //getByUser
+
     create(pData): Observable<any> {
         return this.http.post(serviceUrl, pData);
     }

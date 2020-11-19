@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="sltPlans">Selección de Plan</label>
+                        <select class="form-control" id="sltPlans" name="sltPlans" [(ngModel)]="plans">
+                            <option *ngFor="let plan of plans" [ngValue]="plan.id"> {{ plan.objective }} (Id: {{ plan.id }})</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Rutinas</h6>
+                <form class="forms-sample">
+                    <div class="table-responsive">
+                        <table id="usersDataTable" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary mr-2">Nueva Rutina</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+</div>

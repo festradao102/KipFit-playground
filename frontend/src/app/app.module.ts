@@ -48,6 +48,8 @@ import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDat
 
 import {UiComponentsModule} from "./views/pages/ui-components/ui-components.module";
 
+import {CreateRoutineComponent} from "./views/pages/forms/routine/wizard/createRoutine.component";
+
 
 @NgModule({
   declarations: [
@@ -87,7 +89,8 @@ import {UiComponentsModule} from "./views/pages/ui-components/ui-components.modu
     AddExerciseComponent,
     EditExerciseComponent,
     ExercisesDataTableComponent,
-    ExercisesFilterByTypeDataTableComponent
+    ExercisesFilterByTypeDataTableComponent,
+    CreateRoutineComponent
   ],
     imports: [
         CommonModule,
