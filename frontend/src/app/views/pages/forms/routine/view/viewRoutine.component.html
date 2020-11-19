@@ -10,7 +10,7 @@
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body row">
-                <div class="col-md-6 h4" >{{currentRoutine.freq | uppercase}}</div>
+                <div class="col-md-6 h4">{{currentRoutine.freq | uppercase}}</div>
             </div>
         </div>
     </div>
@@ -20,21 +20,29 @@
     <div class="col-md-6">
         <div class="row">
             <div class="col-md-11">
-                <div [ngStyle]="{borderColor: 0 < set.restTime && set.restTime  < 31   ? '#d3b030' : '' || 29 < set.restTime  && set.restTime <= 60  ? '#D35E30' : ''  ||60 < set.restTime   ? '#d33030' : ''}"
-                        class="card m-md-2 grid-margin" *ngFor="let set of currentRoutine.exercisesSets">
+                <div
+                    [ngStyle]="{borderColor: 0 < set.restTime && set.restTime  < 31   ? '#d3b030' : '' || 29 < set.restTime  && set.restTime <= 60  ? '#D35E30' : ''  ||60 < set.restTime   ? '#d33030' : ''}"
+                    class="card m-md-2 grid-margin" *ngFor="let set of currentRoutine.exercisesSets">
                     <div class="card-body row">
                         <div class="col-md-4 align-self-md-center">
-                            <span class="row align-content-end h1 justify-content-md-center display-1" [ngStyle]="{color: 0 < set.restTime && set.restTime  < 31   ? '#d3b030' : '' || 29 < set.restTime  && set.restTime <= 60  ? '#D35E30' : ''  ||60 < set.restTime   ? '#d33030' : ''}" >{{set.restTime}}<span class=" align-self-md-center mt-sm-4 text-small" >seg</span></span>
+                            <span class="row align-content-end h1 justify-content-md-center display-1"
+                                  [ngStyle]="{color: 0 < set.restTime && set.restTime  < 31   ? '#d3b030' : '' || 29 < set.restTime  && set.restTime <= 60  ? '#D35E30' : ''  ||60 < set.restTime   ? '#d33030' : ''}">
+                                {{set.restTime}}
+                                <span class=" align-self-md-center mt-sm-4 text-small">seg</span>
+                            </span>
                             <span class="row align-content-top justify-content-md-center">Tiempo Descanso</span>
                         </div>
                         <span class="col-md-1 border-left "></span>
-                        <span class="col-md-7" >
+                        <span class="col-md-7">
                             <div class="row p-1" *ngFor="let ejercicio of set.exercises">
                                <div class="col-md-11">
                                     <span>{{ejercicio.name}}</span>
                                </div>
                                 <div class="col-md-1">
-                                    <button type="button" class="btn p-1 btn-outline-github btn-icon d-flex float-right"><i class="feather icon-eye"></i></button>
+                                    <button (click)="setExerciseIdToWatch(ejercicio.id)" type="button"
+                                            class="btn p-1 btn-outline-github btn-icon d-flex float-right">
+                                        <i class="feather icon-eye"></i>
+                                    </button>
                                 </div>
                             </div>
 
@@ -45,5 +53,9 @@
         </div>
     </div>
 
+    <div class="col-md-6">
+        <app-view-exercise-in-routine-component [exerciseId]=exerciseIdToWatch>
+        </app-view-exercise-in-routine-component>
+    </div>
 </div>
 

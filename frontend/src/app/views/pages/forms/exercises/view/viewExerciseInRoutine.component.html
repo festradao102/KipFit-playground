@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-body">
+        <h6 class="card-title">{{ currentExercise.name }}</h6>
+        <form class="forms-sample">
+            <div class="form-group row">
+                <label for="position" class="col-sm-3 col-form-label">Repeticiones</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" id="position" name="position" readonly
+                           [(ngModel)]="currentExercise.position">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="instructions" class="col-sm-3 col-form-label">Instrucciones</label>
+                <div class="col-sm-9">
+                    <textarea type="textarea" class="form-control" id="instructions" name="instructions" style="height: 75px;"
+                           wrap="hard"
+                           readonly
+                              [(ngModel)]="currentExercise.instructions"></textarea>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div [innerHtml]="iframe_html"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

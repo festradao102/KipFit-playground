@@ -32,6 +32,7 @@ import {ExercisesFilterByTypeDataTableComponent} from "./views/pages/tables/exer
 
 const routes: Routes = [
   { path:'auth', loadChildren: () => import('./views/pages/auth/auth.module').then(m => m.AuthModule) },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: '',
     component: BaseComponent,
@@ -65,10 +66,7 @@ const routes: Routes = [
       { path: 'exercises', component: ExercisesDataTableComponent},
       { path: 'exercises-types/:id', component: ExercisesFilterByTypeDataTableComponent, pathMatch: 'full'},
       { path: 'exercises-types', redirectTo: 'exercises-types/1', pathMatch: 'full'},
-
-
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-
     ]
   },
   {

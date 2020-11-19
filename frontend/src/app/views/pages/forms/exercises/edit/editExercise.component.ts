@@ -63,7 +63,7 @@ export class EditExerciseComponent implements OnInit {
     }
 
     updateExercise(): void {
-        this.exerciseService.update(this.currentExercise.id, this.currentExercise)
+        this.exerciseService.updateOnly(this.currentExercise)
             .subscribe(
                 response => {
                     console.log(response);

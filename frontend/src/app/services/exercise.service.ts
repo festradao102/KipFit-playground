@@ -31,7 +31,7 @@ constructor(private http: HttpClient) { }
     return this.http.put(`${baseUrl}/${id}`, data);
   }
 
-  updateOnly(id, data): Observable<any> {
+  updateOnly(data): Observable<any> {
     return this.http.put(baseUrl, data);
   }
 

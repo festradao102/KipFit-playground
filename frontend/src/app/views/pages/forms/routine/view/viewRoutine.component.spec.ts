@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {ViewRoutineComponent} from './viewRoutine.component';
 
-describe('EditSubscriberComponent', () => {
+describe('ViewRoutineComponent', () => {
   let component: ViewRoutineComponent;
   let fixture: ComponentFixture<ViewRoutineComponent>;
 
