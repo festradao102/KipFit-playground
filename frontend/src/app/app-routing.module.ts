@@ -65,9 +65,6 @@ const routes: Routes = [
       { path: 'exercises-types/:id', component: ExercisesFilterByTypeDataTableComponent, pathMatch: 'full'},
       { path: 'exercises-types', redirectTo: 'exercises-types/1', pathMatch: 'full'},
 
-      {
-        path: 'charts', component: ChartsGraphsComponent // TODO: Remove this
-      },
 
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 

@@ -1,43 +1,38 @@
-<div class="row grid-margin">
-    <div class="col-12 stretch-card">
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h6 class="card-title">Historia de la edad metabolica y metabolismo basal</h6>
+                <h6 class="card-title">Porcentaje de grasa</h6>
 
                 <canvas baseChart
-                        [datasets]="barChartData"
-                        [labels]="barChartLabels"
-                        [options]="barChartOptions"
-                        [colors]="barChartColors"
-                        [plugins]="barChartPlugins"
-                        [legend]="barChartLegend"
-                        [chartType]="barChartType">
+                        [datasets]="fat_barChartData"
+                        [labels]="fat_barChartLabels"
+                        [options]="fat_barChartOptions"
+                        [colors]="fat_barChartColors"
+                        [plugins]="fat_barChartPlugins"
+                        [legend]="fat_barChartLegend"
+                        [chartType]="fat_barChartType">
+                </canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Edad metabólica</h6>
+
+                <canvas baseChart
+                        [datasets]="metabolic_barChartData"
+                        [labels]="metabolic_barChartLabels"
+                        [options]="metabolic_barChartOptions"
+                        [colors]="metabolic_barChartColors"
+                        [plugins]="metabolic_barChartPlugins"
+                        [legend]="metabolic_barChartLegend"
+                        [chartType]="metabolic_barChartType">
                 </canvas>
 
             </div>
         </div>
     </div>
 </div>
-
-<div class="row grid-margin">
-    <div class="col-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h6 class="card-title">Historia del porcentaje de grasa</h6>
-
-                <canvas baseChart
-                        [datasets]="lineChartData"
-                        [labels]="lineChartLabels"
-                        [options]="lineChartOptions"
-                        [colors]="lineChartColors"
-                        [legend]="lineChartLegend"
-                        [chartType]="lineChartType"
-                        [plugins]="lineChartPlugins">
-                </canvas>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
