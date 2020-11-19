@@ -59,7 +59,7 @@ export class SubscriberProfileComponent implements OnInit {
                     }else{
                         // tslint:disable-next-line:only-arrow-functions
                         const idPlanReciente = Math.max.apply(Math, idList.map(function(o) { return o; }))
-                        this.router.navigate(['/plans/' + idPlanReciente]);
+                        this.router.navigate(['/view-plan/' + idPlanReciente]);
                     }
                     },
                 error => {

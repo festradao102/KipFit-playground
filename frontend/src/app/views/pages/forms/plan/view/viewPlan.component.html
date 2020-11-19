@@ -1,0 +1,49 @@
+<form class="forms-sample">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Plan</h6>
+
+                    <div class="form-group">
+                        <label class="tx-11 font-weight-bold mb-0">Plan del suscriptor:</label>
+                        <p class="text-muted">{{ subcriberName }}</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="tx-11 font-weight-bold mb-0">Fecha de creación:</label>
+                        <p class="text-muted">{{ formattedDate }}</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="tx-11 font-weight-bold mb-0">Creador del plan:</label>
+                        <p class="text-muted">{{ currentPlan.creatorName }}</p>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="tx-11 font-weight-bold mb-0">Objetivo:</label>
+                        <p class="text-muted">{{ currentPlan.objective }}</p>
+                    </div>
+
+                    <div class="form-check form-check-flat form-check-primary mt-0">
+                        <label class="form-check-label">
+                            <input type="checkbox" min="0" class="form-check-input" id="active" name="active"
+                                   [(ngModel)]="currentPlan.active">
+                            <i class="input-frame"></i>
+                            Plan activo
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-6 middle-wrapper">
+            <app-routines-plan-data-table-component></app-routines-plan-data-table-component>
+        </div>
+    </div>
+
+
+
+
+</form>

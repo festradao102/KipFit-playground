@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, AfterViewInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, AfterViewInit, ViewChild, Input} from '@angular/core';
 
 import {DataTable} from 'simple-datatables';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -36,7 +36,7 @@ export class ViewRoutineComponent implements OnInit {
     idsNuevos = 0;
 
     myStyle = {}
-
+   // @Input() idRoutine: any;
     frecuencias = [
         'Diaria', '2 días por semana', '3 días por semana', '4 días por semana'
     ];
@@ -47,8 +47,7 @@ export class ViewRoutineComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
-
+      //  this.retrieveRoutineById(this.idRoutine);
        this.retrieveRoutineById(this.route.snapshot.paramMap.get('id'));
 
 

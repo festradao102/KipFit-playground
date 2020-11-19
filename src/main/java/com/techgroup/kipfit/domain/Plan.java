@@ -3,6 +3,8 @@ package com.techgroup.kipfit.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 
@@ -37,9 +39,11 @@ public class Plan implements Serializable {
     @Column(name = "active")
     private Boolean active;
 
-    @OneToMany(mappedBy = "plan")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Routine> routines;
+    @OneToMany(mappedBy = "plan", fetch = FetchType.EAGER)
+    // @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @JsonIgnoreProperties(value = "plan")
+    private Set<Routine> routines = new HashSet<>();
 
     @OneToMany(mappedBy = "plan", fetch = FetchType.EAGER)
     // @Fetch (fetch = FetchMode.SUBSELECT)

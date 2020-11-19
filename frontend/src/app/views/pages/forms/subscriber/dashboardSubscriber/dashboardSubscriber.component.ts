@@ -62,7 +62,7 @@ export class DashboardSubscriberComponent implements OnInit {
               }else{
                 // tslint:disable-next-line:only-arrow-functions
                 const idLastPlan = Math.max.apply(Math, idList.map(function(o) { return o; }))
-                this.router.navigate(['/plans/' + idLastPlan]);
+                this.router.navigate(['/view-plan/' + idLastPlan]);
               }
             },
             error => {

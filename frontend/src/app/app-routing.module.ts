@@ -20,7 +20,7 @@ import {RoutineDataTableComponent} from "./views/pages/tables/routineDataTable/r
 import {EditExercisesSetComponent} from "./views/pages/forms/exercisesSet/edit/editExercisesSet.component";
 
 import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
-
+import {ViewPlanComponent} from './views/pages/forms/plan/view/viewPlan.component';
 import {AddUserComponent} from "./views/pages/forms/user/add/addUser.component";
 import {UserDataTableComponent} from "./views/pages/tables/userDataTable/userDataTable.component";
 import {ChartsGraphsComponent} from "./views/pages/charts-graphs/charts-graphs.component";
@@ -31,6 +31,7 @@ import {AddExerciseComponent} from "./views/pages/forms/exercises/add/addExercis
 import {EditExerciseComponent} from "./views/pages/forms/exercises/edit/editExercise.component";
 import {ExercisesDataTableComponent} from './views/pages/tables/exercisesDataTable/exercisesDataTable.component';
 import {ExercisesFilterByTypeDataTableComponent} from "./views/pages/tables/exercisesFilterByTypeDataTable/exercisesFilterByTypeDataTable.component";
+
 
 const routes: Routes = [
   { path:'auth', loadChildren: () => import('./views/pages/auth/auth.module').then(m => m.AuthModule) },
@@ -63,6 +64,7 @@ const routes: Routes = [
 
       { path: 'add-plan', component: AddPlanComponent},
       { path: 'plans/:id', component: EditPlanComponent},
+      { path: 'view-plan/:id', component: ViewPlanComponent},
 
       { path: 'add-exercise', component: AddExerciseComponent },
       { path: 'exercises/:id', component: EditExerciseComponent, pathMatch: 'full' },

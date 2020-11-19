@@ -8,18 +8,17 @@ import {formatDate} from '@angular/common';
 
 
 @Component({
-    selector: 'app-edit-plan-component',
-    templateUrl: './editPlan.component.html',
-    styleUrls: ['./editPlan.component.scss']
+    selector: 'app-view-plan-component',
+    templateUrl: './viewPlan.component.html',
+    styleUrls: ['./viewPlan.component.scss']
 })
-export class EditPlanComponent implements OnInit {
+export class ViewPlanComponent implements OnInit {
     subscribers: any;
     currentPlan = null;
     subcriberName: any;
     formattedDate: any;
     fitUsers: any;
-    role: any;
-    // message = '';
+    idRoutine: any;
     constructor(
         private planService: PlanService,
         private fitUserService: FitUserService,
@@ -32,6 +31,7 @@ export class EditPlanComponent implements OnInit {
         this.getPlan(this.route.snapshot.paramMap.get('id'));
       //  this.showSubscriberName();
         this.getFitUsers();
+
     }
 
     showSubscriberName(): void {
@@ -46,12 +46,12 @@ export class EditPlanComponent implements OnInit {
                         if(fitU.subscriber != null){
                             if(fitU.subscriber.id === this.currentPlan.subscriber.id){
                                 this.subcriberName = fitU.user.firstName + ' ' + fitU.user.lastName;
-                                this. role = fitU.role.roleName;
                         }
                         }
                     }
                    // this.fitUsers = data;
                     console.log(data);
+                    console.log(this.subcriberName);
                 },
                 error => {
                     console.log(error);
@@ -65,7 +65,10 @@ export class EditPlanComponent implements OnInit {
                     this.currentPlan = data;
                     console.log(data);
                     this.formattedDate = formatDate(this.currentPlan.dateCreated, 'yyyy-MM-dd', 'en');
-                },
+                    for(const routine of data.routines){
+                        this.idRoutine = routine.id;
+                    }
+                    },
                 error => {
                     console.log(error);
                 });

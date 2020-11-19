@@ -44,12 +44,15 @@ import {ExercisesFilterByTypeDataTableComponent} from './views/pages/tables/exer
 import {AddPlanComponent} from './views/pages/forms/plan/add/addPlan.component';
 import {EditPlanComponent} from './views/pages/forms/plan/edit/editPlan.component';
 import {PlanDataTableComponent} from './views/pages/tables/planDataTable/planDataTable.component';
+import {ViewPlanComponent} from './views/pages/forms/plan/view/viewPlan.component';
+import {RoutinesPlanDataTableComponent} from './views/pages/tables/routinesPlanDataTable/routinesPlanDataTable.component';
 
 import {AddUserComponent} from './views/pages/forms/user/add/addUser.component';
 import {UserDataTableComponent} from './views/pages/tables/userDataTable/userDataTable.component';
 
 import {UiComponentsModule} from './views/pages/ui-components/ui-components.module';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -73,6 +76,8 @@ import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
     AddPlanComponent,
     EditPlanComponent,
     PlanDataTableComponent,
+      ViewPlanComponent,
+      RoutinesPlanDataTableComponent,
 
     AddSubscriberComponent,
     EditSubscriberComponent,
