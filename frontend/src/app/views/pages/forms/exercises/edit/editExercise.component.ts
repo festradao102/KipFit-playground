@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ExerciseService} from '../../../../../services/exercise.service';
 import Swal from 'sweetalert2';
 import {ExerciseTypeService} from '../../../../../services/exercise-type.service';
+import { EmbedVideoService } from 'ngx-embed-video';
 
 @Component({
     selector: 'app-edit-exercise-component',
@@ -14,10 +15,17 @@ export class EditExerciseComponent implements OnInit {
     currentExercise = null;
     exerciseTypes: any;
 
+    iframe_html: any;
+    videoOptions = {
+        query: {portrait: 0, color: '333'},
+        attr: {width: 600, height: 475}
+    };
+
     constructor(private exerciseService: ExerciseService,
                 private exerciseTypeService: ExerciseTypeService,
                 private activatedRoute: ActivatedRoute,
-                private router: Router) {
+                private router: Router,
+                private embedService: EmbedVideoService) {
     }
 
     ngOnInit(): void {
@@ -34,6 +42,7 @@ export class EditExerciseComponent implements OnInit {
             .subscribe(
                 data => {
                     this.currentExercise = data;
+                    this.iframe_html = this.embedService.embed(this.currentExercise.videoPath, this.videoOptions);
                     console.log(data);
                 },
                 error => {
