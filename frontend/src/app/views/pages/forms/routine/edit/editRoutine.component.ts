@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, AfterViewInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, AfterViewInit, ViewChild, Input} from '@angular/core';
 
 import {DataTable} from 'simple-datatables';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -18,7 +18,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
-    selector: 'app-edit-subscriber-component',
+    selector: 'app-edit-routine-component',
     templateUrl: './editRoutine.component.html',
     styleUrls: ['./editRoutine.component.scss']
 })
@@ -34,7 +34,7 @@ export class EditRoutineComponent implements OnInit {
     tipos = [];
     ejercicios = any;
     idsNuevos = 0;
-
+    //@Input() idRoutine: any;
     frecuencias = [
         'Diaria', '2 días por semana', '3 días por semana', '4 días por semana'
     ];
@@ -52,6 +52,7 @@ export class EditRoutineComponent implements OnInit {
             sortable: false,
             paging: false
         });
+      //  this.retrieveRoutineById(this.idRoutine);
         this.retrieveRoutineById(this.route.snapshot.paramMap.get('id'));
 
 

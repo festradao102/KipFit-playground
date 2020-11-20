@@ -19,7 +19,7 @@ export class EditPlanComponent implements OnInit {
     formattedDate: any;
     fitUsers: any;
     role: any;
-    // message = '';
+    idRoutine: any;
     constructor(
         private planService: PlanService,
         private fitUserService: FitUserService,
@@ -46,7 +46,6 @@ export class EditPlanComponent implements OnInit {
                         if(fitU.subscriber != null){
                             if(fitU.subscriber.id === this.currentPlan.subscriber.id){
                                 this.subcriberName = fitU.user.firstName + ' ' + fitU.user.lastName;
-                                this. role = fitU.role.roleName;
                         }
                         }
                     }
@@ -65,7 +64,10 @@ export class EditPlanComponent implements OnInit {
                     this.currentPlan = data;
                     console.log(data);
                     this.formattedDate = formatDate(this.currentPlan.dateCreated, 'yyyy-MM-dd', 'en');
-                },
+                    for(const routine of data.routines){
+                        this.idRoutine = routine.id;
+                    }
+                    },
                 error => {
                     console.log(error);
                 });

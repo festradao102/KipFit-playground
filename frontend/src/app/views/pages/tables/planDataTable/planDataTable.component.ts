@@ -34,7 +34,7 @@ export class PlanDataTableComponent implements OnInit {
                             singlePlan.objective,
                             formatDate(singlePlan.dateCreated, 'yyyy-MM-dd', 'en'),
                             singlePlan.creatorName,
-                            `<a href="/view-plan/${singlePlan.id}">Ver Detalle</a>`
+                            `<a href="/plans/${singlePlan.id}">Ver Detalle</a>`
                         ]);
                     }
                     console.log(dataTableRows);
