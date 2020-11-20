@@ -96,7 +96,7 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
-    label: 'Facturacion',
+    label: 'Facturación',
     icon: 'dollar-sign',
     subItems: [
       {
@@ -104,13 +104,13 @@ export const MENU: MenuItem[] = [
         link: '/',
       },
       {
-        label: 'Pagar suscripcion',
+        label: 'Pagar suscripción',
         link: '/',
       },
     ]
   },
   {
-    label: 'Configuracion',
+    label: 'Configuración',
     icon: 'settings',
     link: '/',
   },
