@@ -20,6 +20,10 @@ export class RoutineService {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
+  getByPlan(id): Observable<any> {
+    return this.http.get(`http://localhost:8080/api/routinesByPlan/${id}`);
+  }
+
   create(data): Observable<any> {
     return this.http.post(baseUrl, data);
   }

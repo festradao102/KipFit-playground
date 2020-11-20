@@ -9,6 +9,8 @@ import {ExerciseService} from "../../../../../services/exercise.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ExercisesSetTypeService} from "../../../../../services/exercisesSetType.service";
 import {any} from "codelyzer/util/function";
+import {UserManagementDeleteDialogComponent} from "../../../../../../../../src/main/webapp/app/admin/user-management/user-management-delete-dialog.component";
+import {SingleRoutineComponent} from "./single-routine/single-routine.component";
 
 @Component({
   selector: 'app-create-routine',
@@ -18,6 +20,7 @@ import {any} from "codelyzer/util/function";
 export class CreateRoutineComponent implements OnInit {
 
   subscriberId = 24;
+  selectedPlan = 13;
   plans: any;
   routines: any;
   routine = {
@@ -61,21 +64,37 @@ export class CreateRoutineComponent implements OnInit {
             });
   }
 
+  getRoutines(){
+    this.routineService.getByPlan(this.selectedPlan)
+        .subscribe(
+            response => {
+              this.routines = response;
+              console.log(response);
+            },
+            error => {
+              console.log(error);
+              Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Code:' + error.status + '| Detail:' + error.message,
+                showConfirmButton: false,
+                timer: 1500
+              })
+            });
+  }
+
   //Routine events
-  routineOut($event): void {
+  routineOut(): void {
     console.log("routineOut");
   }
 
   openRoutineModal(content) {
-    /*this.exerciseService.getAll().subscribe(
-        exercises => {
-          // this.sets.ejercicios = exercises;
-          this.ejercicios = exercises;
-        }
-    )*/
-      this.modalService.open(content, {centered: true, size: 'md'}).result.then((result) => {
-      console.log("Modal closed" + result);
-      }).catch((res) => {
-    });
+      const modalRef = this.modalService.open(SingleRoutineComponent, {centered: true, size: 'md'});
+
+      modalRef.componentInstance.planId = this.selectedPlan;
+      modalRef.componentInstance.eventOut.subscribe(()=>{
+         this.getRoutines();
+         console.log('getRoutines');
+      });
   }
 }

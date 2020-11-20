@@ -1,6 +1,7 @@
 package com.techgroup.kipfit.web.rest;
 
 import com.techgroup.kipfit.domain.ExercisesSet;
+import com.techgroup.kipfit.domain.Plan;
 import com.techgroup.kipfit.domain.Routine;
 import com.techgroup.kipfit.repository.ExercisesSetRepository;
 import com.techgroup.kipfit.repository.RoutineRepository;
@@ -92,6 +93,12 @@ public class RoutineResource {
     public List<Routine> getAllRoutines() {
         log.debug("REST request to get all Routines");
         return routineRepository.findAll();
+    }
+
+    @GetMapping("/routinesByPlan/{planId}")
+    public List<Routine> getRoutinesByPlanId(@PathVariable Long planId) {
+        log.debug("REST request to get all Routines");
+        return routineRepository.findAllBySubscriber(planId);
     }
 
     /**

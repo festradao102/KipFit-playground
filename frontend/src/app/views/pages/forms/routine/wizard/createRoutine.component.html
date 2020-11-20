@@ -5,8 +5,8 @@
                 <form>
                     <div class="form-group">
                         <label for="sltPlans">Selección de Plan</label>
-                        <select class="form-control" id="sltPlans" name="sltPlans" [(ngModel)]="plans">
-                            <option *ngFor="let plan of plans" [ngValue]="plan.id"> {{ plan.objective }} (Id: {{ plan.id }})</option>
+                        <select class="form-control" id="sltPlans" name="sltPlans">
+                            <option *ngFor="let plan of plans" [ngValue]="plan.id">{{ plan.objective }}</option>
                         </select>
                     </div>
                 </form>
@@ -47,6 +47,5 @@
 <!-- Modal -->
 <ng-template  #newRoutine let-modal>
     <app-single-routine (eventOut)="routineOut($event)" >
-
     </app-single-routine>
 </ng-template>
